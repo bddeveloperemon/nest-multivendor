@@ -30,11 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('/admin')->as('admin.')->group(function(){
+Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(function(){
     Route::get('/dashboard',[AdminController::class,'AdminDashboard'])->name('dashboard');
 });
 
-Route::prefix('/vendor')->as('vendor.')->group(function(){
+Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->group(function(){
     Route::get('/dashboard',[VendorController::class,'VendorDashboard'])->name('dashboard');
 });
 
