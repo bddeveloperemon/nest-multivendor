@@ -7,7 +7,11 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManager;
 use Illuminate\Http\RedirectResponse;
+use Intervention\Image\Drivers\Gd\Driver;
+use App\Http\Requests\AdminProfileRequest;
 
 class AdminController extends Controller
 {
@@ -37,10 +41,38 @@ class AdminController extends Controller
     }
 
     // Admin Profile Method
-    public function adminProfile()
+    public function adminProfile(): view
     {
         $id = Auth::user()->id;
         $adminData = User::find($id);
         return view('backend.admin.profile',compact('adminData'));
+    }
+
+    // Admin Profile Update Method
+    public function adminProfileStore(AdminProfileRequest $request)
+    {
+        $id = Auth::user()->id;
+        $adminData = User::find($id);
+        // dd($adminData);
+        if($request->hasFile('image')){
+            if(File::exists(public_path('upload/admin_images/'.Auth::user()->image))){
+                File::delete(public_path('upload/admin_images/'.Auth::user()->image));
+            }
+            $manager = new ImageManager(new Driver());
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $imageName = strtolower(str_replace(' ','_',Auth::user()->name)).'.'.$extension;
+            $imagePath = public_path('upload/admin_images').'/'.$imageName;
+            $make_img = $manager->read($request->file('image'));
+            $make_img->save($imagePath);
+    
+            $adminData->image = $imageName;
+        }
+        $adminData->name    = $request->name;
+        $adminData->email   = $request->email;
+        $adminData->phone   = $request->phone;
+        $adminData->address = $request->address;
+        $adminData->save();
+        toastr()->success('You data has been save successfully');
+        return redirect()->back();
     }
 }

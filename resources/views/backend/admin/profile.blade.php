@@ -69,68 +69,88 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">User Name</h6>
+                        <form action="{{ route('admin.profile.store') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">User Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" value="{{ $adminData->username }}" readonly>
+                                </div>
                             </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" name="username" class="form-control" value="{{ $adminData->username }}" readonly>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ $adminData->name }}" placeholder="enter your name">
+                                    @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Name</h6>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ $adminData->email }}" placeholder="enter your email address">
+                                    @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" name="name" class="form-control" value="{{ $adminData->name }}">
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Mobile</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ $adminData->phone }}" placeholder="enter your mobile number">
+                                    @error('phone')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Email</h6>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Address</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ $adminData->address }}" placeholder="enter your address">
+                                    @error('address')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="email" name="email" class="form-control" value="{{ $adminData->email }}">
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Image</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image">
+                                    @error('image')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Mobile</h6>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0"></h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <img id="show_image" src="{{ (!empty($adminData->image)) ? url('upload/admin_images/'.$adminData->image):url('backend/assets/images/avatars/avatar-500.png')  }}" alt="Admin" style="width:120px; height:120px;">
+                                </div>
                             </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="{{ $adminData->phone }}">
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-9 text-secondary">
+                                    <button type="submit" class="btn btn-success px-4">Save Changes</button>
+                                    <button type="reset" class="btn btn-danger px-4">Cancel</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Address</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="{{ $adminData->address }}">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Image</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="file" class="form-control" name="image" id="image">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0"></h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <img id="show_image" src="{{ (!empty($adminData->image)) ? url('upload/admin_images/'.$adminData->image):url('backend/assets/images/avatars/avatar-500.png')  }}" alt="Admin" style="width:120px; height:120px;">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="button" class="btn btn-primary px-4" value="Save Changes">
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
