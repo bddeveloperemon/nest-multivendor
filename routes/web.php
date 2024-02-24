@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
 //Admin Dashboard
 Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(function(){
     Route::get('/dashboard',[AdminController::class,'AdminDashboard'])->name('dashboard');
+    Route::get('/logout',[AdminController::class,'destroy'])->name('logout');
 });
 
 //Vendor Dashboard
@@ -40,4 +41,5 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
     Route::get('/dashboard',[VendorController::class,'VendorDashboard'])->name('dashboard');
 });
 
+Route::get('/admin/login',[AdminController::class,'adminLogin']);
 require __DIR__.'/auth.php';
