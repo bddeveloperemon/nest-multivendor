@@ -36,6 +36,7 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/logout',[AdminController::class,'destroy'])->name('logout');
     Route::get('/profile',[AdminController::class,'adminProfile'])->name('profile');
     Route::post('/profile',[AdminController::class,'adminProfileStore'])->name('profile.store');
+    Route::get('/change-password',[AdminController::class,'adminChangePassword'])->name('change.password');
 });
 
 //Vendor Dashboard

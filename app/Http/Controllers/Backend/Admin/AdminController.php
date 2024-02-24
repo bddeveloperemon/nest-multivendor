@@ -53,7 +53,6 @@ class AdminController extends Controller
     {
         $id = Auth::user()->id;
         $adminData = User::find($id);
-        // dd($adminData);
         if($request->hasFile('image')){
             if(File::exists(public_path('upload/admin_images/'.Auth::user()->image))){
                 File::delete(public_path('upload/admin_images/'.Auth::user()->image));
@@ -74,5 +73,11 @@ class AdminController extends Controller
         $adminData->save();
         toastr()->success('You data has been save successfully');
         return redirect()->back();
+    }
+
+    // Admin Password Change Method
+    public function adminChangePassword(): View
+    {
+        return view('backend.admin.password_change');
     }
 }
