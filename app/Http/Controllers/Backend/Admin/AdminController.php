@@ -12,6 +12,8 @@ use Intervention\Image\ImageManager;
 use Illuminate\Http\RedirectResponse;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Http\Requests\AdminProfileRequest;
+use App\Http\Requests\AdminUpdatePasswordRequest;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -79,5 +81,21 @@ class AdminController extends Controller
     public function adminChangePassword(): View
     {
         return view('backend.admin.password_change');
+    }
+
+    // Admin Password Update Method
+    public function adminPasswordUpdate(AdminUpdatePasswordRequest $request)
+    {
+        //match current password
+        if(!Hash::check($request->current_password, auth()->user()->password)){
+            return redirect()->back()->with('error', 'Current password does not match');
+        }
+
+        //update password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return redirect()->back()->with('success', 'Password changed successfully');
     }
 }

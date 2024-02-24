@@ -26,8 +26,14 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
+                    @if(Session::has('success'))
+                            <p class="alert alert-success">{{ Session::get('success') }}</p>
+                    @endif
+                    @if(Session::has('error'))
+                        <p class="alert alert-danger">{{ Session::get('error') }}</p>
+                    @endif
                     <div class="card-body">
-                        <form action="{{ route('admin.profile.store') }}" method="post">
+                        <form action="{{ route('admin.update.password') }}" method="post">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-sm-3">
@@ -45,7 +51,7 @@
                                     <h6 class="mb-0">New Password</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="password" name="new_password" class="form-control @error('new_password') is-invalid @enderror" placeholder="enter your new password">
+                                    <input type="password" name="new_password" id="new_password" class="form-control @error('new_password') is-invalid @enderror" placeholder="enter your new password">
                                     @error('new_password')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -56,7 +62,7 @@
                                     <h6 class="mb-0">Confirm Password</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="password" name="confirm_password" class="form-control" placeholder="confirm new password">
+                                    <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control" placeholder="confirm new password">
                                 </div>
                             </div>
                             <div class="row">
