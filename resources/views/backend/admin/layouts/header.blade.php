@@ -324,14 +324,18 @@
             </div>
             <div class="user-box dropdown">
                 <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('backend/assets/images/avatars/avatar-2.png') }}" class="user-img" alt="user avatar">
+                    @if (!empty($adminData->image))
+                        <img src="{{ asset('upload/admin_images/'.$adminData->image) }}" alt="Admin" class="user-img" width="110">
+                    @else
+                        <img src="{{ asset('backend/assets/images/avatars/avatar-500.png') }}" alt="Admin" class="user-img" width="110">
+                    @endif
                     <div class="user-info ps-3">
                         <p class="user-name mb-0">{{ Auth::user()->name }}</p>
                         <p class="designattion mb-0">{{ Auth::user()->username }}</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a>
+                    <li><a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="bx bx-user"></i><span>Profile</span></a>
                     </li>
                     <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a>
                     </li>

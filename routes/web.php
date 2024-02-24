@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(function(){
     Route::get('/dashboard',[AdminController::class,'AdminDashboard'])->name('dashboard');
     Route::get('/logout',[AdminController::class,'destroy'])->name('logout');
+    Route::get('/profile',[AdminController::class,'adminProfile'])->name('profile');
 });
 
 //Vendor Dashboard
