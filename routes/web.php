@@ -43,7 +43,9 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
 //Vendor Dashboard
 Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->group(function(){
     Route::get('/dashboard',[VendorController::class,'VendorDashboard'])->name('dashboard');
+    Route::get('/logout',[VendorController::class,'destroy'])->name('logout');
 });
 
 Route::get('/admin/login',[AdminController::class,'adminLogin']);
+Route::get('/vendor/login',[VendorController::class,'vendorLogin']);
 require __DIR__.'/auth.php';
