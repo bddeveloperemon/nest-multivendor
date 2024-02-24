@@ -10,6 +10,6 @@ class AdminController extends Controller
     //Admin Dashboard Method
     public function AdminDashboard()
     {
-        return view('backend.admin.dashboard');
+        return view('backend.admin.index');
     }
 }
