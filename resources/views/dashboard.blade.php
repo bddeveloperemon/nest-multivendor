@@ -6,7 +6,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                <a href="{{ route('dashboard') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
                 <span></span> My Account
             </div>
         </div>
@@ -45,7 +45,7 @@
                                 <div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h3 class="mb-0">Hello Rosie!</h3>
+                                            <h3 class="mb-0">Hello {{ Auth::user()->name }}</h3>
                                         </div>
                                         <div class="card-body">
                                             <p>
@@ -166,36 +166,34 @@
                                             <h5>Account Details</h5>
                                         </div>
                                         <div class="card-body">
-                                            <p>Already have an account? <a href="page-login.html">Log in instead!</a></p>
                                             <form method="post" name="enq">
                                                 <div class="row">
                                                     <div class="form-group col-md-6">
-                                                        <label>First Name <span class="required">*</span></label>
-                                                        <input required="" class="form-control" name="name" type="text">
+                                                        <label>User Name <span class="required">*</span></label>
+                                                        <input required="" class="form-control" value="{{ $userData->username }}" readonly>
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label>Last Name <span class="required">*</span></label>
-                                                        <input required="" class="form-control" name="phone">
-                                                    </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label>Display Name <span class="required">*</span></label>
-                                                        <input required="" class="form-control" name="dname" type="text">
+                                                        <label>Name <span class="required">*</span></label>
+                                                        <input required="" class="form-control" name="name"  value="{{ $userData->name }}" type="text">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Email Address <span class="required">*</span></label>
-                                                        <input required="" class="form-control" name="email" type="email">
+                                                        <input required="" value="{{ $userData->email }}" class="form-control" name="email" type="email">
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label>Current Password <span class="required">*</span></label>
-                                                        <input required="" class="form-control" name="password" type="password">
+                                                        <label>Mobile <span class="required">*</span></label>
+                                                        <input class="form-control" value="{{ $userData->phone }}" name="phone" type="phone">
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label>New Password <span class="required">*</span></label>
-                                                        <input required="" class="form-control" name="npassword" type="password">
+                                                        <label>Address <span class="required">*</span></label>
+                                                        <input class="form-control" value="{{ $userData->address }}" name="address" type="text">
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label>Confirm Password <span class="required">*</span></label>
-                                                        <input required="" class="form-control" name="cpassword" type="password">
+                                                        <label>User Image <span class="required">*</span></label>
+                                                        <input class="form-control" name="image" type="file" id="image">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <img id="show_image" src="{{ (!empty($adminData->image)) ? url('upload/admin_images/'.$adminData->image):url('backend/assets/images/avatars/avatar-500.png')  }}" alt="Admin" style="width:120px; height:120px;">
                                                     </div>
                                                     <div class="col-md-12">
                                                         <button type="submit" class="btn btn-fill-out submit font-weight-bold" name="submit" value="Submit">Save Change</button>
@@ -213,3 +211,17 @@
         </div>
     </div>
 @endsection
+@push('user_scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+            $('#image').change(function(){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#show_image').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
+        });
+    </script>
+@endpush
