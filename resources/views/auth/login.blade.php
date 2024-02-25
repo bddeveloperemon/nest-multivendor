@@ -49,7 +49,7 @@
                                     <div class="padding_eight_all bg-white">
                                         <div class="heading_s1">
                                             <h1 class="mb-5">Login</h1>
-                                            <p class="mb-30">Don't have an account? <a href="page-register.html">Create here</a></p>
+                                            <p class="mb-30">Don't have an account? <a href="{{ route('register') }}">Create here</a></p>
                                         </div>
                                         <form method="post" action="{{ route('login') }}">
                                             @csrf
@@ -89,7 +89,7 @@
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="text-center">
-                    <img src="assets/imgs/theme/loading.gif" alt="" />
+                    <img src="{{ asset('frontend/assets/imgs/theme/loading.gif') }}" alt="" />
                 </div>
             </div>
         </div>
