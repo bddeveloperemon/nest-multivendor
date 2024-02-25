@@ -44,6 +44,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
 Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->group(function(){
     Route::get('/dashboard',[VendorController::class,'VendorDashboard'])->name('dashboard');
     Route::get('/logout',[VendorController::class,'destroy'])->name('logout');
+    Route::get('/profile',[VendorController::class,'vendorProfile'])->name('profile');
+    Route::post('/profile',[VendorController::class,'vendorProfileStore'])->name('profile.store');
 });
 
 Route::get('/admin/login',[AdminController::class,'adminLogin']);
