@@ -46,6 +46,8 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
     Route::get('/logout',[VendorController::class,'destroy'])->name('logout');
     Route::get('/profile',[VendorController::class,'vendorProfile'])->name('profile');
     Route::post('/profile',[VendorController::class,'vendorProfileStore'])->name('profile.store');
+    Route::get('/change-password',[VendorController::class,'vendorChangePassword'])->name('change.password');
+    Route::post('/change-password',[VendorController::class,'vendorPasswordUpdate'])->name('update.password');
 });
 
 Route::get('/admin/login',[AdminController::class,'adminLogin']);
