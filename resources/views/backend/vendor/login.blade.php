@@ -45,12 +45,18 @@
                                             @csrf
 											<div class="col-12">
 												<label for="email" class="form-label">Email Address</label>
-												<input type="email" class="form-control" name="email" id="email" placeholder="Email Address">
+												<input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Email Address">
+												@error('email')
+													<div class="alert alert-danger">{{ $message }}</div>
+												@enderror
 											</div>
 											<div class="col-12">
 												<label for="password" class="form-label">Enter Password</label>
 												<div class="input-group" id="show_hide_password">
-													<input type="password" class="form-control border-end-0" id="password" name="password"  placeholder="Enter Password"> <a href="javascript:void(0);" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+													<input type="password" class="form-control border-end-0 @error('password') is-invalid @enderror" id="password" name="password"  placeholder="Enter Password"> <a href="javascript:void(0);" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+													@error('password')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 											<div class="col-md-6">
