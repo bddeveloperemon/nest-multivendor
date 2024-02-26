@@ -1,23 +1,23 @@
 @extends('backend.admin.dashboard')
 @section('admin_title')
-    Admin - Add Brand
+    Admin - Add Category
 @endsection
 @section('admin_content')
 <!--breadcrumb-->
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-    <div class="breadcrumb-title pe-3">Add Brand</div>
+    <div class="breadcrumb-title pe-3">Add Category</div>
     <div class="ps-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Add Brand</li>
+                <li class="breadcrumb-item active" aria-current="page">Add Category</li>
             </ol>
         </nav>
     </div>
     <div class="ms-auto">
         <div class="btn-group">
-            <a href="{{ route('admin.all.brands') }}" class="btn btn-danger btn-sm">Back</a>
+            <a href="{{ route('admin.all.categories') }}" class="btn btn-danger btn-sm">Back</a>
         </div>
     </div>
 </div>
@@ -28,26 +28,26 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('admin.brand.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.category.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Brand Name</h6>
+                                    <h6 class="mb-0">Category Name</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" name="brand_name" class="form-control @error('brand_name') is-invalid @enderror" placeholder="enter brand name">
-                                    @error('brand_name')
+                                    <input type="text" name="category_name" class="form-control @error('category_name') is-invalid @enderror" placeholder="Enter Category Name">
+                                    @error('category_name')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Brand Image</h6>
+                                    <h6 class="mb-0">Category Image</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image">
-                                    @error('image')
+                                    <input type="file" class="form-control @error('category_image') is-invalid @enderror" name="category_image" id="category_image">
+                                    @error('category_image')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -57,7 +57,7 @@
                                     <h6 class="mb-0"></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <img id="show_image" src="{{ asset('backend/assets/images/websiteplanet-dummy-250X250.png') }}" alt="Admin" class="rounded-circle p-1 bg-primary" style="width:120px; height:120px;">
+                                    <img id="show_image" src="{{ asset('backend/assets/images/websiteplanet-dummy-250X250.png') }}" alt="Admin" class="rounded-circle" style="width:120px; height:120px;">
                                 </div>
                             </div>
                             <div class="row">
@@ -79,7 +79,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $(document).ready(function(){
-            $('#image').change(function(){
+            $('#category_image').change(function(){
                 var reader = new FileReader();
                 reader.onload = function(e){
                     $('#show_image').attr('src',e.target.result);

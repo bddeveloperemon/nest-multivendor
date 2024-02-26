@@ -47,7 +47,7 @@
                                         <td class="sorting_1">{{ $i++ }}</td>
                                         <td>{{ $category->category_name }}</td>
                                         <td>
-                                            @if (!empty($category->image))
+                                            @if (!empty($category->category_image))
                                                 <img src="{{ asset('upload/category_images/'.$category->category_image) }}" class="rounded-circle" alt="Brand" width="50">
                                             @else
                                                 <img src="{{ asset('backend/assets/images/websiteplanet-dummy-250X250.png') }}" class="rounded-circle" alt="Brand" width="50">

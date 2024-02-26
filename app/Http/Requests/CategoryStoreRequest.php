@@ -22,7 +22,8 @@ class CategoryStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'category_name' => 'bail|required|string|unique:brands,brand_name',
+            'category_image' => 'bail|nullable|max:2048',
         ];
     }
 }
