@@ -38,9 +38,9 @@
                 <div class="menu-title">Categories</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.all.category') }}"><i class="bx bx-right-arrow-alt"></i>All Categories</a>
+                <li> <a href="{{ route('admin.all.categories') }}"><i class="bx bx-right-arrow-alt"></i>All Categories</a>
                 </li>
-                <li> <a href="{{ route('admin.all.categories') }}"><i class="bx bx-right-arrow-alt"></i>Add Category</a>
+                <li> <a href="{{ route('admin.add.category') }}"><i class="bx bx-right-arrow-alt"></i>Add Category</a>
                 </li>
             </ul>
         </li>
