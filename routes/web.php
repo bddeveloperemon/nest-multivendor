@@ -5,8 +5,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Backend\Admin\AdminController;
-use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
+use App\Http\Controllers\Backend\Admin\CategoryController;
+use App\Http\Controllers\Backend\Admin\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,13 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit-category/{id}', [CategoryController::class, 'editCategory'])->name('edit.category');
     Route::post('/update-category/{id}', [CategoryController::class, 'updateCategory'])->name('update.category');
     Route::get('/delete-category/{id}', [CategoryController::class, 'deleteCategory'])->name('delete.category');
+    // SubCategory Routes
+    Route::get('/all-subcategory', [SubCategoryController::class, 'allSubCategory'])->name('all.subcategories');
+    Route::get('/add-subcategory', [SubCategoryController::class, 'addSubCategory'])->name('add.subcategory');
+    Route::post('/store-subcategory', [SubCategoryController::class, 'subcategoryStore'])->name('subcategory.store');
+    Route::get('/edit-subcategory/{id}', [SubCategoryController::class, 'editSubCategory'])->name('edit.subcategory');
+    Route::post('/update-subcategory/{id}', [SubCategoryController::class, 'updateSubCategory'])->name('update.subcategory');
+    Route::get('/delete-subcategory/{id}', [SubCategoryController::class, 'deleteSubCategory'])->name('delete.subcategory');
 });
 
 //Vendor Dashboard
