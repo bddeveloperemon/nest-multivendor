@@ -33,4 +33,32 @@ class SubCategoryController extends Controller
         toastr()->success('New Sub-Category Inserted Successfully');
         return redirect()->route('admin.all.subcategories');
     }
+
+    public function editSubCategory($id)
+    {
+        $subcategory = SubCategory::find($id);
+        $categories = Category::select('id','category_name')->orderBy('category_name','asc')->get();
+        return view('backend.subcategory.edit_subcategory',compact('subcategory','categories'));
+    }
+
+    public function updateSubCategory(Request $request, $id)
+    {
+        $category = SubCategory::find($id);
+        
+            $category->update([
+                'category_id' => $request->category_id,
+                'sub_category_name' => $request->sub_category_name,
+                'sub_category_slug' => strtolower(str_replace(' ','-',$request->sub_category_name)),
+            ]);
+        toastr()->success('Sub-Category Updated Successfully');
+        return redirect()->route('admin.all.subcategories');
+    }
+
+    public function deleteSubCategory($id)
+    {
+        $subcategory = SubCategory::find($id);
+        $subcategory->delete();
+        toastr()->success('Sub-Category Deleted Successfully');
+        return redirect()->route('admin.all.subcategories');
+    }
 }
