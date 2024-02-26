@@ -25,7 +25,7 @@
                 <div class="menu-title">Brand</div>
             </a>
             <ul>
-                <li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>All Brand</a>
+                <li> <a href="{{ route('admin.all.brands') }}"><i class="bx bx-right-arrow-alt"></i>All Brand</a>
                 </li>
                 <li> <a href="dashboard-eCommerce.html"><i class="bx bx-right-arrow-alt"></i>Add Brand</a>
                 </li>

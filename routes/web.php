@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
@@ -36,6 +37,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::post('/profile',[AdminController::class,'adminProfileStore'])->name('profile.store');
     Route::get('/change-password',[AdminController::class,'adminChangePassword'])->name('change.password');
     Route::post('/change-password',[AdminController::class,'adminPasswordUpdate'])->name('update.password');
+    // Brand Routes
+    Route::get('/all/brands', [BrandController::class, 'allBrands'])->name('all.brands');
 });
 
 //Vendor Dashboard
