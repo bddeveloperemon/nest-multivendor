@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Backend\Admin\AdminController;
+use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
 
 /*
@@ -44,6 +45,13 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit-brand/{id}', [BrandController::class, 'editBrand'])->name('edit.brand');
     Route::post('/update-brand/{id}', [BrandController::class, 'updateBrand'])->name('update.brand');
     Route::get('/delete-brand/{id}', [BrandController::class, 'deleteBrand'])->name('delete.brand');
+    // Category Routes
+    Route::get('/all-category', [CategoryController::class, 'allCategory'])->name('all.category');
+    Route::get('/add-category', [CategoryController::class, 'addCategory'])->name('add.category');
+    Route::post('/store-category', [CategoryController::class, 'categoryStore'])->name('category.store');
+    Route::get('/edit-category/{id}', [CategoryController::class, 'editCategory'])->name('edit.category');
+    Route::post('/update-category/{id}', [CategoryController::class, 'updateCategory'])->name('update.category');
+    Route::get('/delete-category/{id}', [CategoryController::class, 'deleteCategory'])->name('delete.category');
 });
 
 //Vendor Dashboard
