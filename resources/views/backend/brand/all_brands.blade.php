@@ -46,16 +46,16 @@
                                 @foreach ($brands as $brand)
                                     <tr role="row" class="odd">
                                         <td class="sorting_1">{{ $i++ }}</td>
-                                        <td>{{ $brand->name }}</td>
+                                        <td>{{ $brand->brand_name }}</td>
                                         <td>
                                             @if (!empty($brand->image))
-                                                <img src="{{ asset('upload/admin_images/'.$brand->image) }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                                                <img src="{{ asset('upload/brand_images/'.$brand->image) }}" alt="Brand" width="50">
                                             @else
-                                                <img src="{{ asset('backend/assets/images/avatars/avatar-500.png') }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                                                <img src="{{ asset('backend/assets/images/avatars/avatar-500.png') }}" alt="Brand" width="50">
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="" class="btn btn-info btn-sm">Edit</a>|
+                                            <a href="" class="btn btn-info btn-sm">Edit</a>
                                             <a href="" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
