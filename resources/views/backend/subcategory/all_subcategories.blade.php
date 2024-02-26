@@ -1,23 +1,23 @@
 @extends('backend.admin.dashboard')
 @section('admin_title')
-    Admin - Category List
+    Admin - SubCategory List
 @endsection
 @section('admin_content')
 <!--breadcrumb-->
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-    <div class="breadcrumb-title pe-3">All Categories</div>
+    <div class="breadcrumb-title pe-3">All SubCategories</div>
     <div class="ps-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">All Categories</li>
+                <li class="breadcrumb-item active" aria-current="page">All SubCategories</li>
             </ol>
         </nav>
     </div>
     <div class="ms-auto">
         <div class="btn-group">
-            <a href="{{ route('admin.add.category') }}" class="btn btn-primary btn-sm">Add Category</a>
+            <a href="{{ route('admin.add.subcategory') }}" class="btn btn-primary btn-sm">Add Sub-Category</a>
         </div>
     </div>
 </div>
@@ -34,7 +34,7 @@
                                 <tr role="row">
                                     <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 10%">SL</th>
                                     <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 30%;">Category Name</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 30%">Category Image</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 30%">Sub-Category Name</th>
                                     <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 30%">Action</th>
                                 </tr>
                             </thead>
@@ -42,20 +42,14 @@
                                 @php
                                     $i = 1;
                                 @endphp
-                                @foreach ($categories as $category)
+                                @foreach ($sub_categories as $subcategory)
                                     <tr role="row" class="odd">
                                         <td class="sorting_1">{{ $i++ }}</td>
-                                        <td>{{ $category->category_name }}</td>
+                                        <td>{{ $subcategory->category->category_name }}</td>
+                                        <td>{{ $subcategory->sub_category_name }}</td>
                                         <td>
-                                            @if (!empty($category->category_image))
-                                                <img src="{{ asset('upload/category_images/'.$category->category_image) }}" class="rounded-circle" alt="Brand" width="50">
-                                            @else
-                                                <img src="{{ asset('backend/assets/images/websiteplanet-dummy-250X250.png') }}" class="rounded-circle" alt="Brand" width="50">
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('admin.edit.category',$category->id) }}" class="btn btn-info btn-sm">Edit</a>
-                                            <a href="{{ route('admin.delete.category',$category->id) }}" class="btn btn-danger btn-sm" id="delete">Delete</a>
+                                            <a href="{{ route('admin.edit.subcategory',$subcategory->id) }}" class="btn btn-info btn-sm">Edit</a>
+                                            <a href="{{ route('admin.delete.subcategory',$subcategory->id) }}" class="btn btn-danger btn-sm" id="delete">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
