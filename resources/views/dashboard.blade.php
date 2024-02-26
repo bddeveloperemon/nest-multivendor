@@ -1,6 +1,6 @@
 @extends('frontend.layouts.auth_master')
 @section('auth_title')
-    User Dashboard
+    Dashboard
 @endsection
 @section('auth_content')
     <div class="page-header breadcrumb-wrap">
@@ -46,6 +46,8 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <h3 class="mb-0">Hello {{ Auth::user()->name }}</h3>
+                                            <br>
+                                            <img id="show_image" src="{{ (!empty($userData->image)) ? url('upload/user_images/'.$userData->image):url('backend/assets/images/avatars/avatar-500.png')  }}" alt="User" class="rounded-circle p-1 bg-info" width="100px" height="90px">
                                         </div>
                                         <div class="card-body">
                                             <p>
@@ -166,37 +168,56 @@
                                             <h5>Account Details</h5>
                                         </div>
                                         <div class="card-body">
-                                            <form method="post" name="enq">
+                                            <form method="post" action="{{ route('user.profile.update') }}" enctype="multipart/form-data">
+                                                @csrf
                                                 <div class="row">
                                                     <div class="form-group col-md-6">
-                                                        <label>User Name <span class="required">*</span></label>
-                                                        <input required="" class="form-control" value="{{ $userData->username }}" readonly>
+                                                        <label>User Name </label>
+                                                        <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ $userData->username }}" name="username">
+                                                        @error('username')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label>Name <span class="required">*</span></label>
-                                                        <input required="" class="form-control" name="name"  value="{{ $userData->name }}" type="text">
+                                                        <input required class="form-control @error('name') is-invalid @enderror" name="name"  value="{{ $userData->name }}" type="text">
+                                                        @error('name')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Email Address <span class="required">*</span></label>
-                                                        <input required="" value="{{ $userData->email }}" class="form-control" name="email" type="email">
+                                                        <input required value="{{ $userData->email }}" class="form-control @error('email') is-invalid @enderror" name="email" type="email">
+                                                        @error('email')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label>Mobile <span class="required">*</span></label>
-                                                        <input class="form-control" value="{{ $userData->phone }}" name="phone" type="phone">
+                                                        <label>Mobile</label>
+                                                        <input class="form-control @error('phone') is-invalid @enderror" value="{{ $userData->phone }}" name="phone" type="number">
+                                                        @error('phone')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label>Address <span class="required">*</span></label>
-                                                        <input class="form-control" value="{{ $userData->address }}" name="address" type="text">
+                                                        <label>Address</label>
+                                                        <input class="form-control @error('address') is-invalid @enderror" value="{{ $userData->address }}" name="address" type="text">
+                                                        @error('address')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label>User Image <span class="required">*</span></label>
-                                                        <input class="form-control" name="image" type="file" id="image">
+                                                        <label>User Image</label>
+                                                        <input class="form-control @error('image') is-invalid @enderror" name="image" type="file" id="image">
+                                                        @error('image')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <img id="show_image" src="{{ (!empty($adminData->image)) ? url('upload/admin_images/'.$adminData->image):url('backend/assets/images/avatars/avatar-500.png')  }}" alt="Admin" style="width:120px; height:120px;">
+                                                        <img id="show_image" src="{{ (!empty($userData->image)) ? url('upload/user_images/'.$userData->image):url('backend/assets/images/avatars/avatar-500.png')  }}" alt="User" class="rounded-circle p-1 bg-info" height="90px" width="100px">
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <button type="submit" class="btn btn-fill-out submit font-weight-bold" name="submit" value="Submit">Save Change</button>
+                                                        <button type="submit" class="btn btn-fill-out submit font-weight-bold">Save Change</button>
                                                     </div>
                                                 </div>
                                             </form>
