@@ -49,13 +49,13 @@
                                         <td>{{ $brand->brand_name }}</td>
                                         <td>
                                             @if (!empty($brand->image))
-                                                <img src="{{ asset('upload/brand_images/'.$brand->image) }}" alt="Brand" width="50">
+                                                <img src="{{ asset('upload/brand_images/'.$brand->image) }}" class="rounded-circle" alt="Brand" width="50">
                                             @else
-                                                <img src="{{ asset('backend/assets/images/avatars/avatar-500.png') }}" alt="Brand" width="50">
+                                                <img src="{{ asset('backend/assets/images/websiteplanet-dummy-250X250.png') }}" class="rounded-circle" alt="Brand" width="50">
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="" class="btn btn-info btn-sm">Edit</a>
+                                            <a href="{{ route('admin.edit.brand',$brand->id) }}" class="btn btn-info btn-sm">Edit</a>
                                             <a href="" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>

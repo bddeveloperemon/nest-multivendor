@@ -33,13 +33,24 @@ class BrandController extends Controller
             $make_img = $manager->read($request->file('image'));
             $make_img->resize(300,300)->save($imagePath);
             
+            Brand::insert([
+                'brand_name' => $request->brand_name,
+                'slug' => strtolower(str_replace(' ','-',$request->brand_name)),
+                'image' => $imageName
+            ]);
+        }else{
+            Brand::insert([
+                'brand_name' => $request->brand_name,
+                'slug' => strtolower(str_replace(' ','-',$request->brand_name))
+            ]);
         }
-        Brand::insert([
-            'brand_name' => $request->brand_name,
-            'slug' => strtolower(str_replace(' ','-',$request->brand_name)),
-            'image' => $imageName
-        ]);
         toastr()->success('New Brand Inserted Successfully');
         return redirect()->route('admin.all.brands');
+    }
+
+    public function editBrand($id)
+    {
+        $brand = Brand::find($id);
+        return view('backend.brand.edit_brand',compact('brand'));
     }
 }

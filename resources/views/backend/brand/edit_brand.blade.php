@@ -1,6 +1,6 @@
 @extends('backend.admin.dashboard')
 @section('admin_title')
-    Admin - Add Brand
+    Admin - Edit Brand
 @endsection
 @section('admin_content')
 <!--breadcrumb-->
@@ -35,7 +35,7 @@
                                     <h6 class="mb-0">Brand Name</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" name="brand_name" class="form-control @error('brand_name') is-invalid @enderror" placeholder="enter brand name">
+                                    <input type="text" name="brand_name" class="form-control @error('brand_name') is-invalid @enderror" value="{{ $brand->brand_name }}" placeholder="enter brand name">
                                     @error('brand_name')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -57,7 +57,7 @@
                                     <h6 class="mb-0"></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <img id="show_image" src="{{ asset('backend/assets/images/websiteplanet-dummy-250X250.png') }}" alt="Admin" class="rounded-circle p-1 bg-primary" style="width:120px; height:120px;">
+                                    <img id="show_image" src="{{ (!empty($brand->image)) ? url('upload/brand_images/'.$brand->image):url('backend/assets/images/No_Image.png')  }}" alt="Admin" style="width:120px; height:120px;">
                                 </div>
                             </div>
                             <div class="row">

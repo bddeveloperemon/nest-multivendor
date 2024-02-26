@@ -23,7 +23,7 @@ class BrandStoreRequest extends FormRequest
     {
         return [
             'brand_name' => 'bail|required|string|unique:brands,brand_name',
-            'image' => 'bail|required|max:2048',
+            'image' => 'bail|nullable|max:2048',
         ];
     }
 }
