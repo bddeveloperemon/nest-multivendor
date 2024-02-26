@@ -66,7 +66,7 @@ class CategoryController extends Controller
             $imageName = time().'.'.$extension;
             $imagePath = public_path('upload/category_images').'/'.$imageName;
             $make_img = $manager->read($request->file('category_image'));
-            $make_img->resize(300,300)->save($imagePath);
+            $make_img->resize(120,120)->save($imagePath);
             
             $category->update([
                 'category_name' => $request->category_name,
