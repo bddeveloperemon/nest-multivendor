@@ -38,7 +38,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/change-password',[AdminController::class,'adminChangePassword'])->name('change.password');
     Route::post('/change-password',[AdminController::class,'adminPasswordUpdate'])->name('update.password');
     // Brand Routes
-    Route::get('/all/brands', [BrandController::class, 'allBrands'])->name('all.brands');
+    Route::get('/all-brand', [BrandController::class, 'allBrands'])->name('all.brands');
+    Route::get('/add-brand', [BrandController::class, 'addBrand'])->name('add.brand');
 });
 
 //Vendor Dashboard

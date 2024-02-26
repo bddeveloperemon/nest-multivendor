@@ -13,4 +13,9 @@ class BrandController extends Controller
         $brands = Brand::select('id','brand_name','slug','image')->latest()->get();
         return view('backend.brand.all_brands',compact('brands'));
     }
+
+    public function addBrand()
+    {
+        return view('backend.brand.add_brand');
+    }
 }
