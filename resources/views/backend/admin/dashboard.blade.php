@@ -70,8 +70,11 @@
 	<script src="{{ asset('backend/assets/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/jquery-knob/excanvas.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
+	<script src="{{ asset('backend/assets/js/code.js') }}"></script>
 	<!--datatable js -->
 	<script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+	<!--sweetalert2 js -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	  <script>
 			$(document).ready(function() {
 				$('#dataTable').DataTable();

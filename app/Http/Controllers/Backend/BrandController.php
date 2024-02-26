@@ -82,4 +82,15 @@ class BrandController extends Controller
         toastr()->success('Brand Updated Successfully');
         return redirect()->route('admin.all.brands');
     }
+
+    public function deleteBrand($id)
+    {
+        $brand = Brand::find($id);
+        if(File::exists(public_path('upload/brand_images/'.$brand->image))){
+            File::delete(public_path('upload/brand_images/'.$brand->image));
+        }
+        $brand->delete();
+        toastr()->success('Brand Deleted Successfully');
+        return redirect()->route('admin.all.brands');
+    }
 }

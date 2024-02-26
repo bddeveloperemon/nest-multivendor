@@ -43,6 +43,7 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::post('/store-brand', [BrandController::class, 'brandStore'])->name('brand.store');
     Route::get('/edit-brand/{id}', [BrandController::class, 'editBrand'])->name('edit.brand');
     Route::post('/update-brand/{id}', [BrandController::class, 'updateBrand'])->name('update.brand');
+    Route::get('/delete-brand/{id}', [BrandController::class, 'deleteBrand'])->name('delete.brand');
 });
 
 //Vendor Dashboard

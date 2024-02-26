@@ -5,13 +5,13 @@
 @section('admin_content')
 <!--breadcrumb-->
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-    <div class="breadcrumb-title pe-3">Tables</div>
+    <div class="breadcrumb-title pe-3">All Brand</div>
     <div class="ps-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Data Table</li>
+                <li class="breadcrumb-item active" aria-current="page">All Brand</li>
             </ol>
         </nav>
     </div>
@@ -22,7 +22,6 @@
     </div>
 </div>
 <!--end breadcrumb-->
-<h6 class="mb-0 text-uppercase">DataTable Example</h6>
 <hr>
 <div class="card">
     <div class="card-body">
@@ -56,7 +55,7 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.edit.brand',$brand->id) }}" class="btn btn-info btn-sm">Edit</a>
-                                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="{{ route('admin.delete.brand',$brand->id) }}" class="btn btn-danger btn-sm" id="delete">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
