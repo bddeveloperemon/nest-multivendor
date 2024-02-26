@@ -24,8 +24,8 @@
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/dark-theme.css') }}" />
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css') }}" />
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css') }}" />
-	<!--toastr css -->
-	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
+	<!--datatable css -->
+	<link href="{{ asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 	<title>@yield('admin_title')</title>
 </head>
 
@@ -70,14 +70,24 @@
 	<script src="{{ asset('backend/assets/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/jquery-knob/excanvas.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
-	<!--toastr js -->
-	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
+	<!--datatable js -->
+	<script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
 	  <script>
-		  $(function() {
-			  $(".knob").knob();
-		  });
+			$(document).ready(function() {
+				$('#dataTable').DataTable();
+			});
+			$(function() {
+				$(".knob").knob();
+			});
 	  </script>
 	  <script src="{{ asset('backend/assets/js/index.js') }}"></script>
+	<script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+	<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		});
+  </script>
+
 	<!--app JS-->
 	<script src="{{ asset('backend/assets/js/app.js') }}"></script>
 	@stack('admin_scripts')
