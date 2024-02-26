@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
+use Illuminate\Http\RedirectResponse;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\UserProfileUpdateRequest;
@@ -48,5 +49,16 @@ class UserController extends Controller
         toastr()->success('User Profile updated successfully');
         return redirect()->back();
      
+    }
+    // User Logout
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+        
+        $request->session()->invalidate();
+        
+        $request->session()->regenerateToken();
+        
+        return redirect('/login');
     }
 }

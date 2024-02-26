@@ -24,7 +24,7 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     Route::post('/user/profile', [UserController::class, 'update'])->name('user.profile.update');
-    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/user/logout', [UserController::class, 'logout'])->name('user.logout');
 });
 
 //Admin Dashboard
