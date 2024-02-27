@@ -1,6 +1,6 @@
 @extends('backend.vendor.dashboard')
 @section('vendor_title')
-    Admin Profile
+    Vendor Profile
 @endsection
 @section('vendor_content')
 <!--breadcrumb-->

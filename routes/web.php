@@ -63,6 +63,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     // Vendor Active & Inactive Routes
     Route::get('/inactive-vendor', [AdminController::class, 'inactiveVendor'])->name('vendor.inactive');
     Route::get('/active-vendor', [AdminController::class, 'activeVendor'])->name('vendor.active');
+    Route::get('/inactive-vendor/details/{id}', [AdminController::class, 'inactiveVendorDetails'])->name('inactive.vendorDetails');
+    Route::post('/active-vendor/approve/{id}', [AdminController::class, 'activeVendorApprove'])->name('active.vendor.approve');
 });
 
 //Vendor Dashboard

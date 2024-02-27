@@ -1,6 +1,6 @@
 @extends('backend.admin.dashboard')
 @section('admin_title')
-    Admin - Inactive Vendor
+    Admin - Inactive Vendors
 @endsection
 @section('admin_content')
 <!--breadcrumb-->
@@ -56,7 +56,7 @@
                                             
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.edit.subcategory',$inactive_vendor->id) }}" class="btn btn-info btn-sm">Vendor Details</a>
+                                            <a href="{{ route('admin.inactive.vendorDetails',$inactive_vendor->id) }}" class="btn btn-info btn-sm">Vendor Details</a>
                                         </td>
                                     </tr>
                                 @endforeach

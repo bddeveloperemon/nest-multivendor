@@ -51,7 +51,7 @@ class AdminController extends Controller
     }
 
     // Admin Profile Update Method
-    public function adminProfileStore(AdminProfileRequest $request)
+    public function adminProfileStore(AdminProfileRequest $request): RedirectResponse
     {
         $id = Auth::user()->id;
         $adminData = User::find($id);
@@ -84,7 +84,7 @@ class AdminController extends Controller
     }
 
     // Admin Password Update Method
-    public function adminPasswordUpdate(AdminUpdatePasswordRequest $request)
+    public function adminPasswordUpdate(AdminUpdatePasswordRequest $request): RedirectResponse
     {
         //match current password
         if(!Hash::check($request->current_password, auth()->user()->password)){
@@ -106,10 +106,31 @@ class AdminController extends Controller
         return view('backend.vendor.inactive_vendor',compact('inactive_vendors'));
     }
 
-    // Vendor Inactive Method
+    // Vendor Active Method
     public function activeVendor(): View
     {
         $active_vendors = User::where(['status' => 'active','role'=> 'vendor'])->latest()->get();
         return view('backend.vendor.active_vendor',compact('active_vendors'));
+    }
+
+    // Inactive Vendor Details Method
+    public function inactiveVendorDetails($id): View
+    {
+        $inactiveVendorDetails = User::findOrFail($id);
+        return view('backend.vendor.inactive_vendor_details',compact('inactiveVendorDetails'));
+    }
+
+    // Inactive Vendor Active Method
+    public function activeVendorApprove(Request $request,$id): RedirectResponse
+    {
+        $active_vendor_id = User::findOrFail($id);
+        User::findOrFail($id)->update([
+            'status' => 'active'
+        ]);
+
+        toastr()->success('Vendor Active');
+        return redirect()->route('admin.vendor.active');
+
+
     }
 }
