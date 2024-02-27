@@ -16,7 +16,9 @@
         </nav>
     </div>
     <div class="ms-auto">
-        
+        <div class="btn-group">
+            <a href="{{ route('admin.vendor.inactive') }}" class="btn btn-danger btn-sm" style="margin-right: 13px">Back</a>
+        </div>
     </div>
 </div>
 <!--end breadcrumb-->
