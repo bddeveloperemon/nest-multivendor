@@ -97,4 +97,10 @@ class VendorController extends Controller
 
         return redirect()->back()->with('success', 'Password changed successfully');
     }
+
+    // Become Vendor Method
+    public function becomeVendor(): View
+    {
+        return view('auth.become-vendor');
+    }
 }

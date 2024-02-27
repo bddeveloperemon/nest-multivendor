@@ -73,5 +73,6 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
 });
 
 Route::get('/admin/login',[AdminController::class,'adminLogin']);
-Route::get('/vendor/login',[VendorController::class,'vendorLogin']);
+Route::get('/vendor/login',[VendorController::class,'vendorLogin'])->name('vendor.login');
+Route::get('/become/vendor',[VendorController::class,'becomeVendor'])->name('become.vendor');
 require __DIR__.'/auth.php';
