@@ -136,7 +136,16 @@ class AdminController extends Controller
 
         toastr()->success('Vendor Active');
         return redirect()->route('admin.vendor.active');
+    }
 
+    // Active Vendor Inactive Method
+    public function inactiveVendorApprove(Request $request,$id): RedirectResponse
+    {
+        User::findOrFail($id)->update([
+            'status' => 'inactive'
+        ]);
 
+        toastr()->success('Vendor Inactive');
+        return redirect()->route('admin.vendor.inactive');
     }
 }

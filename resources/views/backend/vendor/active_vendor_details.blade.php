@@ -26,7 +26,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('admin.active.vendor.approve',$activeVendorDetails->id) }}" method="post">
+                        <form action="{{ route('admin.inactive.vendor.approve',$activeVendorDetails->id) }}" method="post">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-sm-3">
