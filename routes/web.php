@@ -60,6 +60,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit-subcategory/{id}', [SubCategoryController::class, 'editSubCategory'])->name('edit.subcategory');
     Route::post('/update-subcategory/{id}', [SubCategoryController::class, 'updateSubCategory'])->name('update.subcategory');
     Route::get('/delete-subcategory/{id}', [SubCategoryController::class, 'deleteSubCategory'])->name('delete.subcategory');
+    // Vendor Active & Inactive Routes
+    Route::get('/vendor-inactive', [AdminController::class, 'inactiveVendor'])->name('vendor.inactive');
 });
 
 //Vendor Dashboard

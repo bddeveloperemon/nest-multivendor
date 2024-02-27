@@ -98,4 +98,11 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Password changed successfully');
     }
+
+    // Vendor Inactive Method
+    public function inactiveVendor()
+    {
+        $inactive_vendors = User::where(['status' => 'inactive','role'=> 'vendor'])->latest()->get();
+        return view('backend.vendor.inactive_vendor',compact('inactive_vendors'));
+    }
 }
