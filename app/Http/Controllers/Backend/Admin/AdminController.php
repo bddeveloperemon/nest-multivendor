@@ -120,10 +120,16 @@ class AdminController extends Controller
         return view('backend.vendor.inactive_vendor_details',compact('inactiveVendorDetails'));
     }
 
+    // Active Vendor Details Method
+    public function activeVendorDetails($id): View
+    {
+        $activeVendorDetails = User::findOrFail($id);
+        return view('backend.vendor.active_vendor_details',compact('activeVendorDetails'));
+    }
+
     // Inactive Vendor Active Method
     public function activeVendorApprove(Request $request,$id): RedirectResponse
     {
-        $active_vendor_id = User::findOrFail($id);
         User::findOrFail($id)->update([
             'status' => 'active'
         ]);

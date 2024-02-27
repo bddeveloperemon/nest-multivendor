@@ -56,7 +56,7 @@
                                             
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.edit.subcategory',$active_vendor->id) }}" class="btn btn-info btn-sm">Vendor Details</a>
+                                            <a href="{{ route('admin.active.vendorDetails',$active_vendor->id) }}" class="btn btn-info btn-sm">Vendor Details</a>
                                         </td>
                                     </tr>
                                 @endforeach
