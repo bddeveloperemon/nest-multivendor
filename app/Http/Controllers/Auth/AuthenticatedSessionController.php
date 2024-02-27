@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
         }elseif($request->user()->role === 'user'){
             $url = route('dashboard');
         }
-        toastr()->success('You are login successfully');
+        toastr()->success('Login successfully');
         return redirect()->intended($url);
     }
 
