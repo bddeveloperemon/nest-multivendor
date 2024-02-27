@@ -3,6 +3,13 @@
     Vendor Dashboard
 @endsection
 @section('vendor_content')
+@if ($status == 'active')
+    <h5>Vendor account is <span class="text-success fw-bold">Active</span></h5>
+@else
+    <h5>Vendor account is <span class="text-danger fw-bold">Inactive</span></h5>
+    <p class="fw-bold text-danger">Please wait admin will check and approve your account</p>
+    
+@endif
 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
     <div class="col">
         <div class="card radius-10 bg-gradient-deepblue">

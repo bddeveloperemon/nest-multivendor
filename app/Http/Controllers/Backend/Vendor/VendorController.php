@@ -23,7 +23,10 @@ class VendorController extends Controller
     // Vendor Dashboard Method
     public function VendorDashboard()
     {
-        return view('backend.vendor.index');
+        $id = Auth::user()->id;
+        $vendor_id = User::find($id);
+        $status = $vendor_id->status;
+        return view('backend.vendor.index',compact('status'));
     }
 
     public function vendorLogin(): View
