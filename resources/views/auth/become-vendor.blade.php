@@ -23,22 +23,34 @@
                                         <h1 class="mb-5">Become Vendor</h1>
                                         <p class="mb-30">Already have an vendor account? <a href="{{ route('vendor.login') }}">Login</a></p>
                                     </div>
-                                    <form method="post" action="{{ route('register') }}">
+                                    <form method="post" action="{{ route('vendor.register') }}">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="text" required="" id="name" name="name" placeholder="Shop Name" />
+                                            <input type="text" class=" @error('name') is-invalid @enderror" id="name" name="name" placeholder="Shop Name" />
+                                            @error('name')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" required="" id="username" name="username" placeholder="User Name" />
+                                            <input type="text" id="username" class=" @error('username') is-invalid @enderror" name="username" placeholder="User Name" />
+                                             @error('username')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" required="" id="email" name="email" placeholder="Email" />
+                                            <input type="text" id="email" class="@error('email') is-invalid @enderror" name="email" placeholder="Email" />
+                                             @error('email')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="number" required="" id="Phone" name="Phone" placeholder="Phone" />
+                                            <input type="number" id="phone" class="@error('phone') is-invalid @enderror" name="phone" placeholder="Phone" />
+                                             @error('phone')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <select name="vendor_join" id="vendor_join" class="form-select" aria-label="Default select example">
+                                            <select name="vendor_join" id="vendor_join" class="form-select  @error('vendor_join') is-invalid @enderror" aria-label="Default select example">
                                                 <option selected="">Open this select join date</option>
                                                 <option value="2022">2022</option>
                                                 <option value="2023">2023</option>
@@ -46,12 +58,18 @@
                                                 <option value="2025">2025</option>
                                                 <option value="2026">2026</option>
                                             </select>
+                                             @error('vendor_join')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input required="" type="password" id="password" name="password" placeholder="Password" />
+                                            <input type="password" class=" @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" />
+                                             @error('password')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input required="" type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" />
+                                            <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" />
                                         </div>
                                         <div class="login_footer form-group mb-50">
                                             <div class="chek-form">

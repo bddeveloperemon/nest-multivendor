@@ -11,8 +11,11 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManager;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Validation\Rules\Password;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Http\Requests\VendorProfileRequest;
+use App\Http\Requests\VendorRegisterRequest;
 use App\Http\Requests\VendorUpdatePasswordRequest;
 
 class VendorController extends Controller
@@ -83,7 +86,7 @@ class VendorController extends Controller
     }
 
     // Vendor Password Update Method
-    public function vendorPasswordUpdate(VendorUpdatePasswordRequest $request)
+    public function vendorPasswordUpdate(VendorUpdatePasswordRequest $request): RedirectResponse
     {
         //match current password
         if(!Hash::check($request->current_password, auth()->user()->password)){
@@ -102,5 +105,22 @@ class VendorController extends Controller
     public function becomeVendor(): View
     {
         return view('auth.become-vendor');
+    }
+
+    // Vendor Register Method
+    public function vendorRegister(VendorRegisterRequest $request): RedirectResponse
+    {
+        User::insert([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'vendor_join' => $request->vendor_join,
+            'password' => Hash::make($request->password),
+            'role' => 'vendor',
+            'status' => 'inactive',
+        ]);
+        toastr()->success('Vendor Registration Successful');
+        return redirect()->route('vendor.login');
     }
 }

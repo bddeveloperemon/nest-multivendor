@@ -24,8 +24,8 @@ class VendorProfileRequest extends FormRequest
         return [
             'name'=> 'bail|required|string',
             'email'=> 'bail|required|email',
-            'phone'=> 'bail|required|numeric|min:11',
-            'address'=> 'bail|required|string',
+            'phone'=> 'bail|nullable|numeric|min:11',
+            'address'=> 'bail|nullable|string',
             'image'=> 'bail|nullable|image|max:2048',
             'vendor_join'=> 'bail|nullable|string',
             'vendor_short_info'=> 'bail|nullable|string',
