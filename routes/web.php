@@ -55,6 +55,7 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/delete-category/{id}', [CategoryController::class, 'deleteCategory'])->name('delete.category');
     // Product Routes
     Route::get('/all-product', [ProductController::class, 'allProducts'])->name('all.products');
+    Route::get('/add-product', [ProductController::class, 'addProduct'])->name('add.product');
     // SubCategory Routes
     Route::get('/all-subcategory', [SubCategoryController::class, 'allSubCategory'])->name('all.subcategories');
     Route::get('/add-subcategory', [SubCategoryController::class, 'addSubCategory'])->name('add.subcategory');
@@ -62,6 +63,7 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit-subcategory/{id}', [SubCategoryController::class, 'editSubCategory'])->name('edit.subcategory');
     Route::post('/update-subcategory/{id}', [SubCategoryController::class, 'updateSubCategory'])->name('update.subcategory');
     Route::get('/delete-subcategory/{id}', [SubCategoryController::class, 'deleteSubCategory'])->name('delete.subcategory');
+    Route::get('/subcategory-ajax/{category_id}', [SubCategoryController::class, 'getSubcategory'])->name('subcategory.ajax');
     // Vendor Active & Inactive Routes
     Route::get('/inactive-vendor', [AdminController::class, 'inactiveVendor'])->name('vendor.inactive');
     Route::get('/active-vendor', [AdminController::class, 'activeVendor'])->name('vendor.active');

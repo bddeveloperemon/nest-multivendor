@@ -61,4 +61,11 @@ class SubCategoryController extends Controller
         toastr()->success('Sub-Category Deleted Successfully');
         return redirect()->route('admin.all.subcategories');
     }
+
+    // subcategory dependencies method
+    public function getSubcategory($category_id)
+    {
+        $sub_categories = SubCategory::where('category_id',$category_id)->orderBy('sub_category_name','asc')->get();
+        return response()->json($sub_categories);
+    }
 }
