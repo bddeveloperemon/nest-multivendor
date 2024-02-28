@@ -71,6 +71,7 @@
 	<script src="{{ asset('backend/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/jquery-knob/excanvas.js') }}"></script>
+	<script src="{{ asset('backend/assets/js/tinymce.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
 	<script src="{{ asset('backend/assets/js/code.js') }}"></script>
 	<script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
@@ -86,6 +87,11 @@
 			$(function() {
 				$(".knob").knob();
 			});
+	  </script>
+	  <script>
+		tinymce.init({
+		  selector: '#mytextarea',
+		});
 	  </script>
 	  <script src="{{ asset('backend/assets/js/index.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>

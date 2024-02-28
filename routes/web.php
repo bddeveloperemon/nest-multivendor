@@ -56,7 +56,7 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     // Product Routes
     Route::get('/all-product', [ProductController::class, 'allProducts'])->name('all.products');
     Route::get('/add-product', [ProductController::class, 'addProduct'])->name('add.product');
-    Route::post('/store-product', [SubCategoryController::class, 'productStore'])->name('product.store');
+    Route::post('/store-product', [ProductController::class, 'storeProduct'])->name('product.store');
     // SubCategory Routes
     Route::get('/all-subcategory', [SubCategoryController::class, 'allSubCategory'])->name('all.subcategories');
     Route::get('/add-subcategory', [SubCategoryController::class, 'addSubCategory'])->name('add.subcategory');

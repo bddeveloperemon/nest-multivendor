@@ -41,11 +41,11 @@
                                     <label for="inputProductTitle" class="form-label">Product Tags</label>
                                     <input type="text" name="product_tags" class="form-control visually-hidden" data-role="tagsinput" value="new product,top product">
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="mb-3">
                                     <label for="inputProductTitle" class="form-label">Product Size</label>
                                     <input type="text" name="product_size" class="form-control visually-hidden" data-role="tagsinput" value="Small, Midium, Large">
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="mb-3">
                                     <label for="inputProductTitle" class="form-label">Product Color</label>
                                     <input type="text" name="product_color" class="form-control visually-hidden" data-role="tagsinput" value="Red, Blue, Black">
                                 </div>
@@ -53,9 +53,9 @@
                                     <label for="inputProductDescription" class="form-label">Short Description</label>
                                     <textarea class="form-control" name="short_desc" id="inputProductDescription" rows="3"></textarea>
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="mb-3">
                                     <label for="inputProductDescription" class="form-label">Long Description</label>
-                                    <textarea id="inputProductDescription" class="form-control" name="long_desc" rows=3></textarea>
+                                    <textarea id="mytextarea" class="form-control" name="long_desc" rows=3></textarea>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="inputProductTitle" class="form-label">Mail Thambnail</label>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="multiImg" class="form-label">Multiple Image</label>
-                                    <input type="file" name="multi_img[]" id="multiImg" onchange="multiImg(this)" multiple class="form-control">
+                                    <input type="file" name="multi_img[]" id="multiImg" multiple class="form-control">
                                     <div class="row" id="preview_img"></div>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                         <label for="inputPrice" class="form-label">Product Price</label>
                                         <input type="number" class="form-control" name="selling_price" id="inputPrice" placeholder="00.00">
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="col-md-6">
                                         <label for="inputCompareatprice" class="form-label">Discount Price</label>
                                         <input type="number" name="discount_price" class="form-control" id="inputCompareatprice" placeholder="00.00">
                                     </div>
@@ -84,9 +84,9 @@
                                         <label for="inputCostPerPrice" class="form-label">Product Code</label>
                                         <input type="text" name="product_code" class="form-control" id="inputCostPerPrice" placeholder="Enter code">
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="form-group col-md-6">
                                         <label for="inputStarPoints" class="form-label">Product QTY</label>
-                                        <input type="text" name="product_qty" class="form-control" id="inputStarPoints" placeholder="Enter qty">
+                                        <input type="number" name="product_qty" class="form-control" id="inputStarPoints" placeholder="Enter qty">
                                     </div>
                                     <div class="form-group col-12">
                                         <label for="inputProductType" class="form-label">Product Brand</label>
@@ -98,8 +98,8 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-12">
-                                        <label for="inputVendor" class="form-label">Product Category</label>
-                                        <select name="category_id" class="form-select" id="inputVendor">
+                                        <label for="category_id" class="form-label">Product Category</label>
+                                        <select name="category_id" class="form-select" id="category_id">
                                             <option></option>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>
@@ -112,7 +112,7 @@
                                             <option></option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-12">
+                                    <div class="col-12">
                                         <label for="inputCollection" class="form-label">Select Vendor</label>
                                         <select name="vendor_id" class="form-select" id="inputCollection">
                                             <option selected>Select Vendor</option>
@@ -121,29 +121,29 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group col-12">
+                                    <div class="col-12">
                                         <div class="row g-3">
                                             <div class="col-md-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="hot_deals" id="flexCheckDefault" value="1">
+                                                    <input class="form-check-input" type="checkbox" value="1" name="hot_deals" id="flexCheckDefault" value="1">
                                                     <label class="form-check-label" for="flexCheckDefault">Hot Deals</label>
                                                 </div>
                                             </div>
-                                            <div class="form-group col-md-6">
+                                            <div class="col-md-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="featured" id="flexCheckDefault" value="1">
+                                                    <input class="form-check-input" type="checkbox" value="1" name="featured" id="flexCheckDefault" value="1">
                                                     <label class="form-check-label" for="flexCheckDefault">Featured</label>
                                                 </div>
                                             </div>
-                                            <div class="form-group col-md-6">
+                                            <div class="col-md-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="special_offer" id="flexCheckDefault" value="1">
+                                                    <input class="form-check-input" type="checkbox" value="1" name="special_offer" id="flexCheckDefault" value="1">
                                                     <label class="form-check-label" for="flexCheckDefault">Special Offer</label>
                                                 </div>
                                             </div>
-                                            <div class="form-group col-md-6">
+                                            <div class="col-md-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="special_deals" id="flexCheckDefault" value="1">
+                                                    <input class="form-check-input" type="checkbox" value="1" name="special_deals" id="flexCheckDefault" value="1">
                                                     <label class="form-check-label" for="flexCheckDefault">Special Deals</label>
                                                 </div>
                                             </div>
@@ -184,14 +184,13 @@
                 var data = $(this)[0].files; //this file data
                 
                 $.each(data, function(index, file){ //loop though each file
-                    if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
+                    if(/(\.|\/)(gif|jpe?g|png|webp)$/i.test(file.type)){ //check supported file type
                         var fRead = new FileReader(); //new filereader
                         fRead.onload = (function(file){ //trigger function on successful read
-                        return function(e) {
-                            var img = $('<img/>').addClass('thumb').attr('src', e.target.result).addClass('mt-2').width(100)
-                        .height(80); //create image element 
-                            $('#preview_img').append(img); //append image to output element
-                        };
+                            return function(e) {
+                                var img = $('<img/>').addClass('thumb').attr('src', e.target.result).addClass('mt-2').width(100).height(80); //create image element 
+                                $('#preview_img').append(img); //append image to output element
+                            };
                         })(file);
                         fRead.readAsDataURL(file); //URL representing the file's data.
                     }

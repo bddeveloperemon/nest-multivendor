@@ -50,8 +50,8 @@
                                     <tr role="row" class="odd">
                                         <td class="sorting_1">{{ $i++ }}</td>
                                         <td>
-                                            @if (!empty($product->thambnail))
-                                                <img src="{{ asset('upload/category_images/'.$product->thambnail) }}" class="rounded-circle" alt="Brand" width="50">
+                                            @if (!empty($product->product_thambnail))
+                                                <img src="{{ asset('upload/product_images/thambnail/'.$product->product_thambnail) }}" class="rounded-circle" alt="Brand" width="50">
                                             @else
                                                 <img src="{{ asset('backend/assets/images/websiteplanet-dummy-250X250.png') }}" class="rounded-circle" alt="Brand" width="50">
                                             @endif
