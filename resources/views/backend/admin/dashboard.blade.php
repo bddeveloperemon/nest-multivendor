@@ -73,6 +73,8 @@
 	<script src="{{ asset('backend/assets/plugins/jquery-knob/excanvas.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
 	<script src="{{ asset('backend/assets/js/code.js') }}"></script>
+	<script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
+
 	<!--datatable js -->
 	<script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
 	<!--sweetalert2 js -->
