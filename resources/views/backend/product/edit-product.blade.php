@@ -27,7 +27,7 @@
         <div class="card-body p-4">
             <h5 class="card-title">Update Product</h5>
             <hr>
-            <form action="{{ route('admin.product.store') }}" id="myForm" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.update.product',$product->id) }}" id="myForm" method="post">
                 @csrf
                 <div class="form-body mt-4">
                     <div class="row">

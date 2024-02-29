@@ -98,4 +98,34 @@ class ProductController extends Controller
         $subcategories = SubCategory::select('id','sub_category_name')->get();
         return view('backend.product.edit-product', compact('brands','categories','product','activeVendors','subcategories'));
     }
+
+    // Update Product Method
+    public function updateProduct(ProductRequest $request, $id): RedirectResponse
+    {
+        $product = Product::findOrFail($id)->update([
+            'brand_id'          => $request->brand_id,
+            'category_id'      => $request->category_id,
+            'subcategory_id'   => $request->subcategory_id,
+            'product_name'      => $request->product_name,
+            'product_slug'      => strtolower(str_replace(' ','-',$request->product_name)),
+            'product_code'      => $request->product_code,
+            'product_qty'       => $request->product_qty,
+            'product_tags'      => $request->product_tags,
+            'product_size'      => $request->product_size,
+            'product_color'     => $request->product_color,
+            'selling_price'     => $request->selling_price,
+            'discount_price'    => $request->discount_price,
+            'short_desc'        => $request->short_desc,
+            'long_desc'         => $request->long_desc,
+            'vendor_id'         => $request->vendor_id,
+            'hot_deals'         => $request->hot_deals,
+            'featured'          => $request->featured,
+            'special_offer'     => $request->special_offer,
+            'special_deals'     => $request->special_deals,
+            'status'            => 1,
+            'updated_at'        => Carbon::now(),
+        ]);
+        toastr()->success('Product updated successfully');
+        return redirect()->route('admin.all.products');
+    }
 }
