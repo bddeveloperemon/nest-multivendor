@@ -57,16 +57,6 @@
                                     <label for="inputProductDescription" class="form-label">Long Description</label>
                                     <textarea id="mytextarea" class="form-control" name="long_desc" rows=3>{!! $product->long_desc !!}</textarea>
                                 </div>
-                                {{-- <div class="form-group mb-3">
-                                    <label for="inputProductTitle" class="form-label">Mail Thambnail</label>
-                                    <input type="file" name="product_thambnail" onchange="mainThamUrl(this)" id="formFile" class="form-control">
-                                    <img id="mainThamb" src="{{ asset('upload/product_images/thambnail/'.$product->product_thambnail) }}" class="rounded-circle">
-                                </div> --}}
-                                {{-- <div class="form-group mb-3">
-                                    <label for="multiImg" class="form-label">Multiple Image</label>
-                                    <input type="file" name="multi_img[]" id="multiImg" multiple class="form-control">
-                                    <div class="row" id="preview_img"></div>
-                                </div> --}}
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -181,6 +171,23 @@
                 </div>
             </form>
         </div>
+    </div>
+    <h6 class="mb-0 text-uppercase">Update Main Image Thambnail</h6>
+    <hr>
+    <div class="card">
+        <form action="{{ route('admin.update.thambnail',$product->id) }}" method="post" enctype="multipart/form-data">
+        @csrf
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Choose Product Thambnail</label>
+                    <input class="form-control" name="product_thambnail" type="file" id="formFile">
+                </div>
+                <div class="mb-3">
+                    <img src="{{ asset('upload/product_images/thambnail/'.$product->product_thambnail) }}" style="width: 100px; height:100px;" class="mt-2">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Thambnail</button>
+            </div>
+        </form>
     </div>
     
 @endsection

@@ -11,6 +11,7 @@ use App\Models\MultiImg;
 use Illuminate\View\View;
 use App\Models\SubCategory;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\RedirectResponse;
@@ -126,6 +127,28 @@ class ProductController extends Controller
             'updated_at'        => Carbon::now(),
         ]);
         toastr()->success('Product updated successfully');
+        return redirect()->route('admin.all.products');
+    }
+
+    // update product thambnail
+    public function updateThambnail(ProductRequest $request, $id): RedirectResponse
+    {
+        $product_thambnail = Product::find($id);
+        if(File::exists(public_path('upload/product_images/thambnail/'.$product_thambnail->product_thambnail))){
+            File::delete(public_path('upload/product_images/thambnail/'.$product_thambnail->product_thambnail));
+        }
+        $manager   = new ImageManager(new Driver());
+        $extension = $request->file('product_thambnail')->getClientOriginalExtension();
+        $imageName = hexdec(uniqid()).'.'.$extension;
+        $imagePath = public_path('upload/product_images/thambnail').'/'.$imageName;
+        $make_img  = $manager->read($request->file('product_thambnail'));
+        $make_img->resize(800,800)->save($imagePath);
+
+        Product::findOrFail($id)->update([
+            'product_thambnail' => $imageName,
+            'updated_at'        => Carbon::now(),
+        ]);
+        toastr()->success('Product image thambnail updated successfully');
         return redirect()->route('admin.all.products');
     }
 }
