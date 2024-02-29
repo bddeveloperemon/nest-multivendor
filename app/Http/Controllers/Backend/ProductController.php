@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\MultiImg;
 use Illuminate\View\View;
+use App\Models\SubCategory;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManager;
 use App\Http\Requests\ProductRequest;
@@ -33,6 +34,7 @@ class ProductController extends Controller
         return view('backend.product.add-product', compact('brands','categories','activeVendors'));
     }
 
+    // Product Store Method
     public function storeProduct(ProductRequest $request): RedirectResponse 
     {
         $manager   = new ImageManager(new Driver());
@@ -84,5 +86,16 @@ class ProductController extends Controller
 
         toastr()->success('Product added successfully');
         return redirect()->route('admin.all.products');
+    }
+
+    // Edit Product Method
+    public function editProduct($id): View
+    {
+        $activeVendors = User::where(['status' => 'active','role'=> 'vendor'])->latest()->get();
+        $product = Product::findOrFail($id);
+        $brands = Brand::select('id','brand_name')->get();
+        $categories = Category::select('id','category_name')->get();
+        $subcategories = SubCategory::select('id','sub_category_name')->get();
+        return view('backend.product.edit-product', compact('brands','categories','product','activeVendors','subcategories'));
     }
 }
