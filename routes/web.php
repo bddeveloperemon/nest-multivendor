@@ -60,7 +60,9 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit-product/{id}', [ProductController::class, 'editProduct'])->name('edit.product');
     Route::post('/update-product/{id}', [ProductController::class, 'updateProduct'])->name('update.product');
     Route::post('/update-product/thambnail/{id}', [ProductController::class, 'updateThambnail'])->name('update.thambnail');
-    Route::get('/delete/multiple-image/{id}', [ProductController::class, 'deleteMultiImg'])->name('delete.multiimg');
+    Route::get('/delete/product/multiple-image/{id}', [ProductController::class, 'deleteMultiImg'])->name('delete.multiimg');
+    Route::get('/product/inactive/{id}', [ProductController::class, 'inactive'])->name('product.inactive');
+    Route::get('/product/active/{id}', [ProductController::class, 'active'])->name('product.active');
     // SubCategory Routes
     Route::get('/all-subcategory', [SubCategoryController::class, 'allSubCategory'])->name('all.subcategories');
     Route::get('/add-subcategory', [SubCategoryController::class, 'addSubCategory'])->name('add.subcategory');

@@ -192,4 +192,20 @@ class ProductController extends Controller
         toastr()->success('Product multi-image deleted successfully');
         return redirect()->back();
     }
+
+    // Product inactive
+    public function inactive($id): RedirectResponse
+    {
+        Product::find($id)->update(['status' => 0]);
+        toastr()->success('Product Inactive');
+        return redirect()->back();
+    }
+
+    // Product active
+    public function active($id): RedirectResponse
+    {
+        Product::find($id)->update(['status' => 1]);
+        toastr()->success('Product Active');
+        return redirect()->back();
+    }
 }
