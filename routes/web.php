@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Admin\SubCategoryController;
+use App\Http\Controllers\Backend\Vendor\VendorProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +90,8 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
     Route::post('/profile',[VendorController::class,'vendorProfileStore'])->name('profile.store');
     Route::get('/change-password',[VendorController::class,'vendorChangePassword'])->name('change.password');
     Route::post('/change-password',[VendorController::class,'vendorPasswordUpdate'])->name('update.password');
+    // Vendor Product routes
+    Route::get('/product-list',[VendorProductController::class, 'vendorProductList'])->name('productList');
 });
 
 Route::middleware(['auth','role:admin'])->group(function(){

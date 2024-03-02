@@ -18,48 +18,49 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
-        @if ($status == 'active')
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-home-circle'></i>
-                </div>
-                <div class="menu-title">Product Manage</div>
-            </a>
-            <ul>
-                <li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>Product List</a>
-                </li>
-                <li> <a href="dashboard-eCommerce.html"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-category"></i>
-                </div>
-                <div class="menu-title">All Order</div>
-            </a>
-            <ul>
-                <li> <a href="app-emailbox.html"><i class="bx bx-right-arrow-alt"></i>Email</a>
-                </li>
-                <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Chat Box</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="" target="_blank">
-                <div class="parent-icon"><i class="bx bx-support"></i>
-                </div>
-                <div class="menu-title">Support</div>
-            </a>
-        </li>
+        @if (Auth::user()->status == 'active')
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                    </div>
+                    <div class="menu-title">Product Manage</div>
+                </a>
+                <ul>
+                    <li> <a href="{{ route('vendor.productList') }}"><i class="bx bx-right-arrow-alt"></i>Product
+                            List</a>
+                    </li>
+                    <li> <a href="dashboard-eCommerce.html"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="bx bx-category"></i>
+                    </div>
+                    <div class="menu-title">All Order</div>
+                </a>
+                <ul>
+                    <li> <a href="app-emailbox.html"><i class="bx bx-right-arrow-alt"></i>Email</a>
+                    </li>
+                    <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Chat Box</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <div class="parent-icon"><i class="bx bx-support"></i>
+                    </div>
+                    <div class="menu-title">Support</div>
+                </a>
+            </li>
         @else
-        <li>
-            <a href="" target="_blank">
-                <div class="parent-icon"><i class="bx bx-support"></i>
-                </div>
-                <div class="menu-title">Support</div>
-            </a>
-        </li>
+            <li>
+                <a href="" target="_blank">
+                    <div class="parent-icon"><i class="bx bx-support"></i>
+                    </div>
+                    <div class="menu-title">Support</div>
+                </a>
+            </li>
         @endif
     </ul>
     <!--end navigation-->
