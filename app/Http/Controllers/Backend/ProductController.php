@@ -208,4 +208,21 @@ class ProductController extends Controller
         toastr()->success('Product Active');
         return redirect()->back();
     }
+
+    // Product active
+    public function productDelete($id): RedirectResponse
+    {
+        $product = Product::find($id);
+        $multi_imgs = MultiImg::where('product_id',$id)->get();
+        
+        File::delete(public_path('upload/product_images/thambnail/'.$product->product_thambnail));
+
+        foreach ($multi_imgs as $multi_img) {
+            File::delete(public_path('upload/product_images/multi_imgs/'.$multi_img->image_name));
+            MultiImg::where('product_id',$id)->delete();
+        }
+        $product->delete();
+        toastr()->success('Product deleted successfully');
+        return redirect()->back();
+    }
 }

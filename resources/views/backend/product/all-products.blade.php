@@ -91,7 +91,7 @@
                                                 <a href="{{ route('admin.edit.product', $product->id) }}"
                                                     class="btn btn-info btn-sm" title="Edit"><i
                                                         class="fa-regular fa-pen-to-square"></i></a>
-                                                <a href="{{ route('admin.delete.category', $product->id) }}"
+                                                <a href="{{ route('admin.product.delete', $product->id) }}"
                                                     class="btn btn-danger btn-sm" id="delete" title="Delete"><i
                                                         class="fa-solid fa-trash-can"></i></a>
                                                 <a href="{{ route('admin.delete.category', $product->id) }}"
