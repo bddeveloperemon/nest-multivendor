@@ -95,8 +95,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::post('/update-product/multiple-image', [ProductController::class, 'updateMultiImg'])->name('update.multi_img');
 });
 
-Route::get('/admin/login',[AdminController::class,'adminLogin']);
-Route::get('/vendor/login',[VendorController::class,'vendorLogin'])->name('vendor.login');
+Route::get('/admin/login',[AdminController::class,'adminLogin'])->middleware('guest');
+Route::get('/vendor/login',[VendorController::class,'vendorLogin'])->name('vendor.login')->middleware('guest');
 Route::get('/become/vendor',[VendorController::class,'becomeVendor'])->name('become.vendor');
 Route::post('/vendor/register',[VendorController::class,'vendorRegister'])->name('vendor.register');
 require __DIR__.'/auth.php';
