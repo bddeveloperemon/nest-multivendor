@@ -179,6 +179,17 @@ class ProductController extends Controller
         }
         
         toastr()->success('Product multi-image updated successfully');
-        return redirect()->route('admin.all.products');
+        return redirect()->back();
+    }
+
+    // Delete Product multi-image
+    public function deleteMultiImg($id): RedirectResponse
+    {
+        $delImg = MultiImg::find($id);
+        File::delete(public_path('upload/product_images/multi_imgs/'.$delImg->image_name));
+
+        $delImg->delete();
+        toastr()->success('Product multi-image deleted successfully');
+        return redirect()->back();
     }
 }

@@ -234,7 +234,8 @@
                                 <td>
                                     <button type="submit" class="btn btn-success btn-sm" title="Update Image"><i
                                             class="fa-solid fa-floppy-disk"></i></button>
-                                    <a href="" class="btn btn-danger btn-sm" title="Delete"><i
+                                    <a href="{{ route('admin.delete.multiimg', $image->id) }}"
+                                        class="btn btn-danger btn-sm" title="Delete" id="delete"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 </td>
                             </tr>
