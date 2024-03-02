@@ -87,6 +87,10 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
     Route::post('/change-password',[VendorController::class,'vendorPasswordUpdate'])->name('update.password');
 });
 
+Route::middleware(['auth','role:admin'])->group(function(){
+    Route::post('/update-product/multiple-image', [ProductController::class, 'updateMultiImg'])->name('update.multi_img');
+});
+
 Route::get('/admin/login',[AdminController::class,'adminLogin']);
 Route::get('/vendor/login',[VendorController::class,'vendorLogin'])->name('vendor.login');
 Route::get('/become/vendor',[VendorController::class,'becomeVendor'])->name('become.vendor');

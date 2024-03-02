@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\MultiImg;
 use Illuminate\View\View;
 use App\Models\SubCategory;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
@@ -95,9 +96,11 @@ class ProductController extends Controller
         $activeVendors = User::where(['status' => 'active','role'=> 'vendor'])->latest()->get();
         $product = Product::findOrFail($id);
         $brands = Brand::select('id','brand_name')->get();
+        $multi_imgs = MultiImg::where('product_id',$id)->get();
+        // dd($multi_imgs);
         $categories = Category::select('id','category_name')->get();
         $subcategories = SubCategory::select('id','sub_category_name')->get();
-        return view('backend.product.edit-product', compact('brands','categories','product','activeVendors','subcategories'));
+        return view('backend.product.edit-product', compact('brands','categories','product','activeVendors','subcategories','multi_imgs'));
     }
 
     // Update Product Method
@@ -149,6 +152,33 @@ class ProductController extends Controller
             'updated_at'        => Carbon::now(),
         ]);
         toastr()->success('Product image thambnail updated successfully');
+        return redirect()->route('admin.all.products');
+    }
+    
+    // update product multi images
+    public function updateMultiImg(Request $request): RedirectResponse
+    {
+        $request->validate([ 
+            'multi_img'=> ['required','max:2048']
+        ]);
+        foreach($request->multi_img as $id => $img){
+            $delImg = MultiImg::find($id);
+            File::delete(public_path('upload/product_images/multi_imgs/'.$delImg->image_name));
+
+            $manager   = new ImageManager(new Driver());
+            $extension = $img->getClientOriginalExtension();
+            $imageName = hexdec(uniqid()).'.'.$extension;
+            $imagePath = public_path('upload/product_images/multi_imgs').'/'.$imageName;
+            $make_img  = $manager->read($img);
+            $make_img->resize(800,800)->save($imagePath);
+
+            MultiImg::where('id',$id)->update([
+                'image_name'        => $imageName,
+                'updated_at'        => Carbon::now(),
+            ]);
+        }
+        
+        toastr()->success('Product multi-image updated successfully');
         return redirect()->route('admin.all.products');
     }
 }
