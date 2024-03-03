@@ -61,7 +61,7 @@
                                             <td>
                                                 <a href="{{ route('admin.edit.slider', $slider->id) }}"
                                                     class="btn btn-info btn-sm">Edit</a>
-                                                <a href="{{ route('admin.delete.category', $slider->id) }}"
+                                                <a href="{{ route('admin.delete.slider', $slider->id) }}"
                                                     class="btn btn-danger btn-sm" id="delete">Delete</a>
                                             </td>
                                         </tr>

@@ -87,7 +87,7 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::post('/store-slider', [SliderController::class, 'sliderStore'])->name('slider.store');
     Route::get('/edit-slider/{id}', [SliderController::class, 'editSlider'])->name('edit.slider');
     Route::post('/update-slider/{id}', [SliderController::class, 'updateSlider'])->name('update.slider');
-    Route::get('/delete-category/{id}', [SliderController::class, 'deleteCategory'])->name('delete.category');
+    Route::get('/delete-slider/{id}', [SliderController::class, 'deleteSlider'])->name('delete.slider');
 });
 
 //Vendor Dashboard

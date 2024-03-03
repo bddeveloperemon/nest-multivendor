@@ -73,14 +73,14 @@ class SliderController extends Controller
         return redirect()->route('admin.all.slider');
     }
 
-    // public function deleteCategory($id)
-    // {
-    //     $category = Category::find($id);
-    //     if(File::exists(public_path('upload/category_images/'.$category->category_image))){
-    //         File::delete(public_path('upload/category_images/'.$category->category_image));
-    //     }
-    //     $category->delete();
-    //     toastr()->success('Category Deleted Successfully');
-    //     return redirect()->route('admin.all.categories');
-    // }
+    public function deleteSlider($id)
+    {
+        $slider = Slider::find($id);
+        if(File::exists(public_path('upload/slider_images/'.$slider->slider_image))){
+            File::delete(public_path('upload/slider_images/'.$slider->slider_image));
+        }
+        $slider->delete();
+        toastr()->success('Slider Deleted Successfully');
+        return redirect()->route('admin.all.slider');
+    }
 }
