@@ -94,6 +94,7 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
     Route::get('/product-list',[VendorProductController::class, 'vendorProductList'])->name('productList');
     Route::get('/add-product',[VendorProductController::class, 'vendorAddProduct'])->name('add.product');
     Route::get('/subcategory-ajax/{category_id}', [SubCategoryController::class, 'getSubcategory'])->name('subcategory.ajax');
+    Route::post('/store-product', [VendorProductController::class, 'vendorStoreProduct'])->name('product.store');
 });
 
 Route::middleware(['auth','role:admin'])->group(function(){

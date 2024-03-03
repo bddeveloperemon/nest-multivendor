@@ -29,7 +29,7 @@
         <div class="card-body p-4">
             <h5 class="card-title">Add New Product</h5>
             <hr>
-            <form action="{{ route('admin.product.store') }}" id="myForm" method="post" enctype="multipart/form-data">
+            <form action="{{ route('vendor.product.store') }}" id="myForm" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-body mt-4">
                     <div class="row">
@@ -153,8 +153,8 @@
                                             <div class="col-md-6">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value="1"
-                                                        name="special_offer" id="flexCheckDefault" value="1">
-                                                    <label class="form-check-label" for="flexCheckDefault">Special
+                                                        name="special_offer" id="special_offer" value="1">
+                                                    <label class="form-check-label" for="special_offer">Special
                                                         Offer</label>
                                                 </div>
                                             </div>
