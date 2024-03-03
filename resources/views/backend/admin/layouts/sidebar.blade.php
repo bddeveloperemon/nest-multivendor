@@ -38,7 +38,8 @@
                 <div class="menu-title">Categories</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.all.categories') }}"><i class="bx bx-right-arrow-alt"></i>All Categories</a>
+                <li> <a href="{{ route('admin.all.categories') }}"><i class="bx bx-right-arrow-alt"></i>All
+                        Categories</a>
                 </li>
                 <li> <a href="{{ route('admin.add.category') }}"><i class="bx bx-right-arrow-alt"></i>Add Category</a>
                 </li>
@@ -51,9 +52,11 @@
                 <div class="menu-title">SubCategories</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.all.subcategories') }}"><i class="bx bx-right-arrow-alt"></i>All SubCategories</a>
+                <li> <a href="{{ route('admin.all.subcategories') }}"><i class="bx bx-right-arrow-alt"></i>All
+                        SubCategories</a>
                 </li>
-                <li> <a href="{{ route('admin.add.subcategory') }}"><i class="bx bx-right-arrow-alt"></i>Add SubCategory</a>
+                <li> <a href="{{ route('admin.add.subcategory') }}"><i class="bx bx-right-arrow-alt"></i>Add
+                        SubCategory</a>
                 </li>
             </ul>
         </li>
@@ -70,6 +73,19 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="javascript:void(0);" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Slider Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('admin.all.slider') }}"><i class="bx bx-right-arrow-alt"></i>Slider List</a>
+                </li>
+                <li> <a href="{{ route('admin.add.slider') }}"><i class="bx bx-right-arrow-alt"></i>Add Slider</a>
+                </li>
+            </ul>
+        </li>
         <li class="menu-label">UI Elements</li>
         <li>
             <a href="javascript:;" class="has-arrow">
@@ -78,9 +94,11 @@
                 <div class="menu-title">Vendor Manage</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.vendor.inactive') }}" class="text-danger"><i class="bx bx-right-arrow-alt"></i>Inactive Vendor</a>
+                <li> <a href="{{ route('admin.vendor.inactive') }}" class="text-danger"><i
+                            class="bx bx-right-arrow-alt"></i>Inactive Vendor</a>
                 </li>
-                <li> <a href="{{ route('admin.vendor.active') }}" class="text-success"><i class="bx bx-right-arrow-alt"></i>Active Vendor</a>
+                <li> <a href="{{ route('admin.vendor.active') }}" class="text-success"><i
+                            class="bx bx-right-arrow-alt"></i>Active Vendor</a>
                 </li>
             </ul>
         </li>
@@ -115,7 +133,8 @@
                 </li>
                 <li> <a href="component-paginations.html"><i class="bx bx-right-arrow-alt"></i>Pagination</a>
                 </li>
-                <li> <a href="component-popovers-tooltips.html"><i class="bx bx-right-arrow-alt"></i>Popovers & Tooltips</a>
+                <li> <a href="component-popovers-tooltips.html"><i class="bx bx-right-arrow-alt"></i>Popovers &
+                        Tooltips</a>
                 </li>
                 <li> <a href="component-progress-bars.html"><i class="bx bx-right-arrow-alt"></i>Progress</a>
                 </li>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
@@ -80,6 +81,13 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/active-vendor/details/{id}', [AdminController::class, 'activeVendorDetails'])->name('active.vendorDetails');
     Route::post('/active-vendor/approve/{id}', [AdminController::class, 'activeVendorApprove'])->name('active.vendor.approve');
     Route::post('/inactive-vendor/approve/{id}', [AdminController::class, 'inactiveVendorApprove'])->name('inactive.vendor.approve');
+    // Slider Routes
+    Route::get('/slider-list', [SliderController::class, 'allSlider'])->name('all.slider');
+    Route::get('/add-slider', [SliderController::class, 'addCategory'])->name('add.slider');
+    Route::post('/store-category', [SliderController::class, 'categoryStore'])->name('category.store');
+    Route::get('/edit-category/{id}', [SliderController::class, 'editCategory'])->name('edit.category');
+    Route::post('/update-category/{id}', [SliderController::class, 'updateCategory'])->name('update.category');
+    Route::get('/delete-category/{id}', [SliderController::class, 'deleteCategory'])->name('delete.category');
 });
 
 //Vendor Dashboard
