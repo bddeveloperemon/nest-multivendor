@@ -95,10 +95,17 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
     Route::get('/add-product',[VendorProductController::class, 'vendorAddProduct'])->name('add.product');
     Route::get('/subcategory-ajax/{category_id}', [SubCategoryController::class, 'getSubcategory'])->name('subcategory.ajax');
     Route::post('/store-product', [VendorProductController::class, 'vendorStoreProduct'])->name('product.store');
+    Route::get('/edit-product/{id}', [VendorProductController::class, 'vendorEditProduct'])->name('edit.product');
+    Route::post('/update-product/{id}', [VendorProductController::class, 'vendorUpdateProduct'])->name('update.product');
+    Route::post('/update-product/thambnail/{id}', [VendorProductController::class, 'vendorUpdateThambnail'])->name('update.thambnail');
+    Route::get('/delete/product/multiple-image/{id}', [VendorProductController::class, 'vendorDeleteMultiImg'])->name('delete.multiimg');
 });
 
 Route::middleware(['auth','role:admin'])->group(function(){
     Route::post('/update-product/multiple-image', [ProductController::class, 'updateMultiImg'])->name('update.multi_img');
+});
+Route::middleware(['auth','role:vendor'])->group(function(){
+    Route::post('/update-product/multiple-image', [VendorProductController::class, 'vendorUpdateMultiImg'])->name('vendor.update.multi_img');
 });
 
 Route::get('/admin/login',[AdminController::class,'adminLogin'])->middleware('guest');

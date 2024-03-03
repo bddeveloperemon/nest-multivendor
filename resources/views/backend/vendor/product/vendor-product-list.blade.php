@@ -88,7 +88,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.edit.product', $product->id) }}"
+                                                <a href="{{ route('vendor.edit.product', $product->id) }}"
                                                     class="btn btn-info btn-sm" title="Edit"><i
                                                         class="fa-regular fa-pen-to-square"></i></a>
                                                 <a href="{{ route('admin.product.delete', $product->id) }}"
