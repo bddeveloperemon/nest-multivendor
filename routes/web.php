@@ -92,6 +92,8 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
     Route::post('/change-password',[VendorController::class,'vendorPasswordUpdate'])->name('update.password');
     // Vendor Product routes
     Route::get('/product-list',[VendorProductController::class, 'vendorProductList'])->name('productList');
+    Route::get('/add-product',[VendorProductController::class, 'vendorAddProduct'])->name('add.product');
+    Route::get('/subcategory-ajax/{category_id}', [SubCategoryController::class, 'getSubcategory'])->name('subcategory.ajax');
 });
 
 Route::middleware(['auth','role:admin'])->group(function(){
