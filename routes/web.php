@@ -99,6 +99,9 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
     Route::post('/update-product/{id}', [VendorProductController::class, 'vendorUpdateProduct'])->name('update.product');
     Route::post('/update-product/thambnail/{id}', [VendorProductController::class, 'vendorUpdateThambnail'])->name('update.thambnail');
     Route::get('/delete/product/multiple-image/{id}', [VendorProductController::class, 'vendorDeleteMultiImg'])->name('delete.multiimg');
+    Route::get('/product/inactive/{id}', [VendorProductController::class, 'vendorProductInactive'])->name('product.inactive');
+    Route::get('/product/active/{id}', [VendorProductController::class, 'vendorProductActive'])->name('product.active');
+    Route::get('/delete/product/{id}', [VendorProductController::class, 'vendorProductDelete'])->name('product.delete');
 });
 
 Route::middleware(['auth','role:admin'])->group(function(){

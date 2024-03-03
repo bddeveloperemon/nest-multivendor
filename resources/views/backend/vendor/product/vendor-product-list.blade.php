@@ -91,18 +91,18 @@
                                                 <a href="{{ route('vendor.edit.product', $product->id) }}"
                                                     class="btn btn-info btn-sm" title="Edit"><i
                                                         class="fa-regular fa-pen-to-square"></i></a>
-                                                <a href="{{ route('admin.product.delete', $product->id) }}"
+                                                <a href="{{ route('vendor.product.delete', $product->id) }}"
                                                     class="btn btn-danger btn-sm" id="delete" title="Delete"><i
                                                         class="fa-solid fa-trash-can"></i></a>
                                                 <a href="{{ route('admin.delete.category', $product->id) }}"
                                                     class="btn btn-warning btn-sm" title="Details Page"><i
                                                         class="fa-solid fa-eye"></i></a>
                                                 @if ($product->status == 1)
-                                                    <a href="{{ route('admin.product.inactive', $product->id) }}"
+                                                    <a href="{{ route('vendor.product.inactive', $product->id) }}"
                                                         class="btn btn-danger btn-sm" title="Inactive"><i
                                                             class="fa-solid fa-thumbs-down"></i></a>
                                                 @else
-                                                    <a href="{{ route('admin.product.active', $product->id) }}"
+                                                    <a href="{{ route('vendor.product.active', $product->id) }}"
                                                         class="btn btn-success btn-sm" title="Active"><i
                                                             class="fa-solid fa-thumbs-up"></i></a>
                                                 @endif

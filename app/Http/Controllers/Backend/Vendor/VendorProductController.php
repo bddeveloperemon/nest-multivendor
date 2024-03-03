@@ -191,4 +191,37 @@ class VendorProductController extends Controller
         toastr()->success('Product multi-image deleted successfully');
         return redirect()->back();
     }
+    
+    // Vendor Product inactive
+    public function vendorProductInactive($id): RedirectResponse
+    {
+        Product::find($id)->update(['status' => 0]);
+        toastr()->success('Product Inactive');
+        return redirect()->back();
+    }
+
+    // Vendor Product active
+    public function vendorProductActive($id): RedirectResponse
+    {
+        Product::find($id)->update(['status' => 1]);
+        toastr()->success('Product Active');
+        return redirect()->back();
+    }
+
+    // Vendor Product active
+    public function vendorProductDelete($id): RedirectResponse
+    {
+        $product = Product::find($id);
+        $multi_imgs = MultiImg::where('product_id',$id)->get();
+        
+        File::delete(public_path('upload/product_images/thambnail/'.$product->product_thambnail));
+
+        foreach ($multi_imgs as $multi_img) {
+            File::delete(public_path('upload/product_images/multi_imgs/'.$multi_img->image_name));
+            MultiImg::where('product_id',$id)->delete();
+        }
+        $product->delete();
+        toastr()->success('Product deleted successfully');
+        return redirect()->back();
+    }
 }
