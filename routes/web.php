@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Banner;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\Admin\AdminController;
@@ -88,6 +90,13 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit-slider/{id}', [SliderController::class, 'editSlider'])->name('edit.slider');
     Route::post('/update-slider/{id}', [SliderController::class, 'updateSlider'])->name('update.slider');
     Route::get('/delete-slider/{id}', [SliderController::class, 'deleteSlider'])->name('delete.slider');
+    // Banner Routes
+    Route::get('/banner-list', [BannerController::class, 'allBanner'])->name('all.banner');
+    Route::get('/add-banner', [BannerController::class, 'addBanner'])->name('add.banner');
+    Route::post('/store-banner', [BannerController::class, 'storeBanner'])->name('banner.store');
+    Route::get('/edit-banner/{id}', [BannerController::class, 'editBanner'])->name('edit.banner');
+    Route::post('/update-banner/{id}', [BannerController::class, 'updateBanner'])->name('update.banner');
+    Route::get('/delete-banner/{id}', [BannerController::class, 'deleteBanner'])->name('delete.banner');
 });
 
 //Vendor Dashboard
