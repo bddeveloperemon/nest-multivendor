@@ -86,6 +86,19 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="javascript:void(0);" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Banner Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('admin.all.banner') }}"><i class="bx bx-right-arrow-alt"></i>Banner List</a>
+                </li>
+                <li> <a href="{{ route('admin.add.banner') }}"><i class="bx bx-right-arrow-alt"></i>Add Banner</a>
+                </li>
+            </ul>
+        </li>
         <li class="menu-label">UI Elements</li>
         <li>
             <a href="javascript:;" class="has-arrow">

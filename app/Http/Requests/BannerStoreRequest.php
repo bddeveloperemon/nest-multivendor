@@ -11,7 +11,7 @@ class BannerStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class BannerStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'banner_title' => ['bail','required','string','max:255'],
+            'banner_url' => ['bail','required','string','max:255'],
+            'banner_image' => ['bail','required','max:2048'],
         ];
     }
 }

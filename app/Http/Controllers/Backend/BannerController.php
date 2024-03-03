@@ -12,75 +12,75 @@ use Intervention\Image\Drivers\Gd\Driver;
 
 class BannerController extends Controller
 {
-    public function allSlider()
+    public function allBanner()
     {
-        $sliders = Banner::select('id','slider_title','short_title','slider_image')->latest()->get();
-        return view('backend.slider.all_sliders',compact('sliders'));
+        $banners = Banner::select('id','banner_title','banner_url','banner_image')->latest()->get();
+        return view('backend.banner.all_banners',compact('banners'));
     }
 
-    public function addSlider()
+    public function addBanner()
     {
-        return view('backend.slider.add_slider');
+        return view('backend.banner.add_banner');
     }
 
-    public function sliderStore(BannerStoreRequest $request)
+    public function storeBanner(BannerStoreRequest $request)
     {
-        if($request->hasFile('slider_image')){
+        if($request->hasFile('banner_image')){
             $manager = new ImageManager(new Driver());
-            $extension = $request->file('slider_image')->getClientOriginalExtension();
+            $extension = $request->file('banner_image')->getClientOriginalExtension();
             $imageName = time().'.'.$extension;
-            $imagePath = public_path('upload/slider_images').'/'.$imageName;
-            $make_img = $manager->read($request->file('slider_image'));
-            $make_img->resize(2376,807)->save($imagePath);
+            $imagePath = public_path('upload/banner_images').'/'.$imageName;
+            $make_img = $manager->read($request->file('banner_image'));
+            $make_img->resize(768,450)->save($imagePath);
             
             Banner::insert([
-                'slider_title' => $request->slider_title,
-                'short_title' => $request->short_title,
-                'slider_image' => $imageName
+                'banner_title' => $request->banner_title,
+                'banner_url' => $request->banner_url,
+                'banner_image' => $imageName
             ]);
         }
-        toastr()->success('New Slider Inserted Successfully');
-        return redirect()->route('admin.all.slider');
+        toastr()->success('New Banner Inserted Successfully');
+        return redirect()->route('admin.all.banner');
     }
 
-    public function editSlider($id)
+    public function editBanner($id)
     {
-        $slider = Banner::find($id);
-        return view('backend.slider.edit_slider',compact('slider'));
+        $banner = Banner::find($id);
+        return view('backend.banner.edit_banner',compact('banner'));
     }
 
-    public function updateSlider(BannerStoreRequest $request, $id)
+    public function updateBanner(BannerStoreRequest $request, $id)
     {
-        $slider = Banner::find($id);
-        if($request->hasFile('slider_image')){
-            if(File::exists(public_path('upload/slider_images/'.$slider->slider_image))){
-                File::delete(public_path('upload/slider_images/'.$slider->slider_image));
+        $banner = Banner::find($id);
+        if($request->hasFile('banner_image')){
+            if(File::exists(public_path('upload/banner_images/'.$banner->banner_image))){
+                File::delete(public_path('upload/banner_images/'.$banner->banner_image));
             }
             $manager = new ImageManager(new Driver());
-            $extension = $request->file('slider_image')->getClientOriginalExtension();
+            $extension = $request->file('banner_image')->getClientOriginalExtension();
             $imageName = time().'.'.$extension;
-            $imagePath = public_path('upload/slider_images').'/'.$imageName;
-            $make_img = $manager->read($request->file('slider_image'));
-            $make_img->resize(2376,807)->save($imagePath);
+            $imagePath = public_path('upload/banner_images').'/'.$imageName;
+            $make_img = $manager->read($request->file('banner_image'));
+            $make_img->resize(768,450)->save($imagePath);
             
-            $slider->update([
-                'slider_title' => $request->slider_title,
-                'short_title' => $request->short_title,
-                'slider_image' => $imageName
+            $banner->update([
+                'banner_title' => $request->banner_title,
+                'banner_url' => $request->banner_url,
+                'banner_image' => $imageName
             ]);
         }
-        toastr()->success('Slider Updated Successfully');
-        return redirect()->route('admin.all.slider');
+        toastr()->success('Banner Updated Successfully');
+        return redirect()->route('admin.all.banner');
     }
 
-    public function deleteSlider($id)
+    public function deleteBanner($id)
     {
-        $slider = Banner::find($id);
-        if(File::exists(public_path('upload/slider_images/'.$slider->slider_image))){
-            File::delete(public_path('upload/slider_images/'.$slider->slider_image));
+        $banner = Banner::find($id);
+        if(File::exists(public_path('upload/banner_images/'.$banner->banner_image))){
+            File::delete(public_path('upload/banner_images/'.$banner->banner_image));
         }
-        $slider->delete();
-        toastr()->success('Slider Deleted Successfully');
-        return redirect()->route('admin.all.slider');
+        $banner->delete();
+        toastr()->success('Banner Deleted Successfully');
+        return redirect()->route('admin.all.banner');
     }
 }
