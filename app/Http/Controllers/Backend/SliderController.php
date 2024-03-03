@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManager;
+use App\Http\Requests\SliderStoreRequest;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class SliderController extends Controller
 {
@@ -14,70 +18,60 @@ class SliderController extends Controller
         return view('backend.slider.all_sliders',compact('sliders'));
     }
 
-    // public function addCategory()
-    // {
-    //     return view('backend.category.add_category');
-    // }
+    public function addSlider()
+    {
+        return view('backend.slider.add_slider');
+    }
 
-    // public function categoryStore(CategoryStoreRequest $request)
-    // {
-    //     if($request->hasFile('category_image')){
-    //         $manager = new ImageManager(new Driver());
-    //         $extension = $request->file('category_image')->getClientOriginalExtension();
-    //         $imageName = time().'.'.$extension;
-    //         $imagePath = public_path('upload/category_images').'/'.$imageName;
-    //         $make_img = $manager->read($request->file('category_image'));
-    //         $make_img->resize(120,120)->save($imagePath);
+    public function sliderStore(SliderStoreRequest $request)
+    {
+        if($request->hasFile('slider_image')){
+            $manager = new ImageManager(new Driver());
+            $extension = $request->file('slider_image')->getClientOriginalExtension();
+            $imageName = time().'.'.$extension;
+            $imagePath = public_path('upload/slider_images').'/'.$imageName;
+            $make_img = $manager->read($request->file('slider_image'));
+            $make_img->resize(2376,807)->save($imagePath);
             
-    //         Category::insert([
-    //             'category_name' => $request->category_name,
-    //             'category_slug' => strtolower(str_replace(' ','-',$request->category_name)),
-    //             'category_image' => $imageName
-    //         ]);
-    //     }else{
-    //         Category::insert([
-    //             'category_name' => $request->category_name,
-    //             'category_slug' => strtolower(str_replace(' ','-',$request->category_name))
-    //         ]);
-    //     }
-    //     toastr()->success('New Category Inserted Successfully');
-    //     return redirect()->route('admin.all.categories');
-    // }
+            Slider::insert([
+                'slider_title' => $request->slider_title,
+                'short_title' => $request->short_title,
+                'slider_image' => $imageName
+            ]);
+        }
+        toastr()->success('New Slider Inserted Successfully');
+        return redirect()->route('admin.all.slider');
+    }
 
-    // public function editCategory($id)
-    // {
-    //     $category = Category::find($id);
-    //     return view('backend.category.edit_category',compact('category'));
-    // }
+    public function editSlider($id)
+    {
+        $slider = Slider::find($id);
+        return view('backend.slider.edit_slider',compact('slider'));
+    }
 
-    // public function updateCategory(Request $request, $id)
-    // {
-    //     $category = Category::find($id);
-    //     if($request->hasFile('category_image')){
-    //         if(File::exists(public_path('upload/category_images/'.$category->category_image))){
-    //             File::delete(public_path('upload/category_images/'.$category->category_image));
-    //         }
-    //         $manager = new ImageManager(new Driver());
-    //         $extension = $request->file('category_image')->getClientOriginalExtension();
-    //         $imageName = time().'.'.$extension;
-    //         $imagePath = public_path('upload/category_images').'/'.$imageName;
-    //         $make_img = $manager->read($request->file('category_image'));
-    //         $make_img->resize(120,120)->save($imagePath);
+    public function updateSlider(SliderStoreRequest $request, $id)
+    {
+        $slider = Slider::find($id);
+        if($request->hasFile('slider_image')){
+            if(File::exists(public_path('upload/slider_images/'.$slider->slider_image))){
+                File::delete(public_path('upload/slider_images/'.$slider->slider_image));
+            }
+            $manager = new ImageManager(new Driver());
+            $extension = $request->file('slider_image')->getClientOriginalExtension();
+            $imageName = time().'.'.$extension;
+            $imagePath = public_path('upload/slider_images').'/'.$imageName;
+            $make_img = $manager->read($request->file('slider_image'));
+            $make_img->resize(2376,807)->save($imagePath);
             
-    //         $category->update([
-    //             'category_name' => $request->category_name,
-    //             'category_slug' => strtolower(str_replace(' ','-',$request->category_name)),
-    //             'category_image' => $imageName
-    //         ]);
-    //     }else{
-    //         $category->update([
-    //             'category_name' => $request->category_name,
-    //             'category_slug' => strtolower(str_replace(' ','-',$request->category_name))
-    //         ]);
-    //     }
-    //     toastr()->success('Category Updated Successfully');
-    //     return redirect()->route('admin.all.categories');
-    // }
+            $slider->update([
+                'slider_title' => $request->slider_title,
+                'short_title' => $request->short_title,
+                'slider_image' => $imageName
+            ]);
+        }
+        toastr()->success('Slider Updated Successfully');
+        return redirect()->route('admin.all.slider');
+    }
 
     // public function deleteCategory($id)
     // {

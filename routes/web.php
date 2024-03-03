@@ -83,10 +83,10 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::post('/inactive-vendor/approve/{id}', [AdminController::class, 'inactiveVendorApprove'])->name('inactive.vendor.approve');
     // Slider Routes
     Route::get('/slider-list', [SliderController::class, 'allSlider'])->name('all.slider');
-    Route::get('/add-slider', [SliderController::class, 'addCategory'])->name('add.slider');
-    Route::post('/store-category', [SliderController::class, 'categoryStore'])->name('category.store');
-    Route::get('/edit-category/{id}', [SliderController::class, 'editCategory'])->name('edit.category');
-    Route::post('/update-category/{id}', [SliderController::class, 'updateCategory'])->name('update.category');
+    Route::get('/add-slider', [SliderController::class, 'addSlider'])->name('add.slider');
+    Route::post('/store-slider', [SliderController::class, 'sliderStore'])->name('slider.store');
+    Route::get('/edit-slider/{id}', [SliderController::class, 'editSlider'])->name('edit.slider');
+    Route::post('/update-slider/{id}', [SliderController::class, 'updateSlider'])->name('update.slider');
     Route::get('/delete-category/{id}', [SliderController::class, 'deleteCategory'])->name('delete.category');
 });
 

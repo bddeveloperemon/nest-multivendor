@@ -52,14 +52,14 @@
                                             <td>
                                                 @if (!empty($slider->slider_image))
                                                     <img src="{{ asset('upload/slider_images/' . $slider->slider_image) }}"
-                                                        class="rounded-circle" alt="Brand" width="50">
+                                                        alt="Slider" width="100">
                                                 @else
                                                     <img src="{{ asset('backend/assets/images/websiteplanet-dummy-250X250.png') }}"
-                                                        class="rounded-circle" alt="Brand" width="50">
+                                                        class="rounded-circle" alt="Slider" width="50">
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.edit.category', $slider->id) }}"
+                                                <a href="{{ route('admin.edit.slider', $slider->id) }}"
                                                     class="btn btn-info btn-sm">Edit</a>
                                                 <a href="{{ route('admin.delete.category', $slider->id) }}"
                                                     class="btn btn-danger btn-sm" id="delete">Delete</a>
