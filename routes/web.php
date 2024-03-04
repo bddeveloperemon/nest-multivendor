@@ -122,7 +122,7 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
 });
 
 Route::middleware(['auth','role:admin'])->group(function(){
-    Route::post('/update-product/multiple-image', [ProductController::class, 'updateMultiImg'])->name('update.multi_img');
+    Route::post('/admin/update/multiple-image', [ProductController::class, 'updateMultiImg'])->name('admin.update.multi_img');
 });
 Route::middleware(['auth','role:vendor'])->group(function(){
     Route::post('/update-product/multiple-image', [VendorProductController::class, 'vendorUpdateMultiImg'])->name('vendor.update.multi_img');

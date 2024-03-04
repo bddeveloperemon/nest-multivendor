@@ -219,7 +219,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <form action="{{ route('update.multi_img') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.update.multi_img') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @php
                             $i = 1;
