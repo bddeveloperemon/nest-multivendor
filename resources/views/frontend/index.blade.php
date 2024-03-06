@@ -13,9 +13,9 @@
     <!--Products Tabs-->
     @include('frontend.layouts.featured-products')
     <!--End Best Sales-->
-    <!-- TV Category -->
-    @include('frontend.layouts.tv-category')
-    <!--End TV Category -->
+    <!-- fashion Category -->
+    @include('frontend.layouts.fashion-category')
+    <!--End fashion Category -->
     <!-- Tshirt Category -->
     @include('frontend.layouts.t-shirt-category')
     <!--End Tshirt Category -->

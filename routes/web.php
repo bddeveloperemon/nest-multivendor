@@ -25,9 +25,10 @@ use App\Http\Controllers\Backend\Vendor\VendorProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+// Route::get('/', function () {
+//     return view('frontend.index');
+// });
+Route::get('/',[IndexController::class,'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
