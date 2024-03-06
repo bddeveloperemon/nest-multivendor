@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
@@ -132,4 +133,7 @@ Route::get('/admin/login',[AdminController::class,'adminLogin'])->middleware('gu
 Route::get('/vendor/login',[VendorController::class,'vendorLogin'])->name('vendor.login')->middleware('guest');
 Route::get('/become/vendor',[VendorController::class,'becomeVendor'])->name('become.vendor');
 Route::post('/vendor/register',[VendorController::class,'vendorRegister'])->name('vendor.register');
+
+// Frontend Routes
+Route::get('/product/details/{id}/{slug}',[IndexController::class,'productDetails']);
 require __DIR__.'/auth.php';
