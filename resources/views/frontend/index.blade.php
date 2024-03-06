@@ -17,7 +17,7 @@
     @include('frontend.layouts.fashion-category')
     <!--End fashion Category -->
     <!-- Tshirt Category -->
-    @include('frontend.layouts.t-shirt-category')
+    @include('frontend.layouts.sweet-home-category')
     <!--End Tshirt Category -->
     <!-- Computer Category -->
     @include('frontend.layouts.computer-category')

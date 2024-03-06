@@ -2,7 +2,6 @@
     $products = App\Models\Product::with(['category', 'vendor'])
         ->where('status', 1)
         ->orderBy('id', 'asc')
-        ->limit(10)
         ->get();
     $categories = App\Models\Category::orderBy('category_name', 'asc')->get();
 @endphp
