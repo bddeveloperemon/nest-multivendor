@@ -6,8 +6,9 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> <a href="shop-grid-right.html">Vegetables & tubers</a> <span></span> Seeds of Change Organic
+                <a href="{{ url('/') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                <span></span> <a href="shop-grid-right.html">{{ $product->category->category_name }}</a> <span></span>
+                {{ $product->sub_category->sub_category_name }} <span></span>{{ $product->product_name }}
             </div>
         </div>
     </div>
@@ -21,37 +22,21 @@
                                 <span class="zoom-icon"><i class="fi-rs-search"></i></span>
                                 <!-- MAIN SLIDES -->
                                 <div class="product-image-slider">
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-2.jpg" alt="product image" />
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-1.jpg" alt="product image" />
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-3.jpg" alt="product image" />
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-4.jpg" alt="product image" />
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-5.jpg" alt="product image" />
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-6.jpg" alt="product image" />
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-7.jpg" alt="product image" />
-                                    </figure>
+                                    @foreach ($multi_imgs as $img)
+                                        <figure class="border-radius-10">
+                                            <img src="{{ asset('upload/product_images/multi_imgs/' . $img->image_name) }}"
+                                                alt="product image" />
+                                        </figure>
+                                    @endforeach
                                 </div>
                                 <!-- THUMBNAILS -->
                                 <div class="slider-nav-thumbnails">
-                                    <div><img src="assets/imgs/shop/thumbnail-3.jpg" alt="product image" /></div>
-                                    <div><img src="assets/imgs/shop/thumbnail-4.jpg" alt="product image" /></div>
-                                    <div><img src="assets/imgs/shop/thumbnail-5.jpg" alt="product image" /></div>
-                                    <div><img src="assets/imgs/shop/thumbnail-6.jpg" alt="product image" /></div>
-                                    <div><img src="assets/imgs/shop/thumbnail-7.jpg" alt="product image" /></div>
-                                    <div><img src="assets/imgs/shop/thumbnail-8.jpg" alt="product image" /></div>
-                                    <div><img src="assets/imgs/shop/thumbnail-9.jpg" alt="product image" /></div>
+                                    @foreach ($multi_imgs as $img)
+                                        <div><img src="{{ asset('upload/product_images/multi_imgs/' . $img->image_name) }}"
+                                                alt="product image" />
+                                        </div>
+                                    @endforeach
+
                                 </div>
                             </div>
                             <!-- End Gallery -->
@@ -136,18 +121,29 @@
                                                 class="fi-rs-shuffle"></i></a>
                                     </div>
                                 </div>
+                                @if ($product->vendor_id == null || $product->vendor == null)
+                                    <h6>Sold by <a href="#"><span class="text-danger">Owner</span></a></h6>
+                                @else
+                                    <h6>Sold by <a href="#"><span class="text-danger">
+                                                {{ $product->vendor->name }}</span></a></h6>
+                                @endif
                                 <div class="font-xs">
                                     <ul class="mr-50 float-start">
-                                        <li class="mb-5">Type: <span class="text-brand">Organic</span></li>
-                                        <li class="mb-5">MFG:<span class="text-brand"> Jun 4.2022</span></li>
-                                        <li>LIFE: <span class="text-brand">70 days</span></li>
+                                        <li class="mb-5">Brand: <span
+                                                class="text-brand">{{ $product->brand->brand_name }}</span></li>
+                                        <li class="mb-5">Category:<span class="text-brand">
+                                                {{ $product->category->category_name }}</span></li>
+                                        <li>SubCategory: <span class="text-brand">
+                                                {{ $product->sub_category->sub_category_name }}</span>
+                                        </li>
                                     </ul>
                                     <ul class="float-start">
-                                        <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
-                                        <li class="mb-5">Tags: <a href="#" rel="tag">Snack</a>, <a
-                                                href="#" rel="tag">Organic</a>, <a href="#"
-                                                rel="tag">Brown</a></li>
-                                        <li>Stock:<span class="in-stock text-brand ml-5">8 Items In Stock</span></li>
+                                        <li class="mb-5">Product Code: <a href="#">{{ $product->product_code }}</a>
+                                        </li>
+                                        <li class="mb-5">Tags: <a href="#"
+                                                rel="tag">{{ $product->product_tags }}</a></li>
+                                        <li>Stock:<span class="in-stock text-brand ml-5">({{ $product->product_tags }})
+                                                Items In Stock</span></li>
                                     </ul>
                                 </div>
                             </div>
