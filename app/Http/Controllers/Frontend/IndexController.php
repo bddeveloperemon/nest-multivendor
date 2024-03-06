@@ -16,7 +16,9 @@ class IndexController extends Controller
         $skip_product_5 = Product::where(['status'=>1,'category_id'=>$skip_category_5->id])->orderBy('id','desc')->limit(5)->get();
         $skip_category_2 = Category::skip(2)->first();
         $skip_product_2 = Product::where(['status'=>1,'category_id'=>$skip_category_2->id])->orderBy('id','desc')->limit(5)->get();
-        return view('frontend.index',compact('skip_category_5','skip_product_5','skip_category_2','skip_product_2'));
+        $skip_category_7 = Category::skip(7)->first();
+        $skip_product_7 = Product::where(['status'=>1,'category_id'=>$skip_category_7->id])->orderBy('id','desc')->limit(5)->get();
+        return view('frontend.index',compact('skip_category_5','skip_product_5','skip_category_2','skip_product_2','skip_category_7','skip_product_7'));
     }
     public function productDetails($id,$slug)
     {

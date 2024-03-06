@@ -16,12 +16,12 @@
     <!-- fashion Category -->
     @include('frontend.layouts.fashion-category')
     <!--End fashion Category -->
-    <!-- Tshirt Category -->
+    <!-- sweet-home Category -->
     @include('frontend.layouts.sweet-home-category')
-    <!--End Tshirt Category -->
-    <!-- Computer Category -->
-    @include('frontend.layouts.computer-category')
-    <!--End Computer Category -->
+    <!--End sweet-home Category -->
+    <!-- mobiles Category -->
+    @include('frontend.layouts.mobiles-category')
+    <!--End mobiles Category -->
     @include('frontend.layouts.hot-deals')
     <!--End 4 columns-->
     <!--Vendor List -->
