@@ -50,4 +50,13 @@ class IndexController extends Controller
         ->get();
         return view('frontend.vendor.all_vendor',compact('vendors'));
     }
+
+    public function CateWiseProduct($id)
+    {
+        $products = Product::where('status',1)->where('category_id',$id)->orderBy('id','desc')->get();
+        $categories = Category::orderBy('category_name','asc')->get();
+        $breadCat = Category::where('id',$id)->first();
+        $newProduct = Product::orderBy('id','desc')->limit(3)->get();
+        return view('frontend.product.view_category',compact('categories','products','breadCat','newProduct'));
+    }
 }

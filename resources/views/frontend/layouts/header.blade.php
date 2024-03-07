@@ -237,7 +237,7 @@
                                 <ul>
                                     @foreach ($categories as $item)
                                         <li>
-                                            <a href="shop-grid-right.html"> <img
+                                            <a href="{{ url('/product/category/' . $item->id) }}"> <img
                                                     src="{{ asset('upload/category_images/' . $item->category_image) }}"
                                                     alt="{{ $item->category_name }}" />{{ $item->category_name }}</a>
                                         </li>
@@ -246,7 +246,7 @@
                                 <ul class="end">
                                     @foreach ($categories as $item)
                                         <li>
-                                            <a href="shop-grid-right.html"> <img
+                                            <a href="{{ url('/product/category/' . $item->id) }}"> <img
                                                     src="{{ asset('upload/category_images/' . $item->category_image) }}"
                                                     alt="{{ $item->category_name }}" />{{ $item->category_name }}</a>
                                         </li>
@@ -300,8 +300,8 @@
                                 </li>
                                 @foreach ($categories as $category)
                                     <li>
-                                        <a href="#">{{ $category->category_name }} <i
-                                                class="fi-rs-angle-down"></i></a>
+                                        <a href="{{ url('/product/category/' . $category->id) }}">{{ $category->category_name }}
+                                            <i class="fi-rs-angle-down"></i></a>
                                         @php
                                             $subcategories = App\Models\SubCategory::orderBy('sub_category_name', 'asc')
                                                 ->where('category_id', $category->id)
