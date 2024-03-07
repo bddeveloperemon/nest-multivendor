@@ -137,6 +137,7 @@ Route::post('/vendor/register',[VendorController::class,'vendorRegister'])->name
 
 // Frontend Routes
 Route::get('/product/details/{id}/{slug}',[IndexController::class,'productDetails']);
+Route::get('/product/subcategory/{id}/{slug}',[IndexController::class,'SubCateWiseProduct']);
 Route::get('/product/category/{id}',[IndexController::class,'CateWiseProduct']);
 Route::get('/vendor/details/{id}',[IndexController::class,'vendorDetails'])->name('vendor.details');
 Route::get('/all-vendors',[IndexController::class,'all_vendor'])->name('vendor.all');

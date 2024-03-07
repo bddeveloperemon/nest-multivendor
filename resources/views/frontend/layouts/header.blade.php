@@ -305,13 +305,13 @@
                                         @php
                                             $subcategories = App\Models\SubCategory::orderBy('sub_category_name', 'asc')
                                                 ->where('category_id', $category->id)
-                                                ->select('id', 'category_id', 'sub_category_name')
+                                                ->select('id', 'category_id', 'sub_category_name', 'sub_category_slug')
                                                 ->get();
                                         @endphp
                                         <ul class="sub-menu">
                                             @foreach ($subcategories as $subcategory)
                                                 <li><a
-                                                        href="vendors-grid.html">{{ $subcategory->sub_category_name }}</a>
+                                                        href="{{ url('/product/subcategory/' . $subcategory->id . '/' . $subcategory->sub_category_slug) }}">{{ $subcategory->sub_category_name }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>

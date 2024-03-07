@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 @section('title')
-    Category Product
+    SubCategory Product
 @endsection
 @section('content')
     <div class="page-header mt-30 mb-50">
@@ -8,10 +8,10 @@
             <div class="archive-header">
                 <div class="row align-items-center">
                     <div class="col-xl-3">
-                        <h5 class="mb-15">{{ $breadCat->category_name }}</h5>
+                        <h5 class="mb-15">{{ $breadSubCat->sub_category_name }}</h5>
                         <div class="breadcrumb">
                             <a href="{{ url('/') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                            <span></span> {{ $breadCat->category_name }}
+                            <span></span> {{ $breadSubCat->sub_category_name }}
                         </div>
                     </div>
 
@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop-grid-right.html">{{ $product->category->category_name }}</a>
+                                        <a href="shop-grid-right.html">{{ $product->sub_category->sub_category_name }}</a>
                                     </div>
                                     <h2><a
                                             href="{{ url('/product/details/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
