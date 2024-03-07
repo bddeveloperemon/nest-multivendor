@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\MultiImg;
@@ -33,5 +34,12 @@ class IndexController extends Controller
         $cat_id = $product->category_id;
         $relatedProduct = Product::where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','desc')->limit(4)->get();
         return view('frontend.product.product_details',compact('product','product_color','product_size','multi_imgs','relatedProduct'));
+    }
+
+    public function vendorDetails($id)
+    {
+        $vendor = User::find($id);
+        $vProduct = Product::where('vendor_id',$id)->get();
+        return view('frontend.vendor.vendor_details',compact('vendor','vProduct'));
     }
 }
