@@ -7,7 +7,7 @@
 <div class="container">
     <div class="section-title wow animate__animated animate__fadeIn" data-wow-delay="0">
         <h3 class="">All Our Vendor List </h3>
-        <a class="show-all" href="shop-grid-right.html">
+        <a class="show-all" href="{{ route('vendor.all') }}">
             All Vendors
             <i class="fi-rs-angle-right"></i>
         </a>
@@ -18,7 +18,7 @@
                 <div class="vendor-wrap mb-40">
                     <div class="vendor-img-action-wrap">
                         <div class="vendor-img" style="height: 200px">
-                            <a href="vendor-details-1.html">
+                            <a href="{{ route('vendor.details', $vendor->id) }}">
                                 @if (!empty($vendor->image))
                                     <img src="{{ asset('upload/vendor_images/' . $vendor->image) }}" alt="Vendor"
                                         style="width: 100%">
