@@ -30,7 +30,7 @@
                                 <div class="product-price primary-color float-left">
                                     <span class="current-price text-brand" id="pPrice">ট</span>
                                     <span>
-                                        <span class="old-price font-md ml-15" id="oldPrice">ট</span>
+                                        <span class="old-price font-md ml-15" id="oldPrice">ট </span>
                                     </span>
                                 </div>
                             </div>
@@ -62,10 +62,10 @@
                                         <ul>
                                             <li class="mb-5">Product Code: <span class="text-brand"
                                                     id="pCode"></span></li>
-                                            <li class="mb-5">Stock:<span class="badge badge-pill badge-success"
+                                            <li class="mb-5">Stock:<span class="badge badge-pill badge-success p-1"
                                                     id="available"
                                                     style="background-color: green; color:#fff;"></span><span
-                                                    class="badge badge-pill badge-danger" id="stock_out"
+                                                    class="badge badge-pill badge-danger p-1" id="stockout"
                                                     style="background-color: red; color:#fff;"></span>
                                             </li>
                                         </ul>

@@ -141,4 +141,5 @@ Route::get('/product/subcategory/{id}/{slug}',[IndexController::class,'SubCateWi
 Route::get('/product/category/{id}',[IndexController::class,'CateWiseProduct']);
 Route::get('/vendor/details/{id}',[IndexController::class,'vendorDetails'])->name('vendor.details');
 Route::get('/all-vendors',[IndexController::class,'all_vendor'])->name('vendor.all');
+Route::get('/product/view/modal/{id}',[IndexController::class,'viewModal']); //product view modal with ajax
 require __DIR__.'/auth.php';

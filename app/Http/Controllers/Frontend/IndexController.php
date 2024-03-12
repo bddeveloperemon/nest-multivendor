@@ -69,4 +69,18 @@ class IndexController extends Controller
         $newProduct = Product::orderBy('id','desc')->limit(3)->get();
         return view('frontend.product.view_subcategory',compact('categories','products','breadSubCat','newProduct'));
     }
+
+    public function viewModal($id)
+    {
+        $product = Product::with(['category','brand'])->findOrFail($id);
+        $product_color = explode(',',$product->product_color);
+        $product_size = explode(',',$product->product_size);
+        return response()->json(
+            [
+                'product' => $product,
+                'color_area' => $product_color,
+                'size_area' => $product_size
+            ]
+        );
+    }
 }
