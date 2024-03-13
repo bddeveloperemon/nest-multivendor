@@ -83,14 +83,13 @@
                     $('#pName').text(data.product.product_name);
                     $('#pCategory').text(data.product.category.category_name);
                     $('#pBrand').text(data.product.brand.brand_name);
-                    // $('#size_area').text(data.product.product_size);
-                    // $('#color_area').text(data.product.product_color);
                     $('#pPrice').text(data.product.selling_price);
                     $('#pCode').text(data.product.product_code);
-                    // var imagePath = "{{ asset('upload/product_images/thambnail') }}/" + data.product
-                    //     .product_thambnail;
                     $('#pImage').attr('src', "{{ asset('upload/product_images/thambnail') }}/" + data.product
                         .product_thambnail);
+                    $('#product_id').val(id);
+                    $('#qty').val(1);
+                    // price
                     if (data.product.discount_price == null) {
                         $('#pPrice').text('');
                         $('#oldPrice').text('');
@@ -108,6 +107,7 @@
                         $('#stockout').text('');
                         $('#stockout').text('stockout');
                     }
+                    // size and color
                     $('select[name="product_size"]').empty();
                     $('select[name="product_color"]').empty();
                     $.each(data.size_area, function(key, value) {
@@ -128,6 +128,30 @@
                             $('#color_area').show();
                         }
                     })
+                }
+            })
+        }
+
+        // add to cart product
+        function addToCart() {
+            let product_name = $('#pName').text();
+            let id = $('#product_id').val();
+            let color = $('#color_area option:selected').text();
+            let size = $('#size_area option:selected').text();
+            let qty = $('#qty').val();
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    color: color,
+                    product_name: product_name,
+                    size: size,
+                    qty: qty,
+                },
+                url: '/add-to-cart/store' + id,
+                success: function(data) {
+                    console.log(data);
                 }
             })
         }

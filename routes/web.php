@@ -3,6 +3,7 @@
 use App\Models\Banner;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SliderController;
@@ -142,4 +143,5 @@ Route::get('/product/category/{id}',[IndexController::class,'CateWiseProduct']);
 Route::get('/vendor/details/{id}',[IndexController::class,'vendorDetails'])->name('vendor.details');
 Route::get('/all-vendors',[IndexController::class,'all_vendor'])->name('vendor.all');
 Route::get('/product/view/modal/{id}',[IndexController::class,'viewModal']); //product view modal with ajax
+Route::get('/add-to-cart/store/{id}',[CartController::class,'addToCart']); //add to cart store data
 require __DIR__.'/auth.php';
