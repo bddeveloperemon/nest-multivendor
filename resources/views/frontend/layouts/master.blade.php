@@ -153,6 +153,7 @@
                 },
                 url: '/add-to-cart/store/' + id,
                 success: function(data) {
+                    miniCart();
                     $('#closeModal').click();
                     // console.log(data);
                     const Toast = Swal.mixin({
@@ -186,6 +187,8 @@
                 url: '/product/mini-cart',
                 success: function(response) {
                     // console.log(response);
+                    $('#cartQty').text(response.cartqty);
+                    $('span[id="cartSubTotal"]').text(response.cartTotal);
 
                     var miniCart = "";
                     $.each(response.carts, function(key, value) {
@@ -200,7 +203,7 @@
                                                 <h4><span>${value.qty} × </span>ট ${value.price}</h4>
                                             </div>
                                             <div class="shopping-cart-delete" style="margin: -85px 1px 0;">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                                <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fi-rs-cross-small"></i></a>
                                             </div>
                                         </li>
                                     </ul> <hr><br>`;
@@ -210,6 +213,38 @@
             })
         }
         miniCart();
+
+
+
+        // Mini cart remove
+        function miniCartRemove(id) {
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: '/product/mini-cart/remove/' + id,
+                success: function(data) {
+                    miniCart();
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success,
+                        });
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error,
+                        });
+                    }
+                }
+            })
+        }
     </script>
 </body>
 

@@ -145,4 +145,5 @@ Route::get('/all-vendors',[IndexController::class,'all_vendor'])->name('vendor.a
 Route::get('/product/view/modal/{id}',[IndexController::class,'viewModal']); //product view modal with ajax
 Route::post('/add-to-cart/store/{id}',[CartController::class,'addToCart']); //add to cart store data
 Route::get('/product/mini-cart',[CartController::class,'addMiniCart']); //add to cart product show mini cart
+Route::get('/product/mini-cart/remove/{id}',[CartController::class,'miniCartProductRemove']); //mini cart product mini cart remove
 require __DIR__.'/auth.php';
