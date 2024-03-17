@@ -62,10 +62,12 @@
     <script src="{{ asset('frontend/assets/js/plugins/jquery.vticker-min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/plugins/jquery.theia.sticky.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/plugins/jquery.elevatezoom.js') }}"></script>
+    <!-- sweetalert  JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Template  JS -->
     <script src="{{ asset('frontend/assets/js/main.js?v=5.3') }}"></script>
     <script src="{{ asset('frontend/assets/js/shop.js?v=5.3') }}"></script>
-    <script>
+    <script type="text/javascript">
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -134,27 +136,80 @@
 
         // add to cart product
         function addToCart() {
-            let product_name = $('#pName').text();
-            let id = $('#product_id').val();
-            let color = $('#color_area option:selected').text();
-            let size = $('#size_area option:selected').text();
-            let qty = $('#qty').val();
+            var product_name = $('#pName').text();
+            var id = $('#product_id').val();
+            var color = $('#color_area option:selected').text();
+            var size = $('#size_area option:selected').text();
+            var qty = $('#qty').val();
 
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
                 data: {
-                    color: color,
                     product_name: product_name,
+                    color: color,
                     size: size,
                     qty: qty,
                 },
-                url: '/add-to-cart/store' + id,
+                url: '/add-to-cart/store/' + id,
                 success: function(data) {
-                    console.log(data);
+                    $('#closeModal').click();
+                    // console.log(data);
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success,
+                        });
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error,
+                        });
+                    }
+                }
+            });
+        }
+
+        // show add to cart product in mini cart
+        function miniCart() {
+            $.ajax({
+
+                type: 'GET',
+                dataType: 'json',
+                url: '/product/mini-cart',
+                success: function(response) {
+                    // console.log(response);
+
+                    var miniCart = "";
+                    $.each(response.carts, function(key, value) {
+                        miniCart += `<ul>
+                                        <li>
+                                            <div class="shopping-cart-img">
+                                                <a href="shop-product-right.html"><img alt="${value.name}"
+                                                    src="{{ asset('upload/product_images/thambnail') }}/${value.options.image}" style="width:50px; height:50px;" /></a>
+                                            </div>
+                                            <div class="shopping-cart-title" style="margin: -73px 74px 14px; width:146px;">
+                                                <h4><a href="shop-product-right.html">${value.name}</a></h4>
+                                                <h4><span>${value.qty} × </span>ট ${value.price}</h4>
+                                            </div>
+                                            <div class="shopping-cart-delete" style="margin: -85px 1px 0;">
+                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                            </div>
+                                        </li>
+                                    </ul> <hr><br>`;
+                    });
+                    $('#miniCart').html(miniCart);
                 }
             })
         }
+        miniCart();
     </script>
 </body>
 
