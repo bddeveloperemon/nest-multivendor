@@ -28,4 +28,19 @@ class WishlistController extends Controller
             return response()->json(['error' => 'At first you want to login your account']);
         }
     }
+
+    public function allWishlist()
+    {
+        return view('frontend.wishlist.view_wishlist');
+    }
+
+    public function wishlistProduct()
+    {
+        $wishlist = Wishlist::with('product')->where('user_id',Auth::id())->latest()->get();
+        $wishQty = $wishlist->count();
+        return response()->json([
+            'wishlist' => $wishlist, 
+            'wishQty' => $wishQty, 
+        ]);
+    }
 }
