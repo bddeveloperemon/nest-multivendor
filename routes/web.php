@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -147,4 +148,5 @@ Route::post('/add-to-cart/store/{id}',[CartController::class,'addToCart']); //ad
 Route::post('/add-to-cart/details/store/{id}',[CartController::class,'addToCartDetails']); //add to cart product details store
 Route::get('/product/mini-cart',[CartController::class,'addMiniCart']); //add to cart product show mini cart
 Route::get('/product/mini-cart/remove/{id}',[CartController::class,'miniCartProductRemove']); //mini cart product mini cart remove
+Route::post('/add-to-wishlist/{product_id}',[WishlistController::class,'addToWishlist']); //add to wishlist product
 require __DIR__.'/auth.php';
