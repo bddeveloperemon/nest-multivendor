@@ -177,6 +177,48 @@
                 }
             });
         }
+        // add to cart product details
+        function addToCartDetails() {
+            var product_name = $('#dpName').text();
+            var id = $('#dproduct_id').val();
+            var color = $('#color_area option:selected').text();
+            var size = $('#dsize_area option:selected').text();
+            var qty = $('#dqty').val();
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    product_name: product_name,
+                    color: color,
+                    size: size,
+                    qty: qty,
+                },
+                url: '/add-to-cart/details/store/' + id,
+                success: function(data) {
+                    miniCart();
+                    // console.log(data);
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success,
+                        });
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error,
+                        });
+                    }
+                }
+            });
+        }
 
         // show add to cart product in mini cart
         function miniCart() {
