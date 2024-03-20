@@ -362,8 +362,6 @@
         }
         wishList();
 
-
-
         // wishlist remove function
         function wishlistRemove(id) {
             $.ajax({
@@ -372,6 +370,36 @@
                 url: '/wishlist-remove/' + id,
                 success: function(data) {
                     wishList();
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            icon: "success",
+                            title: data.success,
+                        });
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            icon: "error",
+                            title: data.error,
+                        });
+                    }
+                }
+            })
+        }
+
+        // add to compare
+        function addToCompare(product_id) {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/add-to-compare/' + product_id,
+                success: function(data) {
                     const Toast = Swal.mixin({
                         toast: true,
                         position: "top-end",

@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\Vendor\VendorController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Admin\SubCategoryController;
 use App\Http\Controllers\Backend\Vendor\VendorProductController;
+use App\Http\Controllers\User\CompareController;
 
 /*
 |--------------------------------------------------------------------------
@@ -152,4 +153,5 @@ Route::post('/add-to-cart/details/store/{id}',[CartController::class,'addToCartD
 Route::get('/product/mini-cart',[CartController::class,'addMiniCart']); //add to cart product show mini cart
 Route::get('/product/mini-cart/remove/{id}',[CartController::class,'miniCartProductRemove']); //mini cart product mini cart remove
 Route::post('/add-to-wishlist/{product_id}',[WishlistController::class,'addToWishlist']); //add to wishlist product
+Route::post('/add-to-compare/{product_id}',[CompareController::class,'addToCompare']); //add to compare
 require __DIR__.'/auth.php';
