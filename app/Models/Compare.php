@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Compare extends Model
 {
@@ -14,4 +16,9 @@ class Compare extends Model
      * @var array<string>
      */
     protected $guarded = [];
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class,'product_id','id');
+    }
 }

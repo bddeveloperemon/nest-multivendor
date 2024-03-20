@@ -41,6 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/wishlist', [WishlistController::class, 'allWishlist'])->name('wishlist');
     Route::get('/wishlist-products', [WishlistController::class, 'wishlistProduct']);
     Route::get('/wishlist-remove/{id}',[WishlistController::class,'wishlistRemove']);
+    Route::get('/compare', [CompareController::class, 'allCompare'])->name('compare');
+    Route::get('/compare-products', [CompareController::class, 'compareProduct']);
+    Route::get('/compare-remove/{id}',[CompareController::class,'compareRemove']);
 });
 
 //Admin Dashboard
