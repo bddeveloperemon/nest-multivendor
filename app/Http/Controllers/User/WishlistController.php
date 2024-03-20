@@ -43,4 +43,12 @@ class WishlistController extends Controller
             'wishQty' => $wishQty, 
         ]);
     }
+
+    public function wishlistRemove($id)
+    {
+        Wishlist::where(['user_id'=>Auth::id(),'id'=>$id])->delete();
+        return response()->json([
+            'success' => 'Wishlist Product Delete Successfully'
+        ]);
+    }
 }

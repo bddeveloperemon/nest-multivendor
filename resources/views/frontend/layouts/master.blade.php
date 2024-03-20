@@ -293,7 +293,7 @@
                 dataType: 'json',
                 url: '/add-to-wishlist/' + product_id,
                 success: function(data) {
-                    // console.log(data);
+                    wishList();
                     const Toast = Swal.mixin({
                         toast: true,
                         position: "top-end",
@@ -323,6 +323,7 @@
                 dataType: 'json',
                 url: '/wishlist-products/',
                 success: function(response) {
+                    $('#wishQty').text(response.wishQty);
                     var rows = "";
                     $.each(response.wishlist, function(key, value) {
                         rows += `<tr class="pt-30">
@@ -351,7 +352,7 @@
                                         }                                        
                                     </td>
                                     <td class="action text-center" data-title="Remove">
-                                        <a href="#" class="text-body"><i class="fi-rs-trash"></i></a>
+                                        <a type="submit" id="${value.id}" onclick="wishlistRemove(this.id)" class="text-body"><i class="fi-rs-trash"></i></a>
                                     </td>
                                 </tr>`;
                     });
@@ -360,6 +361,39 @@
             })
         }
         wishList();
+
+
+
+        // wishlist remove function
+        function wishlistRemove(id) {
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: '/wishlist-remove/' + id,
+                success: function(data) {
+                    wishList();
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            icon: "success",
+                            title: data.success,
+                        });
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            icon: "error",
+                            title: data.error,
+                        });
+                    }
+                }
+            })
+        }
     </script>
 </body>
 

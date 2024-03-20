@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/change-password',[UserController::class,'UserPasswordUpdate'])->name('user.update.password');
     Route::get('/wishlist', [WishlistController::class, 'allWishlist'])->name('wishlist');
     Route::get('/wishlist-products', [WishlistController::class, 'wishlistProduct']);
+    Route::get('/wishlist-remove/{id}',[WishlistController::class,'wishlistRemove']);
 });
 
 //Admin Dashboard
