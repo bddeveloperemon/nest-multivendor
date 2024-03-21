@@ -4,6 +4,7 @@ use App\Models\Banner;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\CuponController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\User\WishlistController;
@@ -38,12 +39,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/profile', [UserController::class, 'update'])->name('user.profile.update');
     Route::get('/user/logout', [UserController::class, 'logout'])->name('user.logout');
     Route::post('/change-password',[UserController::class,'UserPasswordUpdate'])->name('user.update.password');
+    //Wishlist Routes
     Route::get('/wishlist', [WishlistController::class, 'allWishlist'])->name('wishlist');
     Route::get('/wishlist-products', [WishlistController::class, 'wishlistProduct']);
     Route::get('/wishlist-remove/{id}',[WishlistController::class,'wishlistRemove']);
+    //Compare Routes
     Route::get('/compare', [CompareController::class, 'allCompare'])->name('compare');
     Route::get('/compare-products', [CompareController::class, 'compareProduct']);
     Route::get('/compare-remove/{id}',[CompareController::class,'compareRemove']);
+   //View Cart Routes
     Route::get('/my-cart',[CartController::class,'myCart'])->name('myCart');
     Route::get('/my-cart-product',[CartController::class,'myCartProduct']);
     Route::get('/cart-remove/{id}',[CartController::class,'myCartRemove']);
@@ -109,6 +113,13 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     // Banner Routes
     Route::get('/banner-list', [BannerController::class, 'allBanner'])->name('all.banner');
     Route::get('/add-banner', [BannerController::class, 'addBanner'])->name('add.banner');
+    Route::post('/store-banner', [BannerController::class, 'storeBanner'])->name('banner.store');
+    Route::get('/edit-banner/{id}', [BannerController::class, 'editBanner'])->name('edit.banner');
+    Route::post('/update-banner/{id}', [BannerController::class, 'updateBanner'])->name('update.banner');
+    Route::get('/delete-banner/{id}', [BannerController::class, 'deleteBanner'])->name('delete.banner');
+    // Cupon Routes
+    Route::get('/cupon-list', [CuponController::class, 'allCupon'])->name('all.cupon');
+    Route::get('/add-cupon', [CuponController::class, 'addCupon'])->name('add.cupon');
     Route::post('/store-banner', [BannerController::class, 'storeBanner'])->name('banner.store');
     Route::get('/edit-banner/{id}', [BannerController::class, 'editBanner'])->name('edit.banner');
     Route::post('/update-banner/{id}', [BannerController::class, 'updateBanner'])->name('update.banner');

@@ -99,6 +99,19 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="javascript:void(0);" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Cupon System</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('admin.all.cupon') }}"><i class="bx bx-right-arrow-alt"></i>All Cupon</a>
+                </li>
+                <li> <a href="{{ route('admin.add.cupon') }}"><i class="bx bx-right-arrow-alt"></i>Add Cupon</a>
+                </li>
+            </ul>
+        </li>
         <li class="menu-label">UI Elements</li>
         <li>
             <a href="javascript:;" class="has-arrow">
