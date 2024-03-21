@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-cart',[CartController::class,'myCart'])->name('myCart');
     Route::get('/my-cart-product',[CartController::class,'myCartProduct']);
     Route::get('/cart-remove/{id}',[CartController::class,'myCartRemove']);
+    Route::get('/cart-decrement/{id}',[CartController::class,'cartDecrement']);
+    Route::get('/cart-increment/{id}',[CartController::class,'cartIncrement']);
 });
 
 //Admin Dashboard

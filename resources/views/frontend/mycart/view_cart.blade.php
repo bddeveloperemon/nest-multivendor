@@ -161,10 +161,10 @@
                                 <td class="text-center detail-info" data-title="Stock">
                                     <div class="detail-extralink mr-15">
                                         <div class="detail-qty border radius">
-                                            <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                            <a type="submit" class="qty-down" onclick="cartDecrement(this.id)" id="${value.rowId}"><i class="fi-rs-angle-small-down"></i></a>
                                             <input type="text" name="quantity" class="qty-val" value="${value.qty}"
                                                 min="1">
-                                            <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                            <a type="submit" class="qty-up" onclick="cartIncrement(this.id)" id="${value.rowId}"><i class="fi-rs-angle-small-up"></i></a>
                                         </div>
                                     </div>
                                 </td>
@@ -209,6 +209,32 @@
                             title: data.error,
                         });
                     }
+                }
+            })
+        }
+
+        // cart decrement
+        function cartDecrement(id) {
+            $.ajax({
+                type: 'GET',
+                url: "/cart-decrement/" + id,
+                dataType: 'json',
+                success: function(data) {
+                    viewCart();
+                    miniCart();
+                }
+            })
+        }
+
+        // cart increment
+        function cartIncrement(id) {
+            $.ajax({
+                type: 'GET',
+                url: "/cart-increment/" + id,
+                dataType: 'json',
+                success: function(data) {
+                    viewCart();
+                    miniCart();
                 }
             })
         }
