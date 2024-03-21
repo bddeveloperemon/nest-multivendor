@@ -113,7 +113,7 @@
                                 <a href="{{ route('compare') }}">
                                     <img class="svgInject" alt="Nest"
                                         src="{{ asset('frontend/assets/imgs/theme/icons/icon-compare.svg') }}" />
-                                    <span class="pro-count blue" id="compareQty"></span>
+                                    <span class="pro-count blue" id="compareQty">0</span>
                                 </a>
                                 <a href="{{ route('compare') }}"><span class="lable">Compare</span></a>
                             </div>
@@ -121,7 +121,7 @@
                                 <a href="{{ route('wishlist') }}">
                                     <img class="svgInject" alt="Nest"
                                         src="{{ asset('frontend/assets/imgs/theme/icons/icon-heart.svg') }}" />
-                                    <span class="pro-count blue" id="wishQty"></span>
+                                    <span class="pro-count blue" id="wishQty">0</span>
                                 </a>
                                 <a href="{{ route('wishlist') }}"><span class="lable">Wishlist</span></a>
                             </div>
@@ -131,7 +131,7 @@
                                         src="{{ asset('frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
                                     <span class="pro-count blue" id="cartQty"></span>
                                 </a>
-                                <a href="shop-cart.html"><span class="lable">Cart</span></a>
+                                <a href="{{ route('myCart') }}"><span class="lable">Cart</span></a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     {{-- mini cart with ajax start --}}
                                     <div id="miniCart"></div>
@@ -141,7 +141,7 @@
                                             <h4>Total <span id="cartSubTotal"></span></h4>
                                         </div>
                                         <div class="shopping-cart-button">
-                                            <a href="shop-cart.html" class="outline">View cart</a>
+                                            <a href="{{ route('myCart') }}" class="outline">View Cart</a>
                                             <a href="shop-checkout.html">Checkout</a>
                                         </div>
                                     </div>

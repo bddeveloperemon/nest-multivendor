@@ -91,10 +91,6 @@ class CartController extends Controller
     public function addMiniCart()
     {
         $carts = Cart::content();
-        // foreach ($carts as $cart) {
-        //     $cart->image_url = asset('upload/product_images/thambnail/'.$cart->options->image);
-        // }
-        // dd($carts);
         $cartqty = Cart::count();
         $cartTotal = Cart::total();
 
@@ -110,5 +106,33 @@ class CartController extends Controller
     {
         Cart::remove($id);
         return response()->json(['success' => 'Product Remove From Cart Successfully']);
+    }
+
+    // My Cart Function
+    public function myCart()
+    {
+        return view('frontend.mycart.view_cart');
+    }
+
+    // get cart product function 
+    public function myCartProduct()
+    {
+        $carts = Cart::content();
+        $cartqty = Cart::count();
+        $cartTotal = Cart::total();
+
+        return response()->json([
+            'carts' => $carts,
+            'cartqty' => $cartqty,
+            'cartTotal' => $cartTotal
+        ]);
+    }
+
+
+    // view page cart product remove 
+    public function myCartRemove($id)
+    {
+        Cart::remove($id);
+        return response()->json(['success' => 'Product Remove Successfully']);
     }
 }

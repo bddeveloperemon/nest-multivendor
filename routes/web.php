@@ -2,6 +2,7 @@
 
 use App\Models\Banner;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\UserController;
@@ -15,7 +16,6 @@ use App\Http\Controllers\Backend\Vendor\VendorController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Admin\SubCategoryController;
 use App\Http\Controllers\Backend\Vendor\VendorProductController;
-use App\Http\Controllers\User\CompareController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/compare', [CompareController::class, 'allCompare'])->name('compare');
     Route::get('/compare-products', [CompareController::class, 'compareProduct']);
     Route::get('/compare-remove/{id}',[CompareController::class,'compareRemove']);
+    Route::get('/my-cart',[CartController::class,'myCart'])->name('myCart');
+    Route::get('/my-cart-product',[CartController::class,'myCartProduct']);
+    Route::get('/cart-remove/{id}',[CartController::class,'myCartRemove']);
 });
 
 //Admin Dashboard
