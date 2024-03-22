@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Carbon\Carbon;
+use App\Models\ShipDistrict;
 use App\Models\ShipDivision;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -62,4 +63,56 @@ class ShippingAreaController extends Controller
     }
 
     //Ship Division method end here
+
+    //Ship District method start here
+    public function allDistrict()
+    {
+        $districts = ShipDistrict::with('division')->latest()->get();
+        return view('backend.ship.district.district-list', compact('districts'));
+    }
+
+    public function addDistrict()
+    {
+        $divisions = ShipDivision::select('id','division_name')->orderBy('division_name','asc')->get();
+        return view('backend.ship.district.add_district',compact('divisions'));
+    }
+
+    public function storeDistrict(Request $request)
+    {
+        ShipDistrict::insert([
+            'division_id' => $request->division_id,
+            'district_name' => $request->district_name,
+        ]);
+        toastr()->success('Ship District Inserted Successfully');
+        return redirect()->route('admin.all.district');
+    }
+
+    public function editDistrict($id)
+    {
+        $district = ShipDistrict::find($id);
+        $divisions = ShipDivision::select('id','division_name')->orderBy('division_name','asc')->get();
+        return view('backend.ship.district.edit_district',compact('district','divisions'));
+    }
+
+    public function updateDistrict(Request $request, $id)
+    {
+        $district = ShipDistrict::find($id);
+        
+            $district->update([
+                'division_id' => $request->division_id,
+                'district_name' => $request->district_name,
+                'updated_at' => Carbon::now()
+            ]);
+        toastr()->success('District Updated Successfully');
+        return redirect()->route('admin.all.district');
+    }
+
+    public function deleteDistrict($id)
+    {
+        $district = ShipDistrict::find($id);
+        $district->delete();
+        toastr()->success('Ship District Deleted Successfully');
+        return redirect()->route('admin.all.district');
+    }
+    //Ship District method end here
 }
