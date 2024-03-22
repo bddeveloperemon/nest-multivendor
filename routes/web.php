@@ -118,9 +118,9 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::post('/update-banner/{id}', [BannerController::class, 'updateBanner'])->name('update.banner');
     Route::get('/delete-banner/{id}', [BannerController::class, 'deleteBanner'])->name('delete.banner');
     // Cupon Routes
-    Route::get('/cupon-list', [CuponController::class, 'allCupon'])->name('all.cupon');
-    Route::get('/add-cupon', [CuponController::class, 'addCupon'])->name('add.cupon');
-    Route::post('/store-banner', [BannerController::class, 'storeBanner'])->name('banner.store');
+    Route::get('/coupon-list', [CuponController::class, 'allCupon'])->name('all.cupon');
+    Route::get('/add-coupon', [CuponController::class, 'addCupon'])->name('add.cupon');
+    Route::post('/store-coupon', [CuponController::class, 'storeCoupon'])->name('coupon.store');
     Route::get('/edit-banner/{id}', [BannerController::class, 'editBanner'])->name('edit.banner');
     Route::post('/update-banner/{id}', [BannerController::class, 'updateBanner'])->name('update.banner');
     Route::get('/delete-banner/{id}', [BannerController::class, 'deleteBanner'])->name('delete.banner');

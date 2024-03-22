@@ -35,7 +35,7 @@
                                     <tr role="row">
                                         <th>SL</th>
                                         <th>Cupon Name</th>
-                                        <th>Cupon Discount</th>
+                                        <th>Cupon Discount(%)</th>
                                         <th>Cupon Validity</th>
                                         <th>Cupon Status</th>
                                         <th>Action</th>
@@ -49,21 +49,20 @@
                                         <tr role="row" class="odd">
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $Cupon->cupon_name }}</td>
-                                            <td>{{ $Cupon->cupon_discount }}</td>
+                                            <td>{{ $Cupon->cupon_discount }}%</td>
                                             <td>
-                                                {{ Carbon\Carbon::parse($Cupon->cupon_validity)->format('D', 'd F Y') }}
+                                                {{ Carbon\Carbon::parse($Cupon->cupon_validity)->format('D, d M Y') }}
                                             </td>
                                             <td>
-                                                @if (Carbon\Carbon::now()->format('Y-m-d'))
+                                                @if ($Cupon->cupon_validity >= Carbon\Carbon::now()->format('Y-m-d'))
                                                     <span class="badge rounded-pill bg-success">Valid</span>
                                                 @else
                                                     <span class="badge rounded-pill bg-danger">Invalid</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('', $Cupon->id) }}" class="btn btn-info btn-sm">Edit</a>
-                                                <a href="{{ route('', $Cupon->id) }}" class="btn btn-danger btn-sm"
-                                                    id="delete">Delete</a>
+                                                <a href="#" class="btn btn-info btn-sm">Edit</a>
+                                                <a href="#" class="btn btn-danger btn-sm" id="delete">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach
