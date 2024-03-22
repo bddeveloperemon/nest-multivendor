@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Admin\SubCategoryController;
+use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\Vendor\VendorProductController;
 
 /*
@@ -124,6 +125,13 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit-coupon/{id}', [CuponController::class, 'editCoupon'])->name('edit.coupon');
     Route::post('/update-coupon/{id}', [CuponController::class, 'updateCoupon'])->name('update.coupon');
     Route::get('/delete-coupon/{id}', [CuponController::class, 'deleteCoupon'])->name('delete.coupon');
+    // Shipping Division Routes
+    Route::get('/division-list', [ShippingAreaController::class, 'allDivision'])->name('all.division');
+    Route::get('/add-division', [ShippingAreaController::class, 'addDivision'])->name('add.division');
+    Route::post('/store-division', [ShippingAreaController::class, 'storeDivision'])->name('store.division');
+    Route::get('/edit-division/{id}', [ShippingAreaController::class, 'editDivision'])->name('edit.division');
+    Route::post('/update-division/{id}', [ShippingAreaController::class, 'updateDivision'])->name('update.division');
+    Route::get('/delete-division/{id}', [ShippingAreaController::class, 'deleteDivision'])->name('delete.division');
 });
 
 //Vendor Dashboard

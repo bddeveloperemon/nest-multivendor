@@ -112,6 +112,19 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="javascript:void(0);" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Shipping Area</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('admin.all.division') }}"><i class="bx bx-right-arrow-alt"></i>All Division</a>
+                </li>
+                <li> <a href="{{ route('admin.add.cupon') }}"><i class="bx bx-right-arrow-alt"></i>Add District</a>
+                </li>
+            </ul>
+        </li>
         <li class="menu-label">UI Elements</li>
         <li>
             <a href="javascript:;" class="has-arrow">
