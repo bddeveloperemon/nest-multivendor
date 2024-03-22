@@ -121,9 +121,9 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/coupon-list', [CuponController::class, 'allCupon'])->name('all.cupon');
     Route::get('/add-coupon', [CuponController::class, 'addCupon'])->name('add.cupon');
     Route::post('/store-coupon', [CuponController::class, 'storeCoupon'])->name('coupon.store');
-    Route::get('/edit-banner/{id}', [BannerController::class, 'editBanner'])->name('edit.banner');
-    Route::post('/update-banner/{id}', [BannerController::class, 'updateBanner'])->name('update.banner');
-    Route::get('/delete-banner/{id}', [BannerController::class, 'deleteBanner'])->name('delete.banner');
+    Route::get('/edit-coupon/{id}', [CuponController::class, 'editCoupon'])->name('edit.coupon');
+    Route::post('/update-coupon/{id}', [CuponController::class, 'updateCoupon'])->name('update.coupon');
+    Route::get('/delete-coupon/{id}', [CuponController::class, 'deleteCoupon'])->name('delete.coupon');
 });
 
 //Vendor Dashboard

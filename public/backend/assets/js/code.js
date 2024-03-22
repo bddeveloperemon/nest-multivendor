@@ -3,7 +3,7 @@ $(document).on("click", "#delete", function (e) {
     let link = $(this).attr("href");
     Swal.fire({
         title: "Are you sure?",
-        text: "You won't be able to revert this!",
+        text: "Deleted this data!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -14,7 +14,7 @@ $(document).on("click", "#delete", function (e) {
             window.location.href = link;
             Swal.fire({
                 title: "Deleted!",
-                text: "Your file has been deleted.",
+                text: "Your data has been deleted.",
                 icon: "success",
             });
         }
