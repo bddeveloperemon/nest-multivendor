@@ -54,10 +54,10 @@
                                 <p class="mb-30"><span class="font-lg text-muted">Using A Promo Code?</p>
                                 <form action="#">
                                     <div class="d-flex justify-content-between">
-                                        <input type="text" class="font-medium mr-15 coupon" id="Coupon_name"
+                                        <input class="font-medium mr-15 coupon" id="cupon_name"
                                             placeholder="Enter Your Coupon">
-                                        <button class="btn" type="submit" onclick="applyCoupon()"><i
-                                                class="fi-rs-label mr-10"></i>Apply</button>
+                                        <a class="btn btn-success" onclick="applyCoupon()" type="submit"><i
+                                                class="fi-rs-lable mr-10">Apply</i></a>
                                     </div>
                                 </form>
                             </div>
@@ -244,15 +244,16 @@
             })
         }
 
-        // view cart remove function
+        // apply coupon
         function applyCoupon() {
-            let coupon_name = $('#coupon_name').val();
+            let cupon_name = $('#cupon_name').val();
+            // console.log(cupon_name);
             $.ajax({
                 type: 'POST',
-                data: {
-                    coupon_name: $coupon_name
-                },
                 dataType: 'json',
+                data: {
+                    cupon_name: cupon_name
+                },
                 url: '/apply-coupon',
                 success: function(data) {
                     if (data.validity == true) {
