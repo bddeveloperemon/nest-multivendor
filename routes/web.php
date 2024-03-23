@@ -197,4 +197,5 @@ Route::get('/product/mini-cart/remove/{id}',[CartController::class,'miniCartProd
 Route::post('/add-to-wishlist/{product_id}',[WishlistController::class,'addToWishlist']); //add to wishlist product
 Route::post('/add-to-compare/{product_id}',[CompareController::class,'addToCompare']); //add to compare
 Route::post('/apply-coupon',[CartController::class,'couponApply']); //apply coupon
+Route::get('/coupon-calculation',[CartController::class,'couponCalculate']); //coupon calculate
 require __DIR__.'/auth.php';

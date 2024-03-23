@@ -177,4 +177,26 @@ class CartController extends Controller
         }
 
     }
+
+    // Coupon Calculation 
+    public function couponCalculate()
+    {
+        $carttotal = Cart::total(); 
+        $carttotal = str_replace(['$', ','], '', $carttotal);
+
+        if (Session::has('coupon')) {
+            
+            return response()->json([
+                'subtotal' => $carttotal,
+                'cupon_name' => session()->get('coupon')['cupon_name'],
+                'cupon_discount' => session()->get('coupon')['cupon_discount'],
+                'discount_amount' => session()->get('coupon')['discount_amount'],
+                'total_amount' => session()->get('coupon')['total_amount'],
+            ]);
+        }else{
+            return response()->json([
+                'total' => $carttotal
+            ]);
+        }
+    }
 }
