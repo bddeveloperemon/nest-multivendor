@@ -47,16 +47,21 @@
                 <div class="row mt-50">
 
                     <div class="col-lg-5">
-                        <div class="p-40">
-                            <h4 class="mb-10">Apply Coupon</h4>
-                            <p class="mb-30"><span class="font-lg text-muted">Using A Promo Code?</p>
-                            <form action="#">
-                                <div class="d-flex justify-content-between">
-                                    <input class="font-medium mr-15 coupon" name="Coupon" placeholder="Enter Your Coupon">
-                                    <button class="btn"><i class="fi-rs-label mr-10"></i>Apply</button>
-                                </div>
-                            </form>
-                        </div>
+                        @if (Session::has('coupon'))
+                        @else
+                            <div class="p-40" id="coupon_field">
+                                <h4 class="mb-10">Apply Coupon</h4>
+                                <p class="mb-30"><span class="font-lg text-muted">Using A Promo Code?</p>
+                                <form action="#">
+                                    <div class="d-flex justify-content-between">
+                                        <input type="text" class="font-medium mr-15 coupon" id="Coupon_name"
+                                            placeholder="Enter Your Coupon">
+                                        <button class="btn" type="submit" onclick="applyCoupon()"><i
+                                                class="fi-rs-label mr-10"></i>Apply</button>
+                                    </div>
+                                </form>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="col-lg-7">
@@ -181,7 +186,7 @@
         }
         viewCart();
 
-        // compare remove function
+        // view cart remove function
         function viewCartRemove(id) {
             $.ajax({
                 type: 'GET',
@@ -235,6 +240,43 @@
                 success: function(data) {
                     viewCart();
                     miniCart();
+                }
+            })
+        }
+
+        // view cart remove function
+        function applyCoupon() {
+            let coupon_name = $('#coupon_name').val();
+            $.ajax({
+                type: 'POST',
+                data: {
+                    coupon_name: $coupon_name
+                },
+                dataType: 'json',
+                url: '/apply-coupon',
+                success: function(data) {
+                    if (data.validity == true) {
+                        $('#coupon_field').hide();
+                    }
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            icon: "success",
+                            title: data.success,
+                        });
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            icon: "error",
+                            title: data.error,
+                        });
+                    }
                 }
             })
         }
