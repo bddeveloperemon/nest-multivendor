@@ -139,6 +139,14 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit-district/{id}', [ShippingAreaController::class, 'editDistrict'])->name('edit.district');
     Route::post('/update-district/{id}', [ShippingAreaController::class, 'updateDistrict'])->name('update.district');
     Route::get('/delete-district/{id}', [ShippingAreaController::class, 'deleteDistrict'])->name('delete.district');
+    // Shipping State Routes
+    Route::get('/state-list', [ShippingAreaController::class, 'allState'])->name('all.state');
+    Route::get('/add-state', [ShippingAreaController::class, 'addState'])->name('add.state');
+    Route::post('/store-state', [ShippingAreaController::class, 'storeState'])->name('store.state');
+    Route::get('/district-ajax/{division_id}', [ShippingAreaController::class, 'getDistrict']);
+    Route::get('/edit-state/{id}', [ShippingAreaController::class, 'editState'])->name('edit.state');
+    Route::post('/update-state/{id}', [ShippingAreaController::class, 'updateState'])->name('update.state');
+    Route::get('/delete-state/{id}', [ShippingAreaController::class, 'deleteState'])->name('delete.state');
 });
 
 //Vendor Dashboard

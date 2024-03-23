@@ -121,9 +121,9 @@
             <ul>
                 <li> <a href="{{ route('admin.all.division') }}"><i class="bx bx-right-arrow-alt"></i>All Division</a>
                 </li>
-                <li> <a href="{{ route('admin.all.district') }}"><i class="bx bx-right-arrow-alt"></i>Add District</a>
+                <li> <a href="{{ route('admin.all.district') }}"><i class="bx bx-right-arrow-alt"></i>All District</a>
                 </li>
-                <li> <a href="{{ route('admin.all.district') }}"><i class="bx bx-right-arrow-alt"></i>Add State</a>
+                <li> <a href="{{ route('admin.all.state') }}"><i class="bx bx-right-arrow-alt"></i>All State</a>
                 </li>
             </ul>
         </li>

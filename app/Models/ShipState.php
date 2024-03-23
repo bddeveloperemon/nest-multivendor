@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ShipDistrict;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ShipState extends Model
 {
@@ -14,4 +16,12 @@ class ShipState extends Model
      * @var array<string>
      */
     protected $guarded = [];
+    public function division(): BelongsTo
+    {
+        return $this->belongsTo(ShipDivision::class,'division_id','id');
+    }
+    public function district(): BelongsTo
+    {
+        return $this->belongsTo(ShipDistrict::class,'district_id','id');
+    }
 }

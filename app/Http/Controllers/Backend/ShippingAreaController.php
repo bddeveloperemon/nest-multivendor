@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Carbon\Carbon;
+use App\Models\ShipState;
 use App\Models\ShipDistrict;
 use App\Models\ShipDivision;
 use Illuminate\Http\Request;
@@ -115,4 +116,67 @@ class ShippingAreaController extends Controller
         return redirect()->route('admin.all.district');
     }
     //Ship District method end here
+
+    //Ship state method start here
+    public function allState()
+    {
+        $states = ShipState::with(['division','district'])->latest()->get();
+        return view('backend.ship.state.state-list', compact('states'));
+    }
+
+    public function addState()
+    {
+        $divisions = ShipDivision::select('id','division_name')->orderBy('division_name','asc')->get();
+        $districts = ShipDistrict::select('id','district_name')->orderBy('district_name','asc')->get();
+        return view('backend.ship.state.add_state',compact('divisions','districts'));
+    }
+
+    public function storeState(Request $request)
+    {
+        ShipState::insert([
+            'division_id' => $request->division_id,
+            'district_id' => $request->district_id,
+            'state_name' => $request->state_name,
+        ]);
+        toastr()->success('Ship State Inserted Successfully');
+        return redirect()->route('admin.all.state');
+    }
+
+    public function editState($id)
+    {
+        $state = ShipState::find($id);
+        $divisions = ShipDivision::select('id','division_name')->orderBy('division_name','asc')->get();
+        $districts = ShipDistrict::select('id','district_name')->orderBy('district_name','asc')->get();
+        return view('backend.ship.state.edit_state',compact('state','divisions','districts'));
+    }
+
+    public function updateState(Request $request, $id)
+    {
+        $district = ShipState::find($id);
+        
+            $district->update([
+                'division_id' => $request->division_id,
+                'district_id' => $request->district_id,
+                'state_name' => $request->state_name,
+                'updated_at' => Carbon::now()
+            ]);
+        toastr()->success('State Updated Successfully');
+        return redirect()->route('admin.all.state');
+    }
+
+    public function deleteState($id)
+    {
+        $state = ShipState::find($id);
+        $state->delete();
+        toastr()->success('Ship State Deleted Successfully');
+        return redirect()->route('admin.all.state');
+    }
+
+    // state dependencies method
+    public function getDistrict($division_id)
+    {
+        $district_name = ShipDistrict::where('division_id',$division_id)->orderBy('district_name','asc')->get();
+        return response()->json($district_name);
+    }
+    //Ship state method end here
 }
