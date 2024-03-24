@@ -153,6 +153,7 @@
                 success: function(data) {
                     viewCart();
                     miniCart();
+                    couponCalculation();
                     const Toast = Swal.mixin({
                         toast: true,
                         position: "top-end",
@@ -183,9 +184,9 @@
                 url: "/cart-decrement/" + id,
                 dataType: 'json',
                 success: function(data) {
+                    couponCalculation();
                     viewCart();
                     miniCart();
-                    couponCalculation();
                 }
             })
         }
@@ -197,9 +198,9 @@
                 url: "/cart-increment/" + id,
                 dataType: 'json',
                 success: function(data) {
+                    couponCalculation();
                     viewCart();
                     miniCart();
-                    couponCalculation();
                 }
             })
         }
@@ -257,7 +258,7 @@
                                     <h6 class="text-muted">Subtotal</h6>
                                 </td>
                                 <td class="cart_total_amount">
-                                    <h4 class="text-brand text-end">ট ${data.total}.00</h4>
+                                    <h4 class="text-brand text-end">ট ${data.total}</h4>
                                 </td>
                             </tr>
                             <tr>
@@ -265,7 +266,7 @@
                                     <h6 class="text-muted">Total</h6>
                                 </td>
                                 <td class="cart_total_amount">
-                                    <h4 class="text-brand text-end">ট ${data.total}.00</h4>
+                                    <h4 class="text-brand text-end">ট ${data.total}</h4>
                                 </td>
                             </tr>`
                         );
