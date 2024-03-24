@@ -185,6 +185,7 @@
                 success: function(data) {
                     viewCart();
                     miniCart();
+                    couponCalculation();
                 }
             })
         }
@@ -198,6 +199,7 @@
                 success: function(data) {
                     viewCart();
                     miniCart();
+                    couponCalculation();
                 }
             })
         }
@@ -282,7 +284,7 @@
                                     <h6 class="text-muted">Coupon</h6>
                                 </td>
                                 <td class="cart_total_amount">
-                                    <h5 class="text-brand text-end">${data.cupon_name} <a><i class="fi-rs-trash"></i></a></h5>
+                                    <h5 class="text-brand text-end">${data.cupon_name} <a onclick="removeCoupon()" type="submit"><i class="fi-rs-trash"></i></a></h5>
                                 </td>
                             </tr>
                             <tr>
@@ -307,5 +309,38 @@
             })
         }
         couponCalculation();
+
+        // Remove Coupon 
+        function removeCoupon() {
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: '/remove-coupon',
+                success: function(data) {
+                    couponCalculation();
+                    $('#couponCalField').show();
+                    $('#coupon_field').show();
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            icon: "success",
+                            title: data.success,
+                        });
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            icon: "error",
+                            title: data.error,
+                        });
+                    }
+                }
+            })
+        }
     </script>
 @endpush

@@ -199,4 +199,12 @@ class CartController extends Controller
             ]);
         }
     }
+
+
+    // Coupon Remove
+    public function removeCoupon()
+    {
+        Session::forget('coupon');
+        return response()->json(['success' => 'Coupon Remove Successfully']);
+    }
 }
