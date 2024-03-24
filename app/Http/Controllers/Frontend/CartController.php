@@ -7,6 +7,7 @@ use App\Models\Cupon;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -113,7 +114,8 @@ class CartController extends Controller
     // My Cart Function
     public function myCart()
     {
-        return view('frontend.mycart.view_cart');
+        $products = Cart::count();
+        return view('frontend.mycart.view_cart',compact('products'));
     }
 
     // get cart product function 
@@ -232,5 +234,26 @@ class CartController extends Controller
     {
         Session::forget('coupon');
         return response()->json(['success' => 'Coupon Remove Successfully']);
+    }
+
+
+    // checkout
+    public function checkout()
+    {
+        if(Auth::check()){
+            if (Cart::total() > 0) {
+                $carts = Cart::content();
+                $cartqty = Cart::count();
+                $cartTotal = Cart::total();
+
+                return view('frontend.checkout.checkout',compact('carts','cartqty','cartTotal'));
+            }else{
+                toastr()->error('Shopping At List One Product!');
+                return redirect()->to('/');
+            }
+        }else{
+            toastr()->error('You need to Login first!');
+            return redirect()->route('login');
+        }
     }
 }

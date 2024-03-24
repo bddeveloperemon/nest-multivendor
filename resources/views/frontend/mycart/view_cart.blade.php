@@ -17,7 +17,8 @@
             <div class="col-lg-8 mb-40">
                 <h1 class="heading-2 mb-10">Your Cart</h1>
                 <div class="d-flex justify-content-between">
-                    <h6 class="text-body">There are <span class="text-brand"></span> products in your cart</h6>
+                    <h6 class="text-body">There are <span class="text-brand">{{ $products }}</span> products in your
+                        cart</h6>
                 </div>
             </div>
         </div>
@@ -74,7 +75,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="#" class="btn mb-20 w-100">Proceed To CheckOut<i
+                            <a href="{{ route('checkout') }}" class="btn mb-20 w-100">Proceed To CheckOut<i
                                     class="fi-rs-sign-out ml-15"></i></a>
                         </div>
                     </div>

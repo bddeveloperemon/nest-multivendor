@@ -199,4 +199,5 @@ Route::post('/add-to-compare/{product_id}',[CompareController::class,'addToCompa
 Route::post('/apply-coupon',[CartController::class,'couponApply']); //apply coupon
 Route::get('/coupon-calculation',[CartController::class,'couponCalculate']); //coupon calculate
 Route::get('/remove-coupon',[CartController::class,'removeCoupon']); // remove coupon
+Route::get('/checkout',[CartController::class,'checkout'])->name('checkout'); //checkout routes;
 require __DIR__.'/auth.php';
