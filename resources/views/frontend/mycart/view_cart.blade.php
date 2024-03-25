@@ -320,7 +320,7 @@
                 url: '/remove-coupon',
                 success: function(data) {
                     couponCalculation();
-                    $('#couponCalField').show();
+                    // $('#couponCalField').show();
                     $('#coupon_field').show();
                     const Toast = Swal.mixin({
                         toast: true,
