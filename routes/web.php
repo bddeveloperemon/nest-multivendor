@@ -2,6 +2,7 @@
 
 use App\Models\Banner;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CuponController;
@@ -59,6 +60,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/district-ajax/{division_id}', [CheckoutController::class, 'getDistrict']);
     Route::get('/state-ajax/{district_id}', [CheckoutController::class, 'getState']);
     Route::post('/checkout-payment', [CheckoutController::class, 'storeCheckout'])->name('checkout.store');
+    //Stripe routes
+    Route::post('/stripe-order', [StripeController::class, 'stripeOrder'])->name('stripe.order');
 });
 
 //Admin Dashboard
