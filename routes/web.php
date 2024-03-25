@@ -7,16 +7,17 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CuponController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\Admin\AdminController;
+use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Admin\SubCategoryController;
-use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\Vendor\VendorProductController;
 
 /*
@@ -54,6 +55,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart-remove/{id}',[CartController::class,'myCartRemove']);
     Route::get('/cart-decrement/{id}',[CartController::class,'cartDecrement']);
     Route::get('/cart-increment/{id}',[CartController::class,'cartIncrement']);
+    //Checkout routes
+    Route::get('/district-ajax/{division_id}', [CheckoutController::class, 'getDistrict']);
+    Route::get('/state-ajax/{district_id}', [CheckoutController::class, 'getState']);
 });
 
 //Admin Dashboard

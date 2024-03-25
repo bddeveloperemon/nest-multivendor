@@ -55,14 +55,7 @@
                         <div class="row shipping_calculator">
                             <div class="form-group col-lg-6">
                                 <div class="custom_select">
-                                    <select class="form-control select-active">
-                                        <option value="">Select an option...</option>
-                                        <option value="AX">Aland Islands</option>
-                                        <option value="AF">Afghanistan</option>
-                                        <option value="AL">Albania</option>
-                                        <option value="DZ">Algeria</option>
-                                        <option value="AD">Andorra</option>
-
+                                    <select name="district_id" class="form-control">
                                     </select>
                                 </div>
                             </div>
@@ -74,13 +67,7 @@
                         <div class="row shipping_calculator">
                             <div class="form-group col-lg-6">
                                 <div class="custom_select">
-                                    <select class="form-control select-active">
-                                        <option value="">Select an option...</option>
-                                        <option value="AX">Aland Islands</option>
-                                        <option value="AF">Afghanistan</option>
-                                        <option value="AL">Albania</option>
-                                        <option value="DZ">Algeria</option>
-                                        <option value="AD">Andorra</option>
+                                    <select name="state_id" class="form-control">
 
                                     </select>
                                 </div>
@@ -230,3 +217,56 @@
         </div>
     </div>
 @endsection
+@push('script')
+    <script>
+        //district dependencis
+        $(document).ready(function() {
+            $('select[name="division_id"]').on('change', function() {
+                let division_id = $(this).val();
+                if (division_id) {
+                    $.ajax({
+                        url: "{{ url('/district-ajax') }}/" + division_id,
+                        type: "GET",
+                        dataType: 'json',
+                        success: function(data) {
+                            $('select[name="district_id"]').html();
+                            $('select[name="district_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="district_id"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .district_name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
+
+        //district dependencis
+        $(document).ready(function() {
+            $('select[name="district_id"]').on('change', function() {
+                let district_id = $(this).val();
+                if (district_id) {
+                    $.ajax({
+                        url: "{{ url('/state-ajax') }}/" + district_id,
+                        type: "GET",
+                        dataType: 'json',
+                        success: function(data) {
+                            $('select[name="state_id"]').html();
+                            $('select[name="state_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="state_id"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .state_name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
+    </script>
+@endpush

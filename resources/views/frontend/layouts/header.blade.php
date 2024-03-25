@@ -148,7 +148,7 @@
                                 </div>
                             </div>
                             <div class="header-action-icon-2">
-                                <a href="page-account.html">
+                                <a href="{{ route('dashboard') }}">
                                     <img class="svgInject" alt="Nest"
                                         src="{{ asset('frontend/assets/imgs/theme/icons/icon-user.svg') }}" />
                                 </a>
