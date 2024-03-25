@@ -58,7 +58,7 @@ Route::middleware('auth')->group(function () {
     //Checkout routes
     Route::get('/district-ajax/{division_id}', [CheckoutController::class, 'getDistrict']);
     Route::get('/state-ajax/{district_id}', [CheckoutController::class, 'getState']);
-    Route::post('/checkout-store', [CheckoutController::class, 'storeCheckout'])->name('checkout.store');
+    Route::post('/checkout-payment', [CheckoutController::class, 'storeCheckout'])->name('checkout.store');
 });
 
 //Admin Dashboard
