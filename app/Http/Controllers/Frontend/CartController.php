@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use Carbon\Carbon;
 use App\Models\Cupon;
 use App\Models\Product;
+use App\Models\ShipDivision;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -246,8 +247,9 @@ class CartController extends Controller
                 $cartqty = Cart::count();
                 $cartTotal = Cart::total(); 
                 $cartTotal = str_replace(['$', ','], '', $cartTotal);
+                $divisions = ShipDivision::orderBy('division_name','asc')->get();
 
-                return view('frontend.checkout.checkout',compact('carts','cartqty','cartTotal'));
+                return view('frontend.checkout.checkout',compact('carts','cartqty','cartTotal','divisions'));
             }else{
                 toastr()->error('Shopping At List One Product!');
                 return redirect()->to('/');

@@ -28,47 +28,27 @@
                     <form method="post">
                         <div class="row">
                             <div class="form-group col-lg-6">
-                                <input type="text" required="" name="fname" placeholder="User Name *">
+                                <input type="text" required="" name="shipping_name" value="{{ Auth::user()->name }}">
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="email" required="" name="lname" placeholder="Email *">
+                                <input type="email" required="" name="shipping_email"
+                                    value="{{ Auth::user()->email }}">
                             </div>
                         </div>
                         <div class="row shipping_calculator">
                             <div class="form-group col-lg-6">
                                 <div class="custom_select">
-                                    <select class="form-control select-active">
-                                        <option value="">Select an option...</option>
-                                        <option value="AX">Aland Islands</option>
-                                        <option value="AF">Afghanistan</option>
-                                        <option value="AL">Albania</option>
-                                        <option value="DZ">Algeria</option>
-                                        <option value="AD">Andorra</option>
-
+                                    <select name="division_id" class="form-control select-active">
+                                        <option value="">Select Division...</option>
+                                        @foreach ($divisions as $division)
+                                            <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input required="" type="text" name="city" placeholder="Phone*">
-                            </div>
-                        </div>
-
-                        <div class="row shipping_calculator">
-                            <div class="form-group col-lg-6">
-                                <div class="custom_select">
-                                    <select class="form-control select-active">
-                                        <option value="">Select an option...</option>
-                                        <option value="AX">Aland Islands</option>
-                                        <option value="AF">Afghanistan</option>
-                                        <option value="AL">Albania</option>
-                                        <option value="DZ">Algeria</option>
-                                        <option value="AD">Andorra</option>
-
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input required="" type="text" name="city" placeholder="Post Code *">
+                                <input required="" type="text" name="shipping_phone"
+                                    value="{{ Auth::user()->phone }}">
                             </div>
                         </div>
 
@@ -87,12 +67,32 @@
                                 </div>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input required="" type="text" name="city" placeholder="Address *">
+                                <input required="" type="number" name="post_code" placeholder="Post Code *">
+                            </div>
+                        </div>
+
+                        <div class="row shipping_calculator">
+                            <div class="form-group col-lg-6">
+                                <div class="custom_select">
+                                    <select class="form-control select-active">
+                                        <option value="">Select an option...</option>
+                                        <option value="AX">Aland Islands</option>
+                                        <option value="AF">Afghanistan</option>
+                                        <option value="AL">Albania</option>
+                                        <option value="DZ">Algeria</option>
+                                        <option value="AD">Andorra</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <input required="" type="text" name="shipping_address"
+                                    value="{{ Auth::user()->address }}">
                             </div>
                         </div>
 
                         <div class="form-group mb-30">
-                            <textarea rows="5" placeholder="Additional information"></textarea>
+                            <textarea rows="5" placeholder="Additional information" name="notes"></textarea>
                         </div>
 
                     </form>
