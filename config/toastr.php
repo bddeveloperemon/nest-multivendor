@@ -5,7 +5,7 @@ return [
         "closeButton" => true,
         "debug" => false,
         "newestOnTop" => false,
-        "progressBar" => false,
+        "progressBar" => true,
         "positionClass" => "toast-top-right",
         "preventDuplicates" => false,
         "onclick" => null,

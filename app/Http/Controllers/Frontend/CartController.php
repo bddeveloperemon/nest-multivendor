@@ -244,7 +244,8 @@ class CartController extends Controller
             if (Cart::total() > 0) {
                 $carts = Cart::content();
                 $cartqty = Cart::count();
-                $cartTotal = Cart::total();
+                $cartTotal = Cart::total(); 
+                $cartTotal = str_replace(['$', ','], '', $cartTotal);
 
                 return view('frontend.checkout.checkout',compact('carts','cartqty','cartTotal'));
             }else{
