@@ -230,7 +230,7 @@
                         type: "GET",
                         dataType: 'json',
                         success: function(data) {
-                            $('select[name="district_id"]').html();
+                            $('select[name="state_id"]').html();
                             $('select[name="district_id"]').empty();
                             $.each(data, function(key, value) {
                                 $('select[name="district_id"]').append(

@@ -17,6 +17,9 @@ class CartController extends Controller
     // product add to cart
     public function addToCart(Request $request, $id)
     {        
+        if (Session::has('coupon')) {
+            Session::forget('coupon');
+        }
         $product = Product::findOrFail($id);
         if($product->discount_price == NULL)
         {
@@ -55,6 +58,9 @@ class CartController extends Controller
     // product add to cart
     public function addToCartDetails(Request $request, $id)
     {        
+        if (Session::has('coupon')) {
+            Session::forget('coupon');
+        }
         $product = Product::findOrFail($id);
         if($product->discount_price == NULL)
         {
@@ -138,6 +144,19 @@ class CartController extends Controller
     public function myCartRemove($id)
     {
         Cart::remove($id);
+        if (Session::has('coupon')) {
+            $coupon_name = Session::get('coupon')['cupon_name'];
+            $coupon = Cupon::where('cupon_name',$coupon_name)->first();
+            $carttotal = Cart::total(); 
+            $carttotal = str_replace(['$', ','], '', $carttotal);
+            $cupon_discount = (int)$coupon->cupon_discount;
+            Session::put('coupon', [
+                'cupon_name' => $coupon->cupon_name,
+                'cupon_discount' => $cupon_discount,
+                'discount_amount' => round($carttotal * $cupon_discount / 100),
+                'total_amount' => round($carttotal - $carttotal * $cupon_discount / 100),
+            ]);
+        }
         return response()->json(['success' => 'Product Remove Successfully']);
     }
 
