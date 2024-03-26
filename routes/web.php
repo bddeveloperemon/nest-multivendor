@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\Vendor\VendorController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Admin\SubCategoryController;
 use App\Http\Controllers\Backend\Vendor\VendorProductController;
+use App\Http\Controllers\User\CashonDeliveryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,8 +61,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/district-ajax/{division_id}', [CheckoutController::class, 'getDistrict']);
     Route::get('/state-ajax/{district_id}', [CheckoutController::class, 'getState']);
     Route::post('/checkout-payment', [CheckoutController::class, 'storeCheckout'])->name('checkout.store');
-    //Stripe routes
+    //Stripe route
     Route::post('/stripe-order', [StripeController::class, 'stripeOrder'])->name('stripe.order');
+    //Cash route
+    Route::post('/cash-on-delivery/order', [CashonDeliveryController::class, 'cashOrder'])->name('cash.order');
 });
 
 //Admin Dashboard
