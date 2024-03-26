@@ -24,30 +24,32 @@ class CartController extends Controller
         if($product->discount_price == NULL)
         {
             Cart::add([
-                'id' => $id,
-                'name' => $request->product_name,
-                'qty' => $request->qty,
-                'price' => $product->selling_price,
-                'weight' => 1,
+                'id'      => $id,
+                'name'    => $request->product_name,
+                'qty'     => $request->qty,
+                'price'   => $product->selling_price,
+                'weight'  => 1,
                 'options' => [
-                    'image' => $product->product_thambnail,
-                    'color'=> $request->color,
-                    'size'=> $request->size,
+                    'image'     => $product->product_thambnail,
+                    'color'     => $request->color,
+                    'size'      => $request->size,
+                    'vendor_id' => $request->vendor_id,
                 ],
             ]);
             
             return response()->json(['success'=> 'Product Added On Your Cart']);
         }else{
             Cart::add([
-                'id' => $id,
-                'name' => $request->product_name,
-                'qty' => $request->qty,
-                'price' => $product->discount_price,
-                'weight' => 1,
+                'id'      => $id,
+                'name'    => $request->product_name,
+                'qty'     => $request->qty,
+                'price'   => $product->discount_price,
+                'weight'  => 1,
                 'options' => [
-                    'image' => $product->product_thambnail,
-                    'color'=> $request->color,
-                    'size'=> $request->size,
+                    'image'     => $product->product_thambnail,
+                    'color'     => $request->color,
+                    'size'      => $request->size,
+                    'vendor_id' => $request->vendor_id,
                 ],
             ]);
             
@@ -65,30 +67,32 @@ class CartController extends Controller
         if($product->discount_price == NULL)
         {
             Cart::add([
-                'id' => $id,
-                'name' => $request->product_name,
-                'qty' => $request->qty,
-                'price' => $product->selling_price,
-                'weight' => 1,
+                'id'      => $id,
+                'name'    => $request->product_name,
+                'qty'     => $request->qty,
+                'price'   => $product->selling_price,
+                'weight'  => 1,
                 'options' => [
                     'image' => $product->product_thambnail,
-                    'color'=> $request->color,
-                    'size'=> $request->size,
+                    'color' => $request->color,
+                    'size'  => $request->size,
+                    'vendor'  => $request->vendor
                 ],
             ]);
             
             return response()->json(['success'=> 'Product Added On Your Cart']);
         }else{
             Cart::add([
-                'id' => $id,
-                'name' => $request->product_name,
-                'qty' => $request->qty,
-                'price' => $product->discount_price,
-                'weight' => 1,
+                'id'      => $id,
+                'name'    => $request->product_name,
+                'qty'     => $request->qty,
+                'price'   => $product->discount_price,
+                'weight'  => 1,
                 'options' => [
                     'image' => $product->product_thambnail,
-                    'color'=> $request->color,
-                    'size'=> $request->size,
+                    'color' => $request->color,
+                    'size'  => $request->size,
+                    'vendor'  => $request->vendor
                 ],
             ]);
             
@@ -105,8 +109,8 @@ class CartController extends Controller
         $cartTotal = Cart::total();
 
         return response()->json([
-            'carts' => $carts,
-            'cartqty' => $cartqty,
+            'carts'     => $carts,
+            'cartqty'   => $cartqty,
             'cartTotal' => $cartTotal
         ]);
     }
@@ -145,16 +149,16 @@ class CartController extends Controller
     {
         Cart::remove($id);
         if (Session::has('coupon')) {
-            $coupon_name = Session::get('coupon')['cupon_name'];
-            $coupon = Cupon::where('cupon_name',$coupon_name)->first();
-            $carttotal = Cart::total(); 
-            $carttotal = str_replace(['$', ','], '', $carttotal);
+            $coupon_name    = Session::get('coupon')['cupon_name'];
+            $coupon         = Cupon::where('cupon_name',$coupon_name)->first();
+            $carttotal      = Cart::total();
+            $carttotal      = str_replace(['$', ','], '', $carttotal);
             $cupon_discount = (int)$coupon->cupon_discount;
             Session::put('coupon', [
-                'cupon_name' => $coupon->cupon_name,
-                'cupon_discount' => $cupon_discount,
+                'cupon_name'      => $coupon->cupon_name,
+                'cupon_discount'  => $cupon_discount,
                 'discount_amount' => round($carttotal * $cupon_discount / 100),
-                'total_amount' => round($carttotal - $carttotal * $cupon_discount / 100),
+                'total_amount'    => round($carttotal - $carttotal * $cupon_discount / 100),
             ]);
         }
         return response()->json(['success' => 'Product Remove Successfully']);
@@ -207,14 +211,14 @@ class CartController extends Controller
     {
         $coupon = Cupon::where('cupon_name',$request->cupon_name)->where('cupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
         if($coupon){
-            $carttotal = Cart::total(); 
-            $carttotal = str_replace(['$', ','], '', $carttotal);
+            $carttotal      = Cart::total();
+            $carttotal      = str_replace(['$', ','], '', $carttotal);
             $cupon_discount = (int)$coupon->cupon_discount;
             Session::put('coupon', [
-                'cupon_name' => $coupon->cupon_name,
-                'cupon_discount' => $cupon_discount,
+                'cupon_name'      => $coupon->cupon_name,
+                'cupon_discount'  => $cupon_discount,
                 'discount_amount' => round($carttotal * $cupon_discount / 100),
-                'total_amount' => round($carttotal - $carttotal * $cupon_discount / 100),
+                'total_amount'    => round($carttotal - $carttotal * $cupon_discount / 100),
             ]);
             return response()->json([
                 'validity'=> true,
@@ -235,11 +239,11 @@ class CartController extends Controller
         if (Session::has('coupon')) {
             
             return response()->json([
-                'subtotal' => $carttotal,
-                'cupon_name' => session()->get('coupon')['cupon_name'],
-                'cupon_discount' => session()->get('coupon')['cupon_discount'],
+                'subtotal'        => $carttotal,
+                'cupon_name'      => session()->get('coupon')['cupon_name'],
+                'cupon_discount'  => session()->get('coupon')['cupon_discount'],
                 'discount_amount' => session()->get('coupon')['discount_amount'],
-                'total_amount' => session()->get('coupon')['total_amount'],
+                'total_amount'    => session()->get('coupon')['total_amount'],
             ]);
         }else{
             return response()->json([
@@ -262,9 +266,9 @@ class CartController extends Controller
     {
         if(Auth::check()){
             if (Cart::total() > 0) {
-                $carts = Cart::content();
-                $cartqty = Cart::count();
-                $cartTotal = Cart::total(); 
+                $carts     = Cart::content();
+                $cartqty   = Cart::count();
+                $cartTotal = Cart::total();
                 $cartTotal = str_replace(['$', ','], '', $cartTotal);
                 $divisions = ShipDivision::orderBy('division_name','asc')->get();
 

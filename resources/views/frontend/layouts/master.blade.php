@@ -86,7 +86,7 @@
                 url: '/product/view/modal/' + id,
                 dataType: 'json',
                 success: function(data) {
-                    // console.log(data);
+                    console.log(data);
                     $('#pName').text(data.product.product_name);
                     $('#pCategory').text(data.product.category.category_name);
                     $('#pBrand').text(data.product.brand.brand_name);
@@ -94,6 +94,8 @@
                     $('#pCode').text(data.product.product_code);
                     $('#pImage').attr('src', "{{ asset('upload/product_images/thambnail') }}/" + data.product
                         .product_thambnail);
+                    $('#pVendor_id').text(data.product.vendor_id);
+
                     $('#product_id').val(id);
                     $('#qty').val(1);
                     // price
@@ -143,6 +145,7 @@
         function addToCart() {
             var product_name = $('#pName').text();
             var id = $('#product_id').val();
+            let vendor_id = $('#pVendor_id').text();
             var color = $('#color_area option:selected').text();
             var size = $('#size_area option:selected').text();
             var qty = $('#qty').val();
@@ -151,10 +154,11 @@
                 type: 'POST',
                 dataType: 'json',
                 data: {
-                    product_name: product_name,
                     color: color,
                     size: size,
                     qty: qty,
+                    product_name: product_name,
+                    vendor_id: vendor_id
                 },
                 url: '/add-to-cart/store/' + id,
                 success: function(data) {
@@ -186,7 +190,8 @@
         function addToCartDetails() {
             var product_name = $('#dpName').text();
             var id = $('#dproduct_id').val();
-            var color = $('#color_area option:selected').text();
+            var vendor = $('#vproduct_id').val();
+            var color = $('#dcolor_area option:selected').text();
             var size = $('#dsize_area option:selected').text();
             var qty = $('#dqty').val();
 
@@ -198,6 +203,7 @@
                     color: color,
                     size: size,
                     qty: qty,
+                    vendor: vendor
                 },
                 url: '/add-to-cart/details/store/' + id,
                 success: function(data) {
@@ -242,11 +248,11 @@
                         miniCart += `<ul>
                                         <li>
                                             <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="${value.name}"
+                                                <a href="#"><img alt="${value.name}"
                                                     src="{{ asset('upload/product_images/thambnail') }}/${value.options.image}" style="width:50px; height:50px;" /></a>
                                             </div>
                                             <div class="shopping-cart-title" style="margin: -73px 74px 14px; width:146px;">
-                                                <h4><a href="shop-product-right.html">${value.name}</a></h4>
+                                                <h4><a href="#">${value.name}</a></h4>
                                                 <h4><span>${value.qty} × </span>ট ${value.price}</h4>
                                             </div>
                                             <div class="shopping-cart-delete" style="margin: -85px 1px 0;">
