@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\Admin\AdminController;
+use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\User\CashonDeliveryController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
@@ -182,6 +183,8 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
     Route::get('/product/inactive/{id}', [VendorProductController::class, 'vendorProductInactive'])->name('product.inactive');
     Route::get('/product/active/{id}', [VendorProductController::class, 'vendorProductActive'])->name('product.active');
     Route::get('/delete/product/{id}', [VendorProductController::class, 'vendorProductDelete'])->name('product.delete');
+    // Vendor Order routes
+    Route::get('/order', [VendorOrderController::class, 'vendorOrder'])->name('order');
 });
 
 Route::middleware(['auth','role:admin'])->group(function(){

@@ -1,17 +1,17 @@
-@extends('backend.admin.dashboard')
-@section('admin_title')
-    Pending Orders
+@extends('backend.vendor.dashboard')
+@section('vendor_title')
+    Vendor Orders
 @endsection
-@section('admin_content')
+@section('vendor_content')
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">All Pending Order</div>
+        <div class="breadcrumb-title pe-3">All Vendor Pending Order</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">All Pending Order</li>
+                    <li class="breadcrumb-item active" aria-current="page">Vendor Pending Order</li>
                 </ol>
             </nav>
         </div>
@@ -41,15 +41,16 @@
                                     @php
                                         $i = 1;
                                     @endphp
-                                    @foreach ($orders as $order)
+                                    @foreach ($orderItems as $order)
                                         <tr role="row" class="odd">
                                             <td class="sorting_1">{{ $i++ }}</td>
-                                            <td>{{ $order->order_date }}</td>
-                                            <td>{{ $order->invoice_no }}</td>
-                                            <td>${{ $order->amount }}</td>
-                                            <td>{{ $order->payment_method }}</td>
+                                            <td>{{ $order->order->order_date }}</td>
+                                            <td>{{ $order->order->invoice_no }}</td>
+                                            <td>${{ $order->order->amount }}</td>
+                                            <td>{{ $order->order->payment_method }}</td>
                                             <td>
-                                                <span class="badge rounded-pill bg-success">{{ $order->status }}</span>
+                                                <span
+                                                    class="badge rounded-pill bg-success">{{ $order->order->status }}</span>
                                             </td>
                                             <td>
                                                 <a href="" class="btn btn-info btn-sm" title="details"><i
