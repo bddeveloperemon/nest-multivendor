@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\Banner;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CuponController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\User\CheckoutController;
@@ -15,12 +15,12 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\Admin\AdminController;
+use App\Http\Controllers\User\CashonDeliveryController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Admin\SubCategoryController;
 use App\Http\Controllers\Backend\Vendor\VendorProductController;
-use App\Http\Controllers\User\CashonDeliveryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -158,6 +158,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit-state/{id}', [ShippingAreaController::class, 'editState'])->name('edit.state');
     Route::post('/update-state/{id}', [ShippingAreaController::class, 'updateState'])->name('update.state');
     Route::get('/delete-state/{id}', [ShippingAreaController::class, 'deleteState'])->name('delete.state');
+    // Pending Order Routes
+    Route::get('/pending-order', [OrderController::class, 'pendingOrder'])->name('pending.order');
 });
 
 //Vendor Dashboard
