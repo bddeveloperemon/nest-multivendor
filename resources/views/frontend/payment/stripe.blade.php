@@ -5,9 +5,9 @@
 @push('style')
     <style>
         /**
-                             * The CSS shown here will not be introduced in the Quickstart guide, but shows
-                             * how you can use CSS to style your Element's container.
-                             */
+            * The CSS shown here will not be introduced in the Quickstart guide, but shows
+            * how you can use CSS to style your Element's container.
+            */
         .StripeElement {
             box-sizing: border-box;
             height: 40px;
@@ -64,7 +64,7 @@
                                             <h6 class="text-muted">Subtotal</h6>
                                         </td>
                                         <td class="cart_total_amount">
-                                            <h4 class="text-brand text-end">ট{{ $cartTotal }}</h4>
+                                            <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
                                         </td>
                                     </tr>
                                     <tr>
@@ -82,7 +82,7 @@
                                         </td>
                                         <td class="cart_total_amount">
                                             <h4 class="text-brand text-end">
-                                                ট{{ session()->get('coupon')['discount_amount'] }}</h4>
+                                                ${{ session()->get('coupon')['discount_amount'] }}</h4>
                                         </td>
                                     </tr>
                                     <tr>
@@ -90,7 +90,7 @@
                                             <h6 class="text-muted">Grand Total</h6>
                                         </td>
                                         <td class="cart_total_amount">
-                                            <h4 class="text-brand text-end">ট{{ session()->get('coupon')['total_amount'] }}
+                                            <h4 class="text-brand text-end">${{ session()->get('coupon')['total_amount'] }}
                                             </h4>
                                         </td>
                                     </tr>
@@ -100,7 +100,7 @@
                                             <h6 class="text-muted">Subtotal</h6>
                                         </td>
                                         <td class="cart_total_amount">
-                                            <h4 class="text-brand text-end">ট{{ $cartTotal }}</h4>
+                                            <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
                                         </td>
                                     </tr>
                                     <tr>
@@ -108,7 +108,7 @@
                                             <h6 class="text-muted">Grand Total</h6>
                                         </td>
                                         <td class="cart_total_amount">
-                                            <h4 class="text-brand text-end">ট{{ $cartTotal }}</h4>
+                                            <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
                                         </td>
                                     </tr>
                                 @endif

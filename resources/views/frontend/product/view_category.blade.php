@@ -124,12 +124,12 @@
                                     </div>
                                     <div class="product-card-bottom">
                                         @if ($product->discount_price == null)
-                                            <span><small>ট</small>{{ $product->selling_price }}</span>
+                                            <span><small>$</small>{{ $product->selling_price }}</span>
                                         @else
                                             <div class="product-price">
-                                                <span><small>ট</small>{{ $product->discount_price }}</span>
+                                                <span><small>$</small>{{ $product->discount_price }}</span>
                                                 <span
-                                                    class="old-price"><small>ট</small>{{ $product->selling_price }}</span>
+                                                    class="old-price"><small>$</small>{{ $product->selling_price }}</span>
                                             </div>
                                         @endif
 
@@ -199,10 +199,10 @@
                                         href="{{ url('/product/details/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
                                 </p>
                                 @if ($product->discount_price == null)
-                                    <p class="price mb-0 mt-5">ট{{ $product->selling_price }}</p>
+                                    <p class="price mb-0 mt-5">${{ $product->selling_price }}</p>
                                 @else
                                 @endif
-                                <p class="price mb-0 mt-5">ট{{ $product->discount_price }}</p>
+                                <p class="price mb-0 mt-5">${{ $product->discount_price }}</p>
                                 <div class="product-rate">
                                     <div class="product-rating" style="width: 90%"></div>
                                 </div>

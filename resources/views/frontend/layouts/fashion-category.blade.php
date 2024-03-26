@@ -64,12 +64,12 @@
                                     </div>
                                     <div class="product-card-bottom">
                                         @if ($product->discount_price == null)
-                                            <span><small>ট</small>{{ $product->selling_price }}</span>
+                                            <span><small>$</small>{{ $product->selling_price }}</span>
                                         @else
                                             <div class="product-price">
-                                                <span><small>ট</small>{{ $product->discount_price }}</span>
+                                                <span><small>$</small>{{ $product->discount_price }}</span>
                                                 <span
-                                                    class="old-price"><small>ট</small>{{ $product->selling_price }}</span>
+                                                    class="old-price"><small>$</small>{{ $product->selling_price }}</span>
                                             </div>
                                         @endif
 

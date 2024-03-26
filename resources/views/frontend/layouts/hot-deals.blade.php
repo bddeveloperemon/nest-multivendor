@@ -23,11 +23,11 @@
                                     </div>
                                 </div>
                                 @if ($hot_deal->discount_price == null)
-                                    <span><small>ট</small>{{ $hot_deal->selling_price }}</span>
+                                    <span><small>$</small>{{ $hot_deal->selling_price }}</span>
                                 @else
                                     <div class="product-price">
-                                        <span><small>ট</small>{{ $hot_deal->discount_price }}</span>
-                                        <span class="old-price"><small>ট</small>{{ $hot_deal->selling_price }}</span>
+                                        <span><small>$</small>{{ $hot_deal->discount_price }}</span>
+                                        <span class="old-price"><small>$</small>{{ $hot_deal->selling_price }}</span>
                                     </div>
                                 @endif
                             </div>
@@ -58,12 +58,12 @@
                                     </div>
                                 </div>
                                 @if ($special_offer->discount_price == null)
-                                    <span><small>ট</small>{{ $special_offer->selling_price }}</span>
+                                    <span><small>$</small>{{ $special_offer->selling_price }}</span>
                                 @else
                                     <div class="product-price">
-                                        <span><small>ট</small>{{ $special_offer->discount_price }}</span>
+                                        <span><small>$</small>{{ $special_offer->discount_price }}</span>
                                         <span
-                                            class="old-price"><small>ট</small>{{ $special_offer->selling_price }}</span>
+                                            class="old-price"><small>$</small>{{ $special_offer->selling_price }}</span>
                                     </div>
                                 @endif
                             </div>
@@ -94,11 +94,11 @@
                                     </div>
                                 </div>
                                 @if ($item->discount_price == null)
-                                    <span><small>ট</small>{{ $item->selling_price }}</span>
+                                    <span><small>$</small>{{ $item->selling_price }}</span>
                                 @else
                                     <div class="product-price">
-                                        <span><small>ট</small>{{ $item->discount_price }}</span>
-                                        <span class="old-price"><small>ট</small>{{ $item->selling_price }}</span>
+                                        <span><small>$</small>{{ $item->discount_price }}</span>
+                                        <span class="old-price"><small>$</small>{{ $item->selling_price }}</span>
                                     </div>
                                 @endif
                             </div>
@@ -129,12 +129,12 @@
                                     </div>
                                 </div>
                                 @if ($special_deal->discount_price == null)
-                                    <span><small>ট</small>{{ $special_deal->selling_price }}</span>
+                                    <span><small>$</small>{{ $special_deal->selling_price }}</span>
                                 @else
                                     <div class="product-price">
-                                        <span><small>ট</small>{{ $special_deal->discount_price }}</span>
+                                        <span><small>$</small>{{ $special_deal->discount_price }}</span>
                                         <span
-                                            class="old-price"><small>ট</small>{{ $special_deal->selling_price }}</span>
+                                            class="old-price"><small>$</small>{{ $special_deal->selling_price }}</span>
                                     </div>
                                 @endif
                             </div>

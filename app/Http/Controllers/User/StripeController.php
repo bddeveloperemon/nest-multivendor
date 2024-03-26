@@ -18,7 +18,6 @@ class StripeController extends Controller
         'source' => $token,
         'metadata' => ['order_id' => '6735'],
         ]);
-
-        dd($charge);
+        
     }
 }

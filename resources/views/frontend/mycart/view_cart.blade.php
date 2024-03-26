@@ -107,7 +107,7 @@
                                             href="shop-product-right.html">${value.name}</a></h6>
                                 </td>
                                 <td class="price" data-title="Price">
-                                    <h4 class="text-body">ট${value.price} </h4>
+                                    <h4 class="text-body">$${value.price} </h4>
                                 </td>
                                 <td class="price" data-title="Price">
                                     ${value.options.color == null
@@ -133,7 +133,7 @@
                                     </div>
                                 </td>
                                 <td class="price" data-title="Price">
-                                    <h4 class="text-brand">ট${value.subtotal} </h4>
+                                    <h4 class="text-brand">$${value.subtotal} </h4>
                                 </td>
                                 <td class="action text-center" data-title="Remove"><a type="submit" onclick="viewCartRemove(this.id)" id="${value.rowId}" class="text-body"><i
                                             class="fi-rs-trash"></i></a></td>
@@ -259,7 +259,7 @@
                                     <h6 class="text-muted">Subtotal</h6>
                                 </td>
                                 <td class="cart_total_amount">
-                                    <h4 class="text-brand text-end">ট ${data.total}</h4>
+                                    <h4 class="text-brand text-end">$ ${data.total}</h4>
                                 </td>
                             </tr>
                             <tr>
@@ -267,7 +267,7 @@
                                     <h6 class="text-muted">Total</h6>
                                 </td>
                                 <td class="cart_total_amount">
-                                    <h4 class="text-brand text-end">ট ${data.total}</h4>
+                                    <h4 class="text-brand text-end">$ ${data.total}</h4>
                                 </td>
                             </tr>`
                         );
@@ -278,7 +278,7 @@
                                     <h6 class="text-muted">Subtotal</h6>
                                 </td>
                                 <td class="cart_total_amount">
-                                    <h4 class="text-brand text-end">ট ${data.subtotal}</h4>
+                                    <h4 class="text-brand text-end">$ ${data.subtotal}</h4>
                                 </td>
                             </tr>
                             <tr>
@@ -294,7 +294,7 @@
                                     <h6 class="text-muted">Discount Amount</h6>
                                 </td>
                                 <td class="cart_total_amount">
-                                    <h4 class="text-brand text-end">ট ${data.discount_amount}.00</h4>
+                                    <h4 class="text-brand text-end">$ ${data.discount_amount}.00</h4>
                                 </td>
                             </tr>
                             <tr>
@@ -302,7 +302,7 @@
                                     <h6 class="text-muted">Total</h6>
                                 </td>
                                 <td class="cart_total_amount">
-                                    <h4 class="text-brand text-end">ট ${data.total_amount}.00</h4>
+                                    <h4 class="text-brand text-end">$ ${data.total_amount}.00</h4>
                                 </td>
                             </tr>`
                         );

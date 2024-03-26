@@ -253,7 +253,7 @@
                                             </div>
                                             <div class="shopping-cart-title" style="margin: -73px 74px 14px; width:146px;">
                                                 <h4><a href="#">${value.name}</a></h4>
-                                                <h4><span>${value.qty} × </span>ট ${value.price}</h4>
+                                                <h4><span>${value.qty} × </span>$ ${value.price}</h4>
                                             </div>
                                             <div class="shopping-cart-delete" style="margin: -85px 1px 0;">
                                                 <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fi-rs-cross-small"></i></a>
@@ -352,8 +352,8 @@
                                     </td>
                                     <td class="price" data-title="Price">
                                         ${value.product.discount_price == null
-                                            ? `<h3 class="text-brand">ট${value.product.selling_price}</h3>`
-                                            : `<h3 class="text-brand">ট${value.product.discount_price}</h3>`
+                                            ? `<h3 class="text-brand">$${value.product.selling_price}</h3>`
+                                            : `<h3 class="text-brand">$${value.product.discount_price}</h3>`
                                         }
                                     </td>
                                     <td class="text-center detail-info" data-title="Stock">
@@ -459,8 +459,8 @@
                                 <td class="text-muted font-sm fw-600 font-heading">Price</td>
                                 <td class="product_price">
                                     ${value.product.discount_price == null
-                                        ? `<h4 class="price text-brand">ট${value.product.selling_price}</h4>`
-                                        : `<h4 class="price text-brand">ট${value.product.discount_price}</h4>`
+                                        ? `<h4 class="price text-brand">$${value.product.selling_price}</h4>`
+                                        : `<h4 class="price text-brand">$${value.product.discount_price}</h4>`
                                     }
                                 </td>
                             </tr>

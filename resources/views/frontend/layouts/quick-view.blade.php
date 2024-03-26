@@ -28,10 +28,10 @@
                             </div>
                             <div class="clearfix product-price-cover">
                                 <div class="product-price primary-color float-left">
-                                    <span class="current-price text-brand">ট</span>
+                                    <span class="current-price text-brand">$</span>
                                     <span class="current-price text-brand" id="pPrice"> </span>
                                     <span>
-                                        <span class="old-price font-md ml-15">ট </span>
+                                        <span class="old-price font-md ml-15">$ </span>
                                         <span class="old-price font-md ml-15" id="oldPrice"> </span>
                                     </span>
                                 </div>

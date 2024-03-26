@@ -64,15 +64,15 @@
                                     @endphp
                                     @if ($product->discount_price == null)
                                         <div class="product-price primary-color float-left">
-                                            <span class="current-price text-brand">ট{{ $product->selling_price }}</span>
+                                            <span class="current-price text-brand">${{ $product->selling_price }}</span>
                                         </div>
                                     @else
                                         <div class="product-price primary-color float-left">
-                                            <span class="current-price text-brand">ট{{ $product->discount_price }}</span>
+                                            <span class="current-price text-brand">${{ $product->discount_price }}</span>
                                             <span>
                                                 <span class="save-price font-md color3 ml-15">{{ round($discount) }}%
                                                     Off</span>
-                                                <span class="old-price font-md ml-15">ট{{ $product->selling_price }}</span>
+                                                <span class="old-price font-md ml-15">${{ $product->selling_price }}</span>
                                             </span>
                                         </div>
                                     @endif
@@ -564,12 +564,12 @@
                                                 </div>
                                                 <div class="product-price">
                                                     @if ($product->discount_price == null)
-                                                        <span><small>ট</small>{{ $product->selling_price }}</span>
+                                                        <span><small>$</small>{{ $product->selling_price }}</span>
                                                     @else
                                                         <div class="product-price">
-                                                            <span><small>ট</small>{{ $product->discount_price }}</span>
+                                                            <span><small>$</small>{{ $product->discount_price }}</span>
                                                             <span
-                                                                class="old-price"><small>ট</small>{{ $product->selling_price }}</span>
+                                                                class="old-price"><small>$</small>{{ $product->selling_price }}</span>
                                                         </div>
                                                     @endif
                                                 </div>
