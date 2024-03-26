@@ -145,7 +145,7 @@
         function addToCart() {
             var product_name = $('#pName').text();
             var id = $('#product_id').val();
-            let vendor_id = $('#pVendor_id').text();
+            let vendor = $('#pVendor_id').text();
             var color = $('#color_area option:selected').text();
             var size = $('#size_area option:selected').text();
             var qty = $('#qty').val();
@@ -158,7 +158,7 @@
                     size: size,
                     qty: qty,
                     product_name: product_name,
-                    vendor_id: vendor_id
+                    vendor: vendor
                 },
                 url: '/add-to-cart/store/' + id,
                 success: function(data) {
