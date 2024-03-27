@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\StripeController;
+use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CuponController;
@@ -66,6 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/stripe-order', [StripeController::class, 'stripeOrder'])->name('stripe.order');
     //Cash route
     Route::post('/cash-on-delivery/order', [CashonDeliveryController::class, 'cashOrder'])->name('cash.order');
+    // User Dashboard All Route
+    Route::get('/user/account', [AllUserController::class, 'userAccount'])->name('user.account.page');
 });
 
 //Admin Dashboard
