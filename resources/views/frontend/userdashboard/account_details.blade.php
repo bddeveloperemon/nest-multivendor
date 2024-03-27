@@ -16,39 +16,8 @@
             <div class="row">
                 <div class="col-lg-12 m-auto">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="dashboard-menu">
-                                <ul class="nav flex-column" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('dashboard') }}"><i
-                                                class="fi-rs-settings-sliders mr-10"></i>Dashboard</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#orders"><i
-                                                class="fi-rs-shopping-bag mr-10"></i>Orders</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#track-orders"></i>Track Your Order</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#address"><i class="fi-rs-marker mr-10"></i>My Address</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="{{ route('user.account.page') }}"><i
-                                                class="fi-rs-user mr-10"></i>Account
-                                            details</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#change-password"><i class="fi-rs-lock  mr-10"></i>Change
-                                            Password</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('user.logout') }}"><i
-                                                class="fi-rs-sign-out mr-10"></i>Logout</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        @include('frontend.layouts.dashboard_sidebar_menu')
+
                         <div class="col-md-9">
                             <div class="tab-content account dashboard-content pl-50">
                                 <div class="tab-pane fade active show" id="dashboard" role="tabpanel"
@@ -116,8 +85,8 @@
                                                     <div class="form-group col-md-6">
                                                         <img id="show_image"
                                                             src="{{ !empty($userData->image) ? url('upload/user_images/' . $userData->image) : url('backend/assets/images/avatars/avatar-500.png') }}"
-                                                            alt="User" class="rounded-circle p-1 bg-info"
-                                                            height="90px" width="100px">
+                                                            alt="User" class="rounded-circle p-1 bg-info" height="90px"
+                                                            width="100px">
                                                     </div>
                                                     <div class="col-md-12">
                                                         <button type="submit"
