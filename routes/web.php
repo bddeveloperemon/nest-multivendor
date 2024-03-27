@@ -69,6 +69,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/cash-on-delivery/order', [CashonDeliveryController::class, 'cashOrder'])->name('cash.order');
     // User Dashboard All Route
     Route::get('/user/account', [AllUserController::class, 'userAccount'])->name('user.account.page');
+    Route::get('/user/change-password', [AllUserController::class, 'userChangePassword'])->name('user.change.password');
+    Route::get('/user/orders', [AllUserController::class, 'userOrder'])->name('user.order');
 });
 
 //Admin Dashboard

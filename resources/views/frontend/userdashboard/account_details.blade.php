@@ -7,14 +7,14 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="{{ route('dashboard') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> My Account
+                <span></span> Account Details
             </div>
         </div>
     </div>
-    <div class="page-content pt-150 pb-150">
+    <div class="page-content pt-50 pb-50">
         <div class="container">
             <div class="row">
-                <div class="col-lg-10 m-auto">
+                <div class="col-lg-12 m-auto">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="dashboard-menu">
