@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 class AllUserController extends Controller
@@ -25,7 +26,9 @@ class AllUserController extends Controller
     // User orders page
     public function userOrder()
     {
-        return view('frontend.userdashboard.order_details');
+        $id = Auth::user()->id;
+        $orders = Order::where('user_id', $id)->orderBy('id','desc')->get();
+        return view('frontend.userdashboard.order_details',compact('orders'));
 
     }
 }
