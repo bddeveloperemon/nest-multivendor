@@ -71,6 +71,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/account', [AllUserController::class, 'userAccount'])->name('user.account.page');
     Route::get('/user/change-password', [AllUserController::class, 'userChangePassword'])->name('user.change.password');
     Route::get('/user/orders', [AllUserController::class, 'userOrder'])->name('user.order');
+    Route::get('/user/order/details/{order_id}', [AllUserController::class, 'userOrderdetails'])->name('user.order.details');
 });
 
 //Admin Dashboard

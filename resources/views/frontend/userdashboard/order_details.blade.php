@@ -1,6 +1,6 @@
 @extends('frontend.layouts.auth_master')
 @section('auth_title')
-    User Order Details
+    User Orders
 @endsection
 @section('auth_content')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -10,7 +10,7 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="{{ route('dashboard') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> Order Details
+                <span></span> User Orders
             </div>
         </div>
     </div>
@@ -44,11 +44,11 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @php
+                                                            $i = 1;
+                                                        @endphp
                                                         @foreach ($orders as $order)
                                                             <tr>
-                                                                @php
-                                                                    $i = 1;
-                                                                @endphp
                                                                 <td>{{ $i++ }}</td>
                                                                 <td>{{ $order->order_date }}</td>
                                                                 <td>${{ $order->amount }}</td>
@@ -70,7 +70,8 @@
                                                                         </span>
                                                                     @endif
                                                                 </td>
-                                                                <td><a href="#" class="btn-sm btn-success fs-sm-2"><i
+                                                                <td><a href="{{ route('user.order.details', $order->id) }}"
+                                                                        class="btn-sm btn-success fs-sm-2"><i
                                                                             class="fa fa-eye"></i> View</a>
                                                                     <a href="#" class="btn-sm btn-info fs-sm-2"><i
                                                                             class="fa fa-download"></i> Invoice</a>
