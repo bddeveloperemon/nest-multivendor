@@ -33,7 +33,7 @@
                                         <th>Invoice</th>
                                         <th>Amount</th>
                                         <th>Payment</th>
-                                        <th>status</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -52,8 +52,8 @@
                                                 <span class="badge rounded-pill bg-success">{{ $order->status }}</span>
                                             </td>
                                             <td>
-                                                <a href="" class="btn btn-info btn-sm" title="details"><i
-                                                        class="fa fa-eye"></i></a>
+                                                <a href="{{ route('admin.order.details', $order->id) }}"
+                                                    class="btn btn-info" title="details"><i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

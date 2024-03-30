@@ -221,7 +221,7 @@
             @else
                 <form action="" method="post">
                     <div class="form-group">
-                        <label id="return_reason" class="form-label">Order Return Reason</label>
+                        <label id="return_reason" class="form-label fw-bold text-dark">Order Return Reason</label>
                         <textarea name="return_reason" id="return_reason" class="form-control"></textarea>
                     </div>
                     <button type="submit" class="btn btn-danger btn-sm">Order Return</button>

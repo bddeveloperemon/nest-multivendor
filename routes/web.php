@@ -168,6 +168,7 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/delete-state/{id}', [ShippingAreaController::class, 'deleteState'])->name('delete.state');
     // Pending Order Routes
     Route::get('/pending-order', [OrderController::class, 'pendingOrder'])->name('pending.order');
+    Route::get('/order/details/{id}', [OrderController::class, 'adminOrderDetails'])->name('order.details');
 });
 
 //Vendor Dashboard
