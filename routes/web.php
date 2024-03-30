@@ -173,6 +173,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/deliverd-order', [OrderController::class, 'deliverdedOrder'])->name('deliverded.order');
     Route::get('/order/details/{id}', [OrderController::class, 'adminOrderDetails'])->name('order.details');
     Route::get('/pending-confirm/{id}', [OrderController::class, 'pendingConfirm'])->name('pending.confirm');
+    Route::get('/confirm-processing/{id}', [OrderController::class, 'confirmProcessing'])->name('confirm.processing');
+    Route::get('/processing-deliverd/{id}', [OrderController::class, 'processingDeliverd'])->name('processing.deliverd');
 });
 
 //Vendor Dashboard

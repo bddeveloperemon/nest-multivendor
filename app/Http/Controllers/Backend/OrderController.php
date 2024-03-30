@@ -55,4 +55,20 @@ class OrderController extends Controller
         return redirect()->route('admin.confirmed.order');
     }
 
+    // Pending Order Confrim
+    public function confirmProcessing($id)
+    {
+        Order::findOrFail($id)->update(['status' => 'processing']);
+        toastr()->success('Order Processing Successfully');
+        return redirect()->route('admin.processing.order');
+    }
+
+    // Pending Order Confrim
+    public function processingDeliverd($id)
+    {
+        Order::findOrFail($id)->update(['status' => 'deliverd']);
+        toastr()->success('Order Deliverd Successfully');
+        return redirect()->route('admin.deliverded.order');
+    }
+
 }

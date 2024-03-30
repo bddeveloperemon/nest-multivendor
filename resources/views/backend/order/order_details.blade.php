@@ -113,7 +113,8 @@
                             <tr>
                                 <th>Order Status:</th>
                                 <th>
-                                    <span class="badge rounded-pill bg-info">{{ $order->status }}</span>
+                                    <span class="badge rounded-pill bg-info"
+                                        style="font-size: 12px">{{ $order->status }}</span>
                                 </th>
                             </tr>
                             <tr>
@@ -124,9 +125,11 @@
                                             id="confirm">Confirm
                                             Order</a>
                                     @elseif ($order->status == 'confirm')
-                                        <a href="" class="btn btn-success">Processing Order</a>
+                                        <a href="{{ route('admin.confirm.processing', $order->id) }}"
+                                            class="btn btn-success" id="processing">Processing Order</a>
                                     @elseif ($order->status == 'processing')
-                                        <a href="" class="btn btn-success">Deliverd Order</a>
+                                        <a href="{{ route('admin.processing.deliverd', $order->id) }}"
+                                            class="btn btn-success" id="deliverd">Deliverd Order</a>
                                     @endif
                                 </th>
                             </tr>
