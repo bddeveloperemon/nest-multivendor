@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use toastr;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
@@ -45,4 +46,13 @@ class OrderController extends Controller
         $orderItem = OrderItem::with('product')->where('order_id', $id)->orderBy('id','desc')->get();
         return view('backend.order.order_details',compact('order','orderItem'));  
     }
+
+    // Pending Order Confrim
+    public function pendingConfirm($id)
+    {
+        Order::findOrFail($id)->update(['status' => 'confirm']);
+        toastr()->success('Order Confirmed Successfully');
+        return redirect()->route('admin.confirmed.order');
+    }
+
 }

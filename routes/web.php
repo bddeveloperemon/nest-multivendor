@@ -166,12 +166,13 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit-state/{id}', [ShippingAreaController::class, 'editState'])->name('edit.state');
     Route::post('/update-state/{id}', [ShippingAreaController::class, 'updateState'])->name('update.state');
     Route::get('/delete-state/{id}', [ShippingAreaController::class, 'deleteState'])->name('delete.state');
-    // Pending Order Routes
+    // Order Routes
     Route::get('/pending-order', [OrderController::class, 'pendingOrder'])->name('pending.order');
     Route::get('/confirmed-order', [OrderController::class, 'confirmedOrder'])->name('confirmed.order');
     Route::get('/processing-order', [OrderController::class, 'processingOrder'])->name('processing.order');
     Route::get('/deliverd-order', [OrderController::class, 'deliverdedOrder'])->name('deliverded.order');
     Route::get('/order/details/{id}', [OrderController::class, 'adminOrderDetails'])->name('order.details');
+    Route::get('/pending-confirm/{id}', [OrderController::class, 'pendingConfirm'])->name('pending.confirm');
 });
 
 //Vendor Dashboard
