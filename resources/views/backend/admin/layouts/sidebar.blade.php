@@ -153,6 +153,12 @@
                 <li>
                     <a href="{{ route('admin.pending.order') }}"><i class="bx bx-right-arrow-alt"></i>Pending
                         Order</a>
+                    <a href="{{ route('admin.confirmed.order') }}"><i class="bx bx-right-arrow-alt"></i>Confirmed
+                        Order</a>
+                    <a href="{{ route('admin.processing.order') }}"><i class="bx bx-right-arrow-alt"></i>Processing
+                        Order</a>
+                    <a href="{{ route('admin.deliverded.order') }}"><i class="bx bx-right-arrow-alt"></i>Deliverded
+                        Order</a>
                 </li>
             </ul>
         </li>

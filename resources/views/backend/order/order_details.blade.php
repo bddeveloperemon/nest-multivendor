@@ -131,7 +131,7 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th class="col-md-2">
+                        <th class="col-md-1">
                             <label for="">Image</label>
                         </th>
                         <th class="col-md-2">
@@ -152,7 +152,7 @@
                         <th class="col-md-1">
                             <label for="">Quantity</label>
                         </th>
-                        <th class="col-md-2">
+                        <th class="col-md-3">
                             <label for="">Price</label>
                         </th>
                     </tr>
@@ -160,7 +160,7 @@
                 <tbody>
                     @foreach ($orderItem as $item)
                         <tr>
-                            <td class="col-md-2">
+                            <td class="col-md-1">
                                 <label for=""><img
                                         src="{{ asset('upload/product_images/thambnail/' . $item->product->product_thambnail) }}"
                                         alt="{{ $item->product->product_name }}" style="width:100px; height:100px"></label>
@@ -178,7 +178,7 @@
                                 </td>
                             @endif
 
-                            <td class="col-md-1">
+                            <td class="col-md-2">
                                 <label for="">{{ $item->product->product_code }}</label>
                             </td>
                             @if ($item->color == null)
@@ -204,7 +204,7 @@
                             <td class="col-md-1">
                                 <label for="">{{ $item->qty }}</label>
                             </td>
-                            <td class="col-md-2">
+                            <td class="col-md-3">
                                 <label for="">${{ $item->price }} <br> <span class="fw-bold">Total</span> =
                                     ${{ $item->price * $item->qty }}</label>
                             </td>
