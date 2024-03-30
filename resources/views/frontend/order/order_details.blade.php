@@ -216,6 +216,18 @@
                     </tbody>
                 </table>
             </div>
+            {{-- Return Order Option --}}
+            @if ($order->status !== 'deliverd')
+            @else
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label id="return_reason" class="form-label">Order Return Reason</label>
+                        <textarea name="return_reason" id="return_reason" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-sm">Order Return</button>
+                </form>
+            @endif
+
         </div>
     </div>
 @endsection
