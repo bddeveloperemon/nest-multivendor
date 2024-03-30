@@ -62,9 +62,9 @@
             </td>
             <td align="right">
                 <pre class="font">
-               EasyOnlineShop
-               Email:support@easyonlineshopbd.com <br>
-               Mob: 01615412681 <br>
+                EasyOnlineShop
+                Email:support@easyonlineshopbd.com <br>
+                Mob: 01615412681 <br>
               
             </pre>
             </td>
@@ -166,8 +166,8 @@
     <table width="100%" style=" padding:0 10px 0 10px;">
         <tr>
             <td align="right">
-                <h2><span style="color: green;">Subtotal:</span> {{ $order->amount }}</h2>
-                <h2><span style="color: green;">Total:</span> {{ $order->amount }}</h2>
+                <h2><span style="color: green;">Subtotal:</span>${{ $order->amount }}</h2>
+                <h2><span style="color: green;">Total:</span>${{ $order->amount }}</h2>
                 {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
             </td>
         </tr>

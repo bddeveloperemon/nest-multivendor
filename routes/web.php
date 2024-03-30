@@ -175,6 +175,7 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/pending-confirm/{id}', [OrderController::class, 'pendingConfirm'])->name('pending.confirm');
     Route::get('/confirm-processing/{id}', [OrderController::class, 'confirmProcessing'])->name('confirm.processing');
     Route::get('/processing-deliverd/{id}', [OrderController::class, 'processingDeliverd'])->name('processing.deliverd');
+    Route::get('/invoice/download/{id}', [OrderController::class, 'invoiceDownload'])->name('invoice.download');
 });
 
 //Vendor Dashboard

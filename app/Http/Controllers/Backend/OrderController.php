@@ -6,6 +6,7 @@ use toastr;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -69,6 +70,18 @@ class OrderController extends Controller
         Order::findOrFail($id)->update(['status' => 'deliverd']);
         toastr()->success('Order Deliverd Successfully');
         return redirect()->route('admin.deliverded.order');
+    }
+
+    // Admin Invoice Download
+    public function invoiceDownload($id)
+    {
+        $order = Order::with('division','district','state','user')->whereId($id)->first();
+        $orderItem = OrderItem::with('product')->where('order_id', $id)->orderBy('id','desc')->get();
+        $pdf = Pdf::loadView('backend.order.order_invoice', compact('order','orderItem'))->setPaper('a4')->setOption([
+            'tempDir'=> public_path(),
+            'chroot'=> public_path()
+        ]);
+        return $pdf->download('invoice.pdf');
     }
 
 }
