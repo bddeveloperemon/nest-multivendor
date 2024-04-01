@@ -25,4 +25,12 @@ class VendorOrderController extends Controller
         $orderItems = OrderItem::with('order')->where('vendor_id',$id)->orderBy('id','desc')->get();
         return view('backend.vendor.order.return_order',compact('orderItems'));
     }
+
+    // complete vendor return order
+    public function vendorCompleteReturnOrder()
+    {
+        $id = Auth::user()->id;
+        $orderItems = OrderItem::with('order')->where('vendor_id',$id)->orderBy('id','desc')->get();
+        return view('backend.vendor.order.complete_return_order',compact('orderItems'));
+    }
 }

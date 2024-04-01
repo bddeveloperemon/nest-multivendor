@@ -46,6 +46,10 @@
                     <li> <a href="{{ route('vendor.return.order') }}"><i class="bx bx-right-arrow-alt"></i>Return
                             Order</a>
                     </li>
+                    <li> <a href="{{ route('vendor.complete.return.order') }}"><i
+                                class="bx bx-right-arrow-alt"></i>Complete Return
+                            Order</a>
+                    </li>
                 </ul>
             </li>
             <li>
