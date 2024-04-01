@@ -75,6 +75,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/invoice-download/{order_id}', [AllUserController::class, 'userOrderinvoice'])->name('user.invoice.download');
     // Order Return Route
     Route::post('/return/order/{order_id}', [AllUserController::class, 'returnOrder'])->name('return.order');
+    Route::get('/return/orders', [AllUserController::class, 'getReturnOrder'])->name('return.order.page');
 });
 
 //Admin Dashboard

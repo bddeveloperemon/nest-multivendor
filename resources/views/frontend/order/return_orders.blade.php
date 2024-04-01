@@ -1,6 +1,6 @@
 @extends('frontend.layouts.auth_master')
 @section('auth_title')
-    User Orders
+    Return Orders
 @endsection
 @section('auth_content')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -10,7 +10,7 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="{{ url('/') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> User Orders
+                <span></span> User Return Orders
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
                                     aria-labelledby="dashboard-tab">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h3 class="mb-0">Your Orders</h3>
+                                            <h3 class="mb-0">Your Return Orders</h3>
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
@@ -39,6 +39,7 @@
                                                             <th>Total</th>
                                                             <th>Payment</th>
                                                             <th>Invoice</th>
+                                                            <th>Return Reason</th>
                                                             <th>Status</th>
                                                             <th>Actions</th>
                                                         </tr>
@@ -47,31 +48,25 @@
                                                         @php
                                                             $i = 1;
                                                         @endphp
-                                                        @foreach ($orders as $order)
+                                                        @foreach ($return_orders as $order)
                                                             <tr>
                                                                 <td>{{ $i++ }}</td>
                                                                 <td>{{ $order->order_date }}</td>
                                                                 <td>${{ $order->amount }}</td>
                                                                 <td>{{ $order->payment_method }}</td>
                                                                 <td>{{ $order->invoice_no }}</td>
+                                                                <td>{{ $order->return_reason }}</td>
                                                                 <td>
-                                                                    @if ($order->status == 'pending')
+                                                                    @if ($order->return_order == 0)
+                                                                        <span class="badge rounded-pill bg-info">No
+                                                                            Return Request
+                                                                        </span>
+                                                                    @elseif ($order->return_order == 1)
                                                                         <span class="badge rounded-pill bg-warning">Pending
                                                                         </span>
-                                                                    @elseif ($order->status == 'confirm')
-                                                                        <span class="badge rounded-pill bg-info">Confirm
+                                                                    @elseif ($order->return_order == 2)
+                                                                        <span class="badge rounded-pill bg-success">Success
                                                                         </span>
-                                                                    @elseif ($order->status == 'processing')
-                                                                        <span class="badge rounded-pill bg-dark">Processing'
-                                                                        </span>
-                                                                    @elseif ($order->status == 'deliverd')
-                                                                        <span class="badge rounded-pill bg-success">Deliverd
-                                                                        </span>
-                                                                        @if ($order->return_order == 1)
-                                                                            <span
-                                                                                class="badge rounded-pill bg-danger">Return
-                                                                            </span>
-                                                                        @endif
                                                                     @endif
 
                                                                 </td>

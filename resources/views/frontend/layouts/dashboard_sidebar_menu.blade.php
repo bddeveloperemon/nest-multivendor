@@ -13,6 +13,10 @@
                         class="fi-rs-shopping-bag mr-10"></i>Orders</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ $route == 'return.order.page' ? 'active' : '' }}"
+                    href="{{ route('return.order.page') }}"><i class="fi-rs-shopping-bag mr-10"></i>Return Orders</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#track-orders"><i class="fi-rs-shopping-cart mr-10"></i>Track Your Order</a>
             </li>
             <li class="nav-item">

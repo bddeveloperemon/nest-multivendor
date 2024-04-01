@@ -70,4 +70,11 @@ class AllUserController extends Controller
         return redirect()->route('user.order');
     }
     
+
+    // Return Order Page
+    public function getReturnOrder()
+    {
+        $return_orders = Order::where('user_id', Auth::id())->where('return_order','=',1)->orderBy('id','desc')->get();
+        return view('frontend.order.return_orders',compact('return_orders'));
+    }
 }
