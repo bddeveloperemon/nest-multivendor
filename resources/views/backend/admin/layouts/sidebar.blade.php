@@ -197,6 +197,9 @@
             <ul>
                 <li> <a href="{{ route('admin.report.view') }}"><i class="bx bx-right-arrow-alt"></i>Report View</a>
                 </li>
+                <li> <a href="{{ route('admin.order.by.user') }}"><i class="bx bx-right-arrow-alt"></i>Order By
+                        User</a>
+                </li>
             </ul>
         </li>
         <li>

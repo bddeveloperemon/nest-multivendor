@@ -187,9 +187,11 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/complete/return/request', [ReturnController::class, 'returnComplete'])->name('complete.return.request');
     // Report Route
     Route::get('/report/view', [ReportController::class, 'reportView'])->name('report.view');
+    Route::get('/report/by/user', [ReportController::class, 'orderByUser'])->name('order.by.user');
     Route::post('/search/by/date', [ReportController::class, 'searchByDate'])->name('search.by.date');
     Route::post('/search/by/month', [ReportController::class, 'searchByMonth'])->name('search.by.month');
     Route::post('/search/by/year', [ReportController::class, 'searchByYear'])->name('search.by.year');
+    Route::post('/search/by/user', [ReportController::class, 'searchByUser'])->name('search.by.user');
 });
 
 //Vendor Dashboard
