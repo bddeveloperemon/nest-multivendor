@@ -33,7 +33,7 @@
                 </div>
             </div>
         </form>
-        <form action="" method="post">
+        <form action="{{ route('admin.search.by.month') }}" method="post">
             @csrf
             <div class="col">
                 <div class="card">
@@ -42,18 +42,18 @@
                         <label for="" class="form-label">Select Month:</label>
                         <select name="month" class="form-select mb-3" aria-label="Default select example">
                             <option selected="">Open this select menu</option>
-                            <option value="Janurary">Janurary</option>
-                            <option value="February">February</option>
-                            <option value="March">March</option>
-                            <option value="April">April</option>
+                            <option value="Jan">Janurary</option>
+                            <option value="Feb">February</option>
+                            <option value="Mar">March</option>
+                            <option value="Apr">April</option>
                             <option value="May">May</option>
-                            <option value="June">June</option>
-                            <option value="July">July</option>
-                            <option value="August">August</option>
-                            <option value="September">September</option>
-                            <option value="October">October</option>
-                            <option value="November">November</option>
-                            <option value="December">December</option>
+                            <option value="Jun">June</option>
+                            <option value="Jul">July</option>
+                            <option value="Aug">August</option>
+                            <option value="Sep">September</option>
+                            <option value="Oct">October</option>
+                            <option value="Nov">November</option>
+                            <option value="Dec">December</option>
                         </select>
                         <label for="" class="form-label">Select Year:</label>
                         <select name="year_name" class="form-select mb-3" aria-label="Default select example">
@@ -69,7 +69,8 @@
                 </div>
             </div>
         </form>
-        <form action="" method="post">
+        <form action="{{ route('admin.search.by.year') }}" method="post">
+            @csrf
             <div class="col">
                 <div class="card">
                     <div class="card-body">

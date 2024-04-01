@@ -188,6 +188,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     // Report Route
     Route::get('/report/view', [ReportController::class, 'reportView'])->name('report.view');
     Route::post('/search/by/date', [ReportController::class, 'searchByDate'])->name('search.by.date');
+    Route::post('/search/by/month', [ReportController::class, 'searchByMonth'])->name('search.by.month');
+    Route::post('/search/by/year', [ReportController::class, 'searchByYear'])->name('search.by.year');
 });
 
 //Vendor Dashboard

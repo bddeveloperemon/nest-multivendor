@@ -23,4 +23,21 @@ class ReportController extends Controller
         $orders = Order::where('order_date',$formatDate)->latest()->get();
         return view('backend.report.report_by_date',compact('orders','formatDate'));
     }
+
+    // search by date
+    public function searchByMonth(Request $request)
+    {
+        $month = $request->month;
+        $year_name = $request->year_name;
+        $orders = Order::where(['order_month'=>$month,'order_year'=>$year_name])->latest()->get();
+        return view('backend.report.report_by_month',compact('orders','month','year_name'));
+    }
+
+    // search by date
+    public function searchByYear(Request $request)
+    {
+        $year = $request->year;
+        $orders = Order::where('order_year',$year)->latest()->get();
+        return view('backend.report.report_by_year',compact('orders','year'));
+    }
 }
