@@ -182,7 +182,7 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/invoice/download/{id}', [OrderController::class, 'invoiceDownload'])->name('invoice.download');
     // Return Order Routes
     Route::get('/return/request', [ReturnController::class, 'returnRequest'])->name('return.request');
-    // Route::get('/return/request', [ReturnController::class, 'returnRequest'])->name('complete.return.request');
+    Route::get('/return/approve/{id}', [ReturnController::class, 'returnApprove'])->name('return.approve');
 });
 
 //Vendor Dashboard

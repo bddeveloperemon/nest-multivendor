@@ -60,8 +60,8 @@
                                             <td>
                                                 <a href="{{ route('admin.order.details', $order->id) }}"
                                                     class="btn btn-info" title="details"><i class="fa fa-eye"></i></a>
-                                                <a href="{{ route('admin.order.details', $order->id) }}"
-                                                    class="btn btn-danger" title=""><i
+                                                <a href="{{ route('admin.return.approve', $order->id) }}" id="approve"
+                                                    class="btn btn-danger" title="Approve"><i
                                                         class="fa-solid fa-person-circle-check"></i></a>
                                             </td>
                                         </tr>

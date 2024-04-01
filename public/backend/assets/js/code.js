@@ -69,6 +69,30 @@ $(document).on("click", "#confirm", function (e) {
     });
 });
 
+// return request approv
+$(document).on("click", "#approve", function (e) {
+    e.preventDefault();
+    let link = $(this).attr("href");
+    Swal.fire({
+        title: "Are you sure to approve?",
+        text: "Return Order Approve",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Approved!",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = link;
+            Swal.fire({
+                title: "Approved!",
+                text: "Approved Changed",
+                icon: "success",
+            });
+        }
+    });
+});
+
 $(document).on("click", "#delete", function (e) {
     e.preventDefault();
     let link = $(this).attr("href");
