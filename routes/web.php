@@ -23,6 +23,7 @@ use App\Http\Controllers\Backend\Admin\ReportController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
+use App\Http\Controllers\Backend\Admin\ActiveUserController;
 use App\Http\Controllers\Backend\Admin\SubCategoryController;
 use App\Http\Controllers\Backend\Vendor\VendorProductController;
 
@@ -185,13 +186,16 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/return/request', [ReturnController::class, 'returnRequest'])->name('return.request');
     Route::get('/return/approve/{id}', [ReturnController::class, 'returnApprove'])->name('return.approve');
     Route::get('/complete/return/request', [ReturnController::class, 'returnComplete'])->name('complete.return.request');
-    // Report Route
+    // Report Routes
     Route::get('/report/view', [ReportController::class, 'reportView'])->name('report.view');
     Route::get('/report/by/user', [ReportController::class, 'orderByUser'])->name('order.by.user');
     Route::post('/search/by/date', [ReportController::class, 'searchByDate'])->name('search.by.date');
     Route::post('/search/by/month', [ReportController::class, 'searchByMonth'])->name('search.by.month');
     Route::post('/search/by/year', [ReportController::class, 'searchByYear'])->name('search.by.year');
     Route::post('/search/by/user', [ReportController::class, 'searchByUser'])->name('search.by.user');
+    // Active User and Vendor Routes
+    Route::get('/all/user', [ActiveUserController::class, 'allUser'])->name('all.user');
+    Route::get('/all/vendor', [ActiveUserController::class, 'allVendor'])->name('all.vendor');
 });
 
 //Vendor Dashboard
