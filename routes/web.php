@@ -208,6 +208,7 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
     Route::get('/delete/product/{id}', [VendorProductController::class, 'vendorProductDelete'])->name('product.delete');
     // Vendor Order routes
     Route::get('/order', [VendorOrderController::class, 'vendorOrder'])->name('order');
+    Route::get('/return/order', [VendorOrderController::class, 'vendorReturnOrder'])->name('return.order');
 });
 
 Route::middleware(['auth','role:admin'])->group(function(){
