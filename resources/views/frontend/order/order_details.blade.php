@@ -219,14 +219,25 @@
             {{-- Return Order Option --}}
             @if ($order->status !== 'deliverd')
             @else
-                <form action="{{ route('return.order', $order->id) }}" method="post">
-                    @csrf
-                    <div class="form-group">
-                        <label id="return_reason" class="form-label fw-bold text-dark">Order Return Reason</label>
-                        <textarea name="return_reason" id="return_reason" class="form-control" style="width: 40%;"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-danger btn-sm mb-2">Order Return</button>
-                </form>
+                @php
+                    $order = App\Models\Order::where('id', $order->id)
+                        ->where('return_reason', '=', null)
+                        ->first();
+                @endphp
+                @if ($order)
+                    <form action="{{ route('return.order', $order->id) }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label id="return_reason" class="form-label fw-bold text-dark">Order Return Reason</label>
+                            <textarea name="return_reason" id="return_reason" class="form-control" style="width: 40%;"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-sm mb-2">Order Return</button>
+                    </form>
+                @else
+                    <h5><span class="badge badge-pill bg-danger">You have already send return request for this
+                            product!</span> <br><br>
+                    </h5>
+                @endif
             @endif
 
         </div>
