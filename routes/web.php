@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\ProductController;
@@ -179,6 +180,9 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/confirm-processing/{id}', [OrderController::class, 'confirmProcessing'])->name('confirm.processing');
     Route::get('/processing-deliverd/{id}', [OrderController::class, 'processingDeliverd'])->name('processing.deliverd');
     Route::get('/invoice/download/{id}', [OrderController::class, 'invoiceDownload'])->name('invoice.download');
+    // Return Order Routes
+    Route::get('/return/request', [ReturnController::class, 'returnRequest'])->name('return.request');
+    // Route::get('/return/request', [ReturnController::class, 'returnRequest'])->name('complete.return.request');
 });
 
 //Vendor Dashboard
