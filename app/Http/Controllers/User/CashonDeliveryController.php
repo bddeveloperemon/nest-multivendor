@@ -39,7 +39,7 @@ class CashonDeliveryController extends Controller
             'amount' => $total_amount,
 
             'invoice_no' => 'EOS'.mt_rand(10000000,99999999),
-            'order_date' => Carbon::now()->format('d m Y'),
+            'order_date' => Carbon::now()->format('d M Y'),
             'order_month' => Carbon::now()->format('M'),
             'order_year' => Carbon::now()->format('Y'),
             'status' => 'pending',
