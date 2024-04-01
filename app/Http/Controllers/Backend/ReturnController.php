@@ -25,4 +25,11 @@ class ReturnController extends Controller
         toastr()->success('Return Order Successfully');
         return redirect()->back();
     }
+
+     // Return Complete Orders
+     public function returnComplete()
+     {
+         $orders = Order::where('return_order',2)->orderBy('id','desc')->get();
+         return view('backend.return_order.return_complete',compact('orders'));
+     }
 }

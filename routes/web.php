@@ -183,6 +183,7 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     // Return Order Routes
     Route::get('/return/request', [ReturnController::class, 'returnRequest'])->name('return.request');
     Route::get('/return/approve/{id}', [ReturnController::class, 'returnApprove'])->name('return.approve');
+    Route::get('/complete/return/request', [ReturnController::class, 'returnComplete'])->name('complete.return.request');
 });
 
 //Vendor Dashboard

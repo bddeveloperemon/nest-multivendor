@@ -181,7 +181,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"><i class="bx bx-right-arrow-alt"></i>Complete
+                    <a href="{{ route('admin.complete.return.request') }}"><i
+                            class="bx bx-right-arrow-alt"></i>Complete
                         Request
                     </a>
                 </li>
