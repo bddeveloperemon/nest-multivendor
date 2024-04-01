@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\User\CashonDeliveryController;
+use App\Http\Controllers\Backend\Admin\ReportController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
@@ -184,6 +185,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/return/request', [ReturnController::class, 'returnRequest'])->name('return.request');
     Route::get('/return/approve/{id}', [ReturnController::class, 'returnApprove'])->name('return.approve');
     Route::get('/complete/return/request', [ReturnController::class, 'returnComplete'])->name('complete.return.request');
+    // Report Route
+    Route::get('/report/view', [ReportController::class, 'reportView'])->name('report.view');
 });
 
 //Vendor Dashboard
