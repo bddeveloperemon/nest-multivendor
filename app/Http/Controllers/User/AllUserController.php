@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderItem;
+use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +54,20 @@ class AllUserController extends Controller
             'chroot'=> public_path()
         ]);
         return $pdf->download('invoice.pdf');
+    }
+
+
+    // Return Order
+    public function returnOrder(Request $request, $order_id)
+    {
+        Order::findOrFail($order_id)->update([
+            'return_date' => Carbon::now()->format('d M Y'),
+            'return_reason' => $request->return_reason,
+            'return_order' => 1
+        ]);
+
+        toastr()->success('Return Request Send Successfully');
+        return redirect()->route('user.order');
     }
     
 }
