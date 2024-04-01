@@ -210,6 +210,7 @@ Route::prefix('/vendor')->as('vendor.')->middleware(['auth','role:vendor'])->gro
     Route::get('/order', [VendorOrderController::class, 'vendorOrder'])->name('order');
     Route::get('/return/order', [VendorOrderController::class, 'vendorReturnOrder'])->name('return.order');
     Route::get('/complete/return/order', [VendorOrderController::class, 'vendorCompleteReturnOrder'])->name('complete.return.order');
+    Route::get('/order/details/{id}', [VendorOrderController::class, 'vendorOrderDetails'])->name('order.details');
 });
 
 Route::middleware(['auth','role:admin'])->group(function(){

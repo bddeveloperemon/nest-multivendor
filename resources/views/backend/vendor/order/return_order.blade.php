@@ -59,7 +59,8 @@
                                                 </td>
                                                 <td>{{ $order->order->return_reason }}</td>
                                                 <td>
-                                                    <a href="" class="btn btn-info btn-sm" title="details"><i
+                                                    <a href="{{ route('vendor.order.details', $order->order->id) }}"
+                                                        class="btn btn-info btn-sm" title="details"><i
                                                             class="fa fa-eye"></i></a>
                                                 </td>
                                             </tr>

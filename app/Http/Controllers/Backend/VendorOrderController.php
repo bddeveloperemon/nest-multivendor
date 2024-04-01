@@ -33,4 +33,12 @@ class VendorOrderController extends Controller
         $orderItems = OrderItem::with('order')->where('vendor_id',$id)->orderBy('id','desc')->get();
         return view('backend.vendor.order.complete_return_order',compact('orderItems'));
     }
+
+    // return order details
+    public function vendorOrderDetails($id)
+    {
+        $order = Order::with('division','district','state','user')->whereId($id)->first();
+        $orderItem = OrderItem::with('product')->where('order_id', $id)->orderBy('id','desc')->get();
+        return view('backend.vendor.order.order_details',compact('order','orderItem'));
+    }
 }
