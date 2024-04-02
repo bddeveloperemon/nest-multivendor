@@ -58,7 +58,12 @@
                                             <td>{{ $vendor->email }}</td>
                                             <td>{{ $vendor->phone }}</td>
                                             <td>
-                                                <span class="badge badge-pill bg-success">{{ $vendor->status }}</span>
+                                                @if ($vendor->userOnline())
+                                                    <span class="badge badge-pill bg-success">Active Now</span>
+                                                @else
+                                                    <span
+                                                        class="badge badge-pill bg-danger">{{ Carbon\Carbon::parse($vendor->last_seen)->diffForHumans() }}</span>
+                                                @endif
                                             </td>
                                             <td>
                                                 <a href="{{ route('admin.delete.subcategory', $vendor->id) }}"

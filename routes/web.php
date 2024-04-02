@@ -43,7 +43,7 @@ use App\Http\Controllers\Backend\Vendor\VendorProductController;
 // });
 Route::get('/',[IndexController::class,'index']);
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','role:user'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     Route::post('/user/profile', [UserController::class, 'update'])->name('user.profile.update');
     Route::get('/user/logout', [UserController::class, 'logout'])->name('user.logout');
