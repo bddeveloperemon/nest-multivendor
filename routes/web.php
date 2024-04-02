@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\Admin\BlogController;
 use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\User\CashonDeliveryController;
@@ -196,6 +197,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     // Active User and Vendor Routes
     Route::get('/all/user', [ActiveUserController::class, 'allUser'])->name('all.user');
     Route::get('/all/vendor', [ActiveUserController::class, 'allVendor'])->name('all.vendor');
+    // Blog Category Routes
+    Route::get('/blog/category', [BlogController::class, 'blogCategory'])->name('blog.category');
 });
 
 //Vendor Dashboard
