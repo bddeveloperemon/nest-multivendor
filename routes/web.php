@@ -198,7 +198,12 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/all/user', [ActiveUserController::class, 'allUser'])->name('all.user');
     Route::get('/all/vendor', [ActiveUserController::class, 'allVendor'])->name('all.vendor');
     // Blog Category Routes
-    Route::get('/blog/category', [BlogController::class, 'blogCategory'])->name('blog.category');
+    Route::get('/blog/category', [BlogController::class, 'allBlogCategory'])->name('blog.category');
+    Route::get('/add/blog/category', [BlogController::class, 'addBlogCategory'])->name('add.blog.category');
+    Route::post('/store/blog/category', [BlogController::class, 'storeBlogCategory'])->name('blogcategory.store');
+    Route::get('/edit/blog/category/{id}', [BlogController::class, 'editBlogCategory'])->name('edit.blog.category');
+    Route::post('/update/blog/category/{id}', [BlogController::class, 'updateBlogCategory'])->name('blog.category.update');
+    Route::get('/delete/blog/category/{id}', [BlogController::class, 'deleteBlogCategory'])->name('delete.blog.category');
 });
 
 //Vendor Dashboard
