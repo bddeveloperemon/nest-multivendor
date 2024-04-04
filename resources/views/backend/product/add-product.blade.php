@@ -3,7 +3,9 @@
     Admin - Add Product
 @endsection
 @section('admin_content')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
         <div class="breadcrumb-title pe-3">Add New Product</div>
@@ -35,19 +37,23 @@
                             <div class="border border-3 p-4 rounded">
                                 <div class="form-group mb-3">
                                     <label for="inputProductTitle" class="form-label">Product Name</label>
-                                    <input type="text" name="product_name" class="form-control" id="inputProductTitle" placeholder="Enter product name">
+                                    <input type="text" name="product_name" class="form-control" id="inputProductTitle"
+                                        placeholder="Enter product name">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="inputProductTitle" class="form-label">Product Tags</label>
-                                    <input type="text" name="product_tags" class="form-control visually-hidden" data-role="tagsinput" value="new product,top product">
+                                    <input type="text" name="product_tags" class="form-control visually-hidden"
+                                        data-role="tagsinput" value="new product,top product">
                                 </div>
                                 <div class="mb-3">
                                     <label for="inputProductTitle" class="form-label">Product Size</label>
-                                    <input type="text" name="product_size" class="form-control visually-hidden" data-role="tagsinput" value="Small, Midium, Large">
+                                    <input type="text" name="product_size" class="form-control visually-hidden"
+                                        data-role="tagsinput" value="Small, Midium, Large">
                                 </div>
                                 <div class="mb-3">
                                     <label for="inputProductTitle" class="form-label">Product Color</label>
-                                    <input type="text" name="product_color" class="form-control visually-hidden" data-role="tagsinput" value="Red, Blue, Black">
+                                    <input type="text" name="product_color" class="form-control visually-hidden"
+                                        data-role="tagsinput" value="Red, Blue, Black">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="inputProductDescription" class="form-label">Short Description</label>
@@ -59,7 +65,8 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="inputProductTitle" class="form-label">Mail Thambnail</label>
-                                    <input type="file" name="product_thambnail" onchange="mainThamUrl(this)" id="formFile" class="form-control">
+                                    <input type="file" name="product_thambnail" onchange="mainThamUrl(this)"
+                                        id="formFile" class="form-control">
                                     <img id="mainThamb" src="" class="rounded-circle">
                                 </div>
                                 <div class="form-group mb-3">
@@ -74,19 +81,23 @@
                                 <div class="row g-3">
                                     <div class="form-group col-md-6">
                                         <label for="inputPrice" class="form-label">Product Price</label>
-                                        <input type="number" class="form-control" name="selling_price" id="inputPrice" placeholder="00.00">
+                                        <input type="number" class="form-control" name="selling_price" id="inputPrice"
+                                            placeholder="00.00">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="inputCompareatprice" class="form-label">Discount Price</label>
-                                        <input type="number" name="discount_price" class="form-control" id="inputCompareatprice" placeholder="00.00">
+                                        <input type="number" name="discount_price" class="form-control"
+                                            id="inputCompareatprice" placeholder="00.00">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputCostPerPrice" class="form-label">Product Code</label>
-                                        <input type="text" name="product_code" class="form-control" id="inputCostPerPrice" placeholder="Enter code">
+                                        <input type="text" name="product_code" class="form-control"
+                                            id="inputCostPerPrice" placeholder="Enter code">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputStarPoints" class="form-label">Product QTY</label>
-                                        <input type="number" name="product_qty" class="form-control" id="inputStarPoints" placeholder="Enter qty">
+                                        <input type="number" name="product_qty" class="form-control"
+                                            id="inputStarPoints" placeholder="Enter qty">
                                     </div>
                                     <div class="form-group col-12">
                                         <label for="inputProductType" class="form-label">Product Brand</label>
@@ -125,26 +136,34 @@
                                         <div class="row g-3">
                                             <div class="col-md-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="1" name="hot_deals" id="flexCheckDefault" value="1">
-                                                    <label class="form-check-label" for="flexCheckDefault">Hot Deals</label>
+                                                    <input class="form-check-input" type="checkbox" value="1"
+                                                        name="hot_deals" id="flexCheckDefault" value="1">
+                                                    <label class="form-check-label" for="flexCheckDefault">Hot
+                                                        Deals</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="1" name="featured" id="flexCheckDefault" value="1">
-                                                    <label class="form-check-label" for="flexCheckDefault">Featured</label>
+                                                    <input class="form-check-input" type="checkbox" value="1"
+                                                        name="featured" id="flexCheckDefault" value="1">
+                                                    <label class="form-check-label"
+                                                        for="flexCheckDefault">Featured</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="1" name="special_offer" id="flexCheckDefault" value="1">
-                                                    <label class="form-check-label" for="flexCheckDefault">Special Offer</label>
+                                                    <input class="form-check-input" type="checkbox" value="1"
+                                                        name="special_offer" id="flexCheckDefault" value="1">
+                                                    <label class="form-check-label" for="flexCheckDefault">Special
+                                                        Offer</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="1" name="special_deals" id="flexCheckDefault" value="1">
-                                                    <label class="form-check-label" for="flexCheckDefault">Special Deals</label>
+                                                    <input class="form-check-input" type="checkbox" value="1"
+                                                        name="special_deals" id="flexCheckDefault" value="1">
+                                                    <label class="form-check-label" for="flexCheckDefault">Special
+                                                        Deals</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -163,149 +182,152 @@
             </form>
         </div>
     </div>
-    
 @endsection
 @push('admin_scripts')
-
-<script>
-    function mainThamUrl(input){
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#mainThamb').attr('src', e.target.result).addClass('mt-2').width(80).height(80);
+    <script>
+        function mainThamUrl(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#mainThamb').attr('src', e.target.result).addClass('mt-2').width(80).height(80);
+                }
+                reader.readAsDataURL(input.files[0]);
             }
-            reader.readAsDataURL(input.files[0]);
         }
-    }
-    $(document).ready(function(){
-        $('#multiImg').on('change', function(){ //on file input change
-            if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
-            {
-                var data = $(this)[0].files; //this file data
-                
-                $.each(data, function(index, file){ //loop though each file
-                    if(/(\.|\/)(gif|jpe?g|png|webp)$/i.test(file.type)){ //check supported file type
-                        var fRead = new FileReader(); //new filereader
-                        fRead.onload = (function(file){ //trigger function on successful read
-                            return function(e) {
-                                var img = $('<img/>').addClass('thumb').attr('src', e.target.result).addClass('mt-2').width(100).height(80); //create image element 
-                                $('#preview_img').append(img); //append image to output element
-                            };
-                        })(file);
-                        fRead.readAsDataURL(file); //URL representing the file's data.
-                    }
-                });
-                
-            }else{
-                alert("Your browser doesn't support File API!"); //if File API is absent
-            }
-        });
-    });
+        $(document).ready(function() {
+            $('#multiImg').on('change', function() { //on file input change
+                if (window.File && window.FileReader && window.FileList && window
+                    .Blob) //check File API supported browser
+                {
+                    var data = $(this)[0].files; //this file data
 
-    //subcategory dependencis
-    $(document).ready(function(){
-        $('select[name="category_id"]').on('change', function(){
-            let category_id = $(this).val();
-            if(category_id){
-                $.ajax({
-                    url: "{{ url('/admin/subcategory-ajax/') }}/"+category_id,
-                    type: "GET",
-                    dataType: 'json',
-                    success: function(data){
-                        $('select[name="subcategory_id"]').html();
-                        $('select[name="subcategory_id"]').empty();
-                        $.each(data, function(key, value){
-                            $('select[name="subcategory_id"]').append('<option value="'+value.id+'">'+value.sub_category_name+'</option>');
-                        });
+                    $.each(data, function(index, file) { //loop though each file
+                        if (/(\.|\/)(gif|jpe?g|png|webp)$/i.test(file
+                            .type)) { //check supported file type
+                            var fRead = new FileReader(); //new filereader
+                            fRead.onload = (function(file) { //trigger function on successful read
+                                return function(e) {
+                                    var img = $('<img/>').addClass('thumb').attr('src',
+                                            e.target.result).addClass('mt-2').width(100)
+                                        .height(80); //create image element 
+                                    $('#preview_img').append(
+                                    img); //append image to output element
+                                };
+                            })(file);
+                            fRead.readAsDataURL(file); //URL representing the file's data.
+                        }
+                    });
+
+                } else {
+                    alert("Your browser doesn't support File API!"); //if File API is absent
+                }
+            });
+        });
+
+        //subcategory dependencis
+        $(document).ready(function() {
+            $('select[name="category_id"]').on('change', function() {
+                let category_id = $(this).val();
+                if (category_id) {
+                    $.ajax({
+                        url: "{{ url('/admin/subcategory-ajax/') }}/" + category_id,
+                        type: "GET",
+                        dataType: 'json',
+                        success: function(data) {
+                            $('select[name="subcategory_id"]').html();
+                            $('select[name="subcategory_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="subcategory_id"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .sub_category_name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#myForm').validate({
+                rules: {
+                    product_name: {
+                        required: true,
                     },
-                });
-            } else {
-                alert('danger');
-            }
+                    short_desc: {
+                        required: true,
+                    },
+                    product_thambnail: {
+                        required: true,
+                    },
+                    multi_img: {
+                        required: true,
+                    },
+                    selling_price: {
+                        required: true,
+                    },
+                    product_code: {
+                        required: true,
+                    },
+                    product_qty: {
+                        required: true,
+                    },
+                    brand_id: {
+                        required: true,
+                    },
+                    category_id: {
+                        required: true,
+                    },
+                    subcategory_id: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    product_name: {
+                        required: 'Please Enter Product Name',
+                    },
+                    short_desc: {
+                        required: 'Please Enter Short Description',
+                    },
+                    product_thambnail: {
+                        required: 'Please Select Product Thambnail Image',
+                    },
+                    multi_img: {
+                        required: 'Please Select Product Multi Image',
+                    },
+                    selling_price: {
+                        required: 'Please Enter Selling Price',
+                    },
+                    product_code: {
+                        required: 'Please Enter Product Code',
+                    },
+                    product_qty: {
+                        required: 'Please Enter Product Quantity',
+                    },
+                    brand_id: {
+                        required: 'Please select brand',
+                    },
+                    category_id: {
+                        required: 'Please select Category',
+                    },
+                    subcategory_id: {
+                        required: 'Please select Subcategory',
+                    },
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                },
+            });
         });
-    });
-
-</script>
-<script>
-    $(document).ready(function (){
-        $('#myForm').validate({
-            rules: {
-                product_name: {
-                    required : true,
-                }, 
-                 short_desc: {
-                    required : true,
-                }, 
-                 product_thambnail: {
-                    required : true,
-                }, 
-                 multi_img: {
-                    required : true,
-                }, 
-                 selling_price: {
-                    required : true,
-                },                   
-                 product_code: {
-                    required : true,
-                }, 
-                 product_qty: {
-                    required : true,
-                }, 
-                 brand_id: {
-                    required : true,
-                }, 
-                 category_id: {
-                    required : true,
-                }, 
-                 subcategory_id: {
-                    required : true,
-                }, 
-            },
-            messages :{
-                product_name: {
-                    required : 'Please Enter Product Name',
-                },
-                short_desc: {
-                    required : 'Please Enter Short Description',
-                },
-                product_thambnail: {
-                    required : 'Please Select Product Thambnail Image',
-                },
-                multi_img: {
-                    required : 'Please Select Product Multi Image',
-                },
-                selling_price: {
-                    required : 'Please Enter Selling Price',
-                }, 
-                product_code: {
-                    required : 'Please Enter Product Code',
-                },
-                 product_qty: {
-                    required : 'Please Enter Product Quantity',
-                },
-                 brand_id: {
-                    required : 'Please select brand',
-                },
-                 category_id: {
-                    required : 'Please select Category',
-                },
-                 subcategory_id: {
-                    required : 'Please select Subcategory',
-                },
-            },
-            errorElement : 'span', 
-            errorPlacement: function (error,element) {
-                error.addClass('invalid-feedback');
-                element.closest('.form-group').append(error);
-            },
-            highlight : function(element, errorClass, validClass){
-                $(element).addClass('is-invalid');
-            },
-            unhighlight : function(element, errorClass, validClass){
-                $(element).removeClass('is-invalid');
-            },
-        });
-    });
-    
-</script>
+    </script>
 @endpush

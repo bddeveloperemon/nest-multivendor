@@ -204,6 +204,13 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit/blog/category/{id}', [BlogController::class, 'editBlogCategory'])->name('edit.blog.category');
     Route::post('/update/blog/category/{id}', [BlogController::class, 'updateBlogCategory'])->name('blog.category.update');
     Route::get('/delete/blog/category/{id}', [BlogController::class, 'deleteBlogCategory'])->name('delete.blog.category');
+    // Blog Post Routes
+    Route::get('/blog/post', [BlogController::class, 'allBlogPost'])->name('blog.post');
+    Route::get('/add/blog/post', [BlogController::class, 'addBlogPost'])->name('add.blog.post');
+    Route::post('/store/blog/post', [BlogController::class, 'storeBlogPost'])->name('store.blog.post');
+    Route::get('/edit/blog/post/{id}', [BlogController::class, 'editBlogPost'])->name('edit.blog.post');
+    Route::post('/update/blog/post/{id}', [BlogController::class, 'updateBlogPost'])->name('blog.post.update');
+    Route::get('/delete/blog/post/{id}', [BlogController::class, 'deleteBlogPost'])->name('delete.blog.post');
 });
 
 //Vendor Dashboard
