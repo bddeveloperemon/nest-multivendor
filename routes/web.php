@@ -23,6 +23,7 @@ use App\Http\Controllers\User\CashonDeliveryController;
 use App\Http\Controllers\Backend\Admin\ReportController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\Vendor\VendorController;
+use App\Http\Controllers\Frontend\FrontendBlogController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Admin\ActiveUserController;
 use App\Http\Controllers\Backend\Admin\SubCategoryController;
@@ -269,4 +270,5 @@ Route::post('/apply-coupon',[CartController::class,'couponApply']); //apply coup
 Route::get('/coupon-calculation',[CartController::class,'couponCalculate']); //coupon calculate
 Route::get('/remove-coupon',[CartController::class,'removeCoupon']); // remove coupon
 Route::get('/checkout',[CartController::class,'checkout'])->name('checkout'); //checkout routes;
+Route::get('/blog',[FrontendBlogController::class,'allBlog'])->name('home.blog'); // All Blog;
 require __DIR__.'/auth.php';
