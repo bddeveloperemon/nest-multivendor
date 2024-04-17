@@ -271,4 +271,5 @@ Route::get('/coupon-calculation',[CartController::class,'couponCalculate']); //c
 Route::get('/remove-coupon',[CartController::class,'removeCoupon']); // remove coupon
 Route::get('/checkout',[CartController::class,'checkout'])->name('checkout'); //checkout routes;
 Route::get('/blog',[FrontendBlogController::class,'allBlog'])->name('home.blog'); // All Blog;
+Route::get('/blog/post/details/{id}/{slug}',[FrontendBlogController::class,'blogPostDetails']); // Blog Post Details;
 require __DIR__.'/auth.php';

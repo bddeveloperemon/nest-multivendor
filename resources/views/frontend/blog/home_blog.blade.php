@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 @section('title')
-    Blog
+    Blog Posts
 @endsection
 @section('content')
     <div class="page-header mt-30 mb-75">
@@ -72,20 +72,24 @@
                                 <div class="post-thumb"
                                     style="background-image: url({{ asset('upload/blog/' . $blogPost->post_image) }})">
                                     <div class="entry-meta">
-                                        <a class="entry-meta meta-2" href="blog-category-grid.html"><i
+                                        <a class="entry-meta meta-2"
+                                            href="{{ url('blog/post/details/' . $blogPost->id . '/' . $blogPost->post_slug) }}"><i
                                                 class="fi-rs-play-alt"></i></a>
                                     </div>
                                 </div>
                                 <div class="entry-content-2 pl-50">
                                     <h3 class="post-title mb-20">
-                                        <a href="blog-post-right.html">{{ $blogPost->post_title }}</a>
+                                        <a
+                                            href="{{ url('blog/post/details/' . $blogPost->id . '/' . $blogPost->post_slug) }}">{{ $blogPost->post_title }}
+                                        </a>
                                     </h3>
                                     <p class="post-exerpt mb-40">{{ $blogPost->post_short_description }}</p>
                                     <div class="entry-meta meta-1 font-xs color-grey mt-10 pb-10">
                                         <div>
                                             <span class="post-on">{{ $blogPost->created_at->format('M d Y') }}</span>
                                         </div>
-                                        <a href="blog-post-right.html" class="text-brand font-heading font-weight-bold">Read
+                                        <a href="{{ url('blog/post/details/' . $blogPost->id . '/' . $blogPost->post_slug) }}"
+                                            class="text-brand font-heading font-weight-bold">Read
                                             more <i class="fi-rs-arrow-right"></i></a>
                                     </div>
                                 </div>
