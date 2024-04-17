@@ -218,8 +218,9 @@
                                                 )->get();
                                             @endphp
                                             <li>
-                                                <a href="#"> <img
-                                                        src="{{ asset('frontend/assets/imgs/theme/icons/category-1.svg') }}"
+                                                <a
+                                                    href="{{ url('blog/post/category/' . $category->id . '/' . $category->blog_category_slug) }}">
+                                                    <img src="{{ asset('frontend/assets/imgs/theme/icons/category-1.svg') }}"
                                                         alt="" />{{ $category->blog_category_name }}</a><span
                                                     class="count">{{ count($posts) }}</span>
                                             </li>

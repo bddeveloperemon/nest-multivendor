@@ -18,11 +18,20 @@ class FrontendBlogController extends Controller
     }
 
     // Blog Post Details
-    public function blogPostDetails($id,$post_slug)
+    public function blogPostDetails($id,$slug)
     {
         $blogCategories = BlogCategory::latest()->get();
         $blogDetails = BlogPost::findOrFail($id);
         $breadCat = BlogCategory::where('id',$id)->get();
         return view('frontend.blog.blog_post_details',compact('blogCategories', 'blogDetails','breadCat'));
+    }
+
+    // Blog Category Details
+    public function blogPostCategory($id,$slug)
+    {
+        $blogCategories = BlogCategory::latest()->get();
+        $blogPosts = BlogPost::where('category_id',$id)->get();
+        $breadCat = BlogCategory::where('id',$id)->get();
+        return view('frontend.blog.blog_category_post',compact('blogCategories', 'blogPosts','breadCat'));
     }
 }
