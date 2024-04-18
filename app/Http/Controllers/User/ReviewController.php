@@ -39,4 +39,11 @@ class ReviewController extends Controller
         $penReviews = Review::with('user','product')->where('status',0)->orderBy('id','DESC')->get();
         return view('backend.review.pending_reviews',compact('penReviews'));
     }
+
+    public function approveReview($id)
+    {
+        Review::where('id',$id)->update(['status' => 1]);
+        toastr()->success('Review Approved');
+        return redirect()->back();
+    }
 }

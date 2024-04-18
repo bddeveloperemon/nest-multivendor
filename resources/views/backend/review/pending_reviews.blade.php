@@ -97,7 +97,7 @@
                                             </td>
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.edit.category', $penReview->id) }}"
+                                                <a href="{{ route('admin.approve.review', $penReview->id) }}"
                                                     class="btn btn-success btn-sm">Approve</a>
                                             </td>
                                         </tr>
