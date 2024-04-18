@@ -343,33 +343,66 @@
                                             <div class="col-lg-8">
                                                 <h4 class="mb-30">Customer questions & answers</h4>
                                                 <div class="comment-list">
-                                                    <div class="single-comment justify-content-between d-flex mb-30">
-                                                        <div class="user justify-content-between d-flex">
-                                                            <div class="thumb text-center">
-                                                                <img src="assets/imgs/blog/author-2.png" alt="" />
-                                                                <a href="#"
-                                                                    class="font-heading text-brand">Sienna</a>
-                                                            </div>
-                                                            <div class="desc">
-                                                                <div class="d-flex justify-content-between mb-10">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <span class="font-xs text-muted">December 4, 2022
-                                                                            at 3:12 pm </span>
+                                                    @php
+                                                        $reviews = App\Models\Review::where('product_id', $product->id)
+                                                            ->limit(5)
+                                                            ->latest()
+                                                            ->get();
+                                                    @endphp
+                                                    @foreach ($reviews as $review)
+                                                        @if ($review->status == 1)
+                                                        @else
+                                                            <div
+                                                                class="single-comment justify-content-between d-flex mb-30">
+                                                                <div class="user justify-content-between d-flex">
+                                                                    <div class="thumb text-center">
+                                                                        <img style="height: 60%"
+                                                                            src="{{ !empty($review->user->image) ? url('upload/user_images/' . $review->user->image) : url('backend/assets/images/avatars/avatar-500.png') }}"
+                                                                            alt="" />
+                                                                        <a href="#"
+                                                                            class="font-heading text-brand">{{ $review->user->name }}</a>
                                                                     </div>
-                                                                    <div class="product-rate d-inline-block">
-                                                                        <div class="product-rating" style="width: 100%">
+                                                                    <div class="desc">
+                                                                        <div class="d-flex justify-content-between mb-10">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <span
+                                                                                    class="font-xs text-muted">{{ Carbon\Carbon::parse($review->created_at)->diffForHumans() }}
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="product-rate d-inline-block">
+                                                                                @if ($review->rating == null)
+                                                                                @elseif ($review->rating == 1)
+                                                                                    <div class="product-rating"
+                                                                                        style="width: 20%">
+                                                                                    </div>
+                                                                                @elseif ($review->rating == 2)
+                                                                                    <div class="product-rating"
+                                                                                        style="width: 40%">
+                                                                                    </div>
+                                                                                @elseif ($review->rating == 3)
+                                                                                    <div class="product-rating"
+                                                                                        style="width: 60%">
+                                                                                    </div>
+                                                                                @elseif ($review->rating == 4)
+                                                                                    <div class="product-rating"
+                                                                                        style="width: 80%">
+                                                                                    </div>
+                                                                                @elseif ($review->rating == 5)
+                                                                                    <div class="product-rating"
+                                                                                        style="width: 100%">
+                                                                                    </div>
+                                                                                @endif
+                                                                            </div>
                                                                         </div>
+                                                                        <p class="mb-10">{{ $review->comment }}<a
+                                                                                href="#" class="reply"> Reply</a>
+                                                                        </p>
                                                                     </div>
                                                                 </div>
-                                                                <p class="mb-10">Lorem ipsum dolor sit amet, consectetur
-                                                                    adipisicing elit. Delectus, suscipit exercitationem
-                                                                    accusantium obcaecati quos voluptate nesciunt facilis
-                                                                    itaque modi commodi dignissimos sequi repudiandae minus
-                                                                    ab deleniti totam officia id incidunt? <a
-                                                                        href="#" class="reply">Reply</a></p>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        @endif
+                                                    @endforeach
+
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
