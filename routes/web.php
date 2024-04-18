@@ -213,6 +213,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit/blog/post/{id}', [BlogController::class, 'editBlogPost'])->name('edit.blog.post');
     Route::post('/update/blog/post/{id}', [BlogController::class, 'updateBlogPost'])->name('blog.post.update');
     Route::get('/delete/blog/post/{id}', [BlogController::class, 'deleteBlogPost'])->name('delete.blog.post');
+    // Review All Route
+    Route::get('pending/reviews', [ReviewController::class, 'pendingReview'])->name('pending.review');
 });
 
 //Vendor Dashboard
