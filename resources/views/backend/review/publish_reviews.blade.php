@@ -1,17 +1,17 @@
 @extends('backend.admin.dashboard')
 @section('admin_title')
-    Admin - Pending Reviews
+    Admin - Publish Reviews
 @endsection
 @section('admin_content')
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Pending Reviews</div>
+        <div class="breadcrumb-title pe-3">Publish Reviews</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">All Pending Reviews</li>
+                    <li class="breadcrumb-item active" aria-current="page">All Publish Reviews</li>
                 </ol>
             </nav>
         </div>
@@ -97,8 +97,8 @@
                                             </td>
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.approve.review', $penReview->id) }}"
-                                                    class="btn btn-danger btn-sm" id="delete">Approve</a>
+                                                <a href="{{ route('admin.delete.review', $penReview->id) }}"
+                                                    class="btn btn-danger btn-sm" id="delete">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

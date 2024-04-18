@@ -239,7 +239,7 @@
                 <li> <a href="{{ route('admin.pending.review') }}"><i class="bx bx-right-arrow-alt"></i>Pending
                         Reviews</a>
                 </li>
-                <li> <a href="{{ route('admin.blog.post') }}"><i class="bx bx-right-arrow-alt"></i>Publish
+                <li> <a href="{{ route('admin.publish.review') }}"><i class="bx bx-right-arrow-alt"></i>Publish
                         Reviews</a>
                 </li>
             </ul>

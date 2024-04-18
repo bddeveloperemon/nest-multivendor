@@ -216,6 +216,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     // Review All Route
     Route::get('pending/reviews', [ReviewController::class, 'pendingReview'])->name('pending.review');
     Route::get('approve/review/{id}', [ReviewController::class, 'approveReview'])->name('approve.review');
+    Route::get('publish/review', [ReviewController::class, 'publishReview'])->name('publish.review');
+    Route::get('delete/review/{id}', [ReviewController::class, 'deleteReview'])->name('delete.review');
 });
 
 //Vendor Dashboard

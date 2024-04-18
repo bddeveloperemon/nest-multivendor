@@ -46,4 +46,17 @@ class ReviewController extends Controller
         toastr()->success('Review Approved');
         return redirect()->back();
     }
+
+    public function publishReview()
+    {
+        $penReviews = Review::with('user','product')->where('status',1)->orderBy('id','DESC')->get();
+        return view('backend.review.publish_reviews',compact('penReviews'));
+    }
+
+    public function deleteReview($id)
+    {
+        Review::findOrFail($id)->delete();
+        toastr()->success('Review Deleted');
+        return redirect()->back();
+    }
 }
