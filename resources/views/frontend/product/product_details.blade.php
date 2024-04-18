@@ -147,7 +147,7 @@
                                         </li>
                                         <li class="mb-5">Tags: <a href="#"
                                                 rel="tag">{{ $product->product_tags }}</a></li>
-                                        <li>Stock:<span class="in-stock text-brand ml-5">({{ $product->product_tags }})
+                                        <li>Stock:<span class="in-stock text-brand ml-5">({{ $product->product_qty }})
                                                 Items In Stock</span></li>
                                     </ul>
                                 </div>
