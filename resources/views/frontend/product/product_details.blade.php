@@ -51,10 +51,33 @@
                                 <h2 class="title-detail" id="dpName">{{ $product->product_name }}</h2>
                                 <div class="product-detail-rating">
                                     <div class="product-rate-cover text-end">
+                                        @php
+                                            $review = App\Models\Review::where([
+                                                'product_id' => $product->id,
+                                                'status' => 1,
+                                            ])
+                                                ->latest()
+                                                ->get();
+                                            $avarage = App\Models\Review::where([
+                                                'product_id' => $product->id,
+                                                'status' => 1,
+                                            ])->avg('rating');
+                                        @endphp
                                         <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width: 90%"></div>
+                                            @if ($avarage == 0)
+                                            @elseif($avarage == 1 || $avarage < 2)
+                                                <div class="product-rating" style="width: 20%"></div>
+                                            @elseif($avarage == 2 || $avarage < 3)
+                                                <div class="product-rating" style="width: 40%"></div>
+                                            @elseif($avarage == 3 || $avarage < 4)
+                                                <div class="product-rating" style="width: 60%"></div>
+                                            @elseif($avarage == 4 || $avarage < 5)
+                                                <div class="product-rating" style="width: 80%"></div>
+                                            @elseif($avarage == 5 || $avarage < 5)
+                                                <div class="product-rating" style="width: 100%"></div>
+                                            @endif
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (32 reviews)</span>
+                                        <span class="font-small ml-5 text-muted"> ({{ count($review) }} reviews)</span>
                                     </div>
                                 </div>
                                 <div class="clearfix product-price-cover">
@@ -172,7 +195,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews
-                                        (3)</a>
+                                        ({{ count($review) }})</a>
                                 </li>
                             </ul>
                             <div class="tab-content shop_info_tab entry-main-content">
@@ -350,7 +373,7 @@
                                                             ->get();
                                                     @endphp
                                                     @foreach ($reviews as $review)
-                                                        @if ($review->status == 1)
+                                                        @if ($review->status == 0)
                                                         @else
                                                             <div
                                                                 class="single-comment justify-content-between d-flex mb-30">
