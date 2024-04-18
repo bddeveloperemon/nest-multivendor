@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CompareController;
@@ -273,4 +274,5 @@ Route::get('/checkout',[CartController::class,'checkout'])->name('checkout'); //
 Route::get('/blog',[FrontendBlogController::class,'allBlog'])->name('home.blog'); // All Blog;
 Route::get('/blog/post/details/{id}/{slug}',[FrontendBlogController::class,'blogPostDetails']); // Blog Post Details;
 Route::get('/blog/post/category/{id}/{slug}',[FrontendBlogController::class,'blogPostCategory']); // Blog Category Details;
+Route::post('/store/review', [ReviewController::class, 'storeReview'])->name('store.review'); // Product Review Routes
 require __DIR__.'/auth.php';
