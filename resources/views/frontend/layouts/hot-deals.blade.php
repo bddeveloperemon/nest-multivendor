@@ -17,9 +17,26 @@
                                     <a
                                         href="{{ url('/product/details/' . $hot_deal->id . '/' . $hot_deal->product_slug) }}">{{ $hot_deal->product_name }}</a>
                                 </h6>
+                                @php
+                                    $avarage = App\Models\Review::where([
+                                        'product_id' => $hot_deal->id,
+                                        'status' => 1,
+                                    ])->avg('rating');
+                                @endphp
                                 <div class="product-rate-cover">
                                     <div class="product-rate d-inline-block">
-                                        <div class="product-rating" style="width: 90%"></div>
+                                        @if ($avarage == 0)
+                                        @elseif($avarage == 1 || $avarage < 2)
+                                            <div class="product-rating" style="width: 20%"></div>
+                                        @elseif($avarage == 2 || $avarage < 3)
+                                            <div class="product-rating" style="width: 40%"></div>
+                                        @elseif($avarage == 3 || $avarage < 4)
+                                            <div class="product-rating" style="width: 60%"></div>
+                                        @elseif($avarage == 4 || $avarage < 5)
+                                            <div class="product-rating" style="width: 80%"></div>
+                                        @elseif($avarage == 5 || $avarage < 5)
+                                            <div class="product-rating" style="width: 100%"></div>
+                                        @endif
                                     </div>
                                 </div>
                                 @if ($hot_deal->discount_price == null)
@@ -52,9 +69,26 @@
                                     <a
                                         href="{{ url('/product/details/' . $special_offer->id . '/' . $special_offer->product_slug) }}">{{ $special_offer->product_name }}</a>
                                 </h6>
+                                @php
+                                    $avarage = App\Models\Review::where([
+                                        'product_id' => $special_offer->id,
+                                        'status' => 1,
+                                    ])->avg('rating');
+                                @endphp
                                 <div class="product-rate-cover">
                                     <div class="product-rate d-inline-block">
-                                        <div class="product-rating" style="width: 90%"></div>
+                                        @if ($avarage == 0)
+                                        @elseif($avarage == 1 || $avarage < 2)
+                                            <div class="product-rating" style="width: 20%"></div>
+                                        @elseif($avarage == 2 || $avarage < 3)
+                                            <div class="product-rating" style="width: 40%"></div>
+                                        @elseif($avarage == 3 || $avarage < 4)
+                                            <div class="product-rating" style="width: 60%"></div>
+                                        @elseif($avarage == 4 || $avarage < 5)
+                                            <div class="product-rating" style="width: 80%"></div>
+                                        @elseif($avarage == 5 || $avarage < 5)
+                                            <div class="product-rating" style="width: 100%"></div>
+                                        @endif
                                     </div>
                                 </div>
                                 @if ($special_offer->discount_price == null)
@@ -88,9 +122,26 @@
                                     <a
                                         href="{{ url('/product/details/' . $item->id . '/' . $item->product_slug) }}">{{ $item->product_name }}</a>
                                 </h6>
+                                @php
+                                    $avarage = App\Models\Review::where([
+                                        'product_id' => $item->id,
+                                        'status' => 1,
+                                    ])->avg('rating');
+                                @endphp
                                 <div class="product-rate-cover">
                                     <div class="product-rate d-inline-block">
-                                        <div class="product-rating" style="width: 90%"></div>
+                                        @if ($avarage == 0)
+                                        @elseif($avarage == 1 || $avarage < 2)
+                                            <div class="product-rating" style="width: 20%"></div>
+                                        @elseif($avarage == 2 || $avarage < 3)
+                                            <div class="product-rating" style="width: 40%"></div>
+                                        @elseif($avarage == 3 || $avarage < 4)
+                                            <div class="product-rating" style="width: 60%"></div>
+                                        @elseif($avarage == 4 || $avarage < 5)
+                                            <div class="product-rating" style="width: 80%"></div>
+                                        @elseif($avarage == 5 || $avarage < 5)
+                                            <div class="product-rating" style="width: 100%"></div>
+                                        @endif
                                     </div>
                                 </div>
                                 @if ($item->discount_price == null)
@@ -123,9 +174,26 @@
                                     <a
                                         href="{{ url('/product/details/' . $special_deal->id . '/' . $special_deal->product_slug) }}">{{ $special_deal->product_name }}</a>
                                 </h6>
+                                @php
+                                    $avarage = App\Models\Review::where([
+                                        'product_id' => $special_deal->id,
+                                        'status' => 1,
+                                    ])->avg('rating');
+                                @endphp
                                 <div class="product-rate-cover">
                                     <div class="product-rate d-inline-block">
-                                        <div class="product-rating" style="width: 90%"></div>
+                                        @if ($avarage == 0)
+                                        @elseif($avarage == 1 || $avarage < 2)
+                                            <div class="product-rating" style="width: 20%"></div>
+                                        @elseif($avarage == 2 || $avarage < 3)
+                                            <div class="product-rating" style="width: 40%"></div>
+                                        @elseif($avarage == 3 || $avarage < 4)
+                                            <div class="product-rating" style="width: 60%"></div>
+                                        @elseif($avarage == 4 || $avarage < 5)
+                                            <div class="product-rating" style="width: 80%"></div>
+                                        @elseif($avarage == 5 || $avarage < 5)
+                                            <div class="product-rating" style="width: 100%"></div>
+                                        @endif
                                     </div>
                                 </div>
                                 @if ($special_deal->discount_price == null)
