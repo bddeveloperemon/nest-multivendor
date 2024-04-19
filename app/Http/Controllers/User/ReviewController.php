@@ -59,4 +59,15 @@ class ReviewController extends Controller
         toastr()->success('Review Deleted');
         return redirect()->back();
     }
+
+    /*
+        Vendor Review
+    */
+
+    public function vendorAllReview()
+    {
+        $id = Auth::user()->id;
+        $reviews = Review::where(['vendor_id' => $id, 'status' => 1])->orderBy('id','desc')->get();
+        return view('backend.vendor.review.approve_review', compact('reviews'));
+    }
 }

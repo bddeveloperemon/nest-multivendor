@@ -1,17 +1,17 @@
-@extends('backend.admin.dashboard')
-@section('admin_title')
-    Admin - Pending Reviews
+@extends('backend.vendor.dashboard')
+@section('vendor_title')
+    Vendor - Review List
 @endsection
-@section('admin_content')
+@section('vendor_content')
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Pending Reviews</div>
+        <div class="breadcrumb-title pe-3">Vendor Apporve Reviews</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">All Pending Reviews</li>
+                    <li class="breadcrumb-item active" aria-current="page">Apporve Reviews</li>
                 </ol>
             </nav>
         </div>
@@ -34,51 +34,50 @@
                                         <th>Product</th>
                                         <th>Rating</th>
                                         <th>Status</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php
                                         $i = 1;
                                     @endphp
-                                    @foreach ($penReviews as $penReview)
+                                    @foreach ($reviews as $review)
                                         <tr role="row" class="odd">
                                             <td class="sorting_1">{{ $i++ }}</td>
-                                            <td>{{ Str::limit($penReview->comment, 20, '...') }}</td>
-                                            <td>{{ $penReview->user->name }}</td>
-                                            <td>{{ $penReview->product->product_name }}</td>
+                                            <td>{{ Str::limit($review->comment, 20, '...') }}</td>
+                                            <td>{{ $review->user->name }}</td>
+                                            <td>{{ $review->product->product_name }}</td>
                                             <td>
-                                                @if ($penReview->rating == null)
+                                                @if ($review->rating == null)
                                                     <i class="bx bxs-star text-secondary"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
-                                                @elseif ($penReview->rating == 1)
+                                                @elseif ($review->rating == 1)
                                                     <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
-                                                @elseif ($penReview->rating == 2)
+                                                @elseif ($review->rating == 2)
                                                     <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
-                                                @elseif ($penReview->rating == 3)
+                                                @elseif ($review->rating == 3)
                                                     <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
-                                                @elseif ($penReview->rating == 4)
+                                                @elseif ($review->rating == 4)
                                                     <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-secondary"></i>
-                                                @elseif ($penReview->rating == 5)
+                                                @elseif ($review->rating == 5)
                                                     <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-warning"></i>
@@ -88,17 +87,13 @@
                                             </td>
                                             <td>
 
-                                                @if ($penReview->status == 0)
+                                                @if ($review->status == 0)
                                                     <span class="badge rouned-pill bg-warning">Pending</span>
-                                                @elseif ($penReview->status == 1)
+                                                @elseif ($review->status == 1)
                                                     <span class="badge rouned-pill bg-success">Approved</span>
                                                 @endif
 
                                             </td>
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('admin.approve.review', $penReview->id) }}"
-                                                    class="btn btn-success btn-sm">Approve</a>
                                             </td>
                                         </tr>
                                     @endforeach
