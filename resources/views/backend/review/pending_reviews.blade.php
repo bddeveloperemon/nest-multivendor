@@ -29,6 +29,7 @@
                                 <thead>
                                     <tr role="row">
                                         <th>SL</th>
+                                        <th>Image</th>
                                         <th>Comment</th>
                                         <th>User</th>
                                         <th>Product</th>
@@ -44,6 +45,8 @@
                                     @foreach ($penReviews as $penReview)
                                         <tr role="row" class="odd">
                                             <td class="sorting_1">{{ $i++ }}</td>
+                                            <td><img src="{{ asset('upload/product_images/thambnail/' . $penReviews->product->product_thambnail) }}"
+                                                    alt="" srcset="" width="60px" height="60px"></td>
                                             <td>{{ Str::limit($penReview->comment, 20, '...') }}</td>
                                             <td>{{ $penReview->user->name }}</td>
                                             <td>{{ $penReview->product->product_name }}</td>

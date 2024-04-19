@@ -29,9 +29,10 @@
                                 <thead>
                                     <tr role="row">
                                         <th>SL</th>
-                                        <th>Comment</th>
-                                        <th>User</th>
+                                        <th>Image</th>
                                         <th>Product</th>
+                                        <th>User</th>
+                                        <th>Comment</th>
                                         <th>Rating</th>
                                         <th>Status</th>
                                     </tr>
@@ -43,9 +44,11 @@
                                     @foreach ($reviews as $review)
                                         <tr role="row" class="odd">
                                             <td class="sorting_1">{{ $i++ }}</td>
-                                            <td>{{ Str::limit($review->comment, 20, '...') }}</td>
-                                            <td>{{ $review->user->name }}</td>
+                                            <td><img src="{{ asset('upload/product_images/thambnail/' . $review->product->product_thambnail) }}"
+                                                    alt="" srcset="" width="60px" height="60px"></td>
                                             <td>{{ $review->product->product_name }}</td>
+                                            <td>{{ $review->user->name }}</td>
+                                            <td>{{ Str::limit($review->comment, 20, '...') }}</td>
                                             <td>
                                                 @if ($review->rating == null)
                                                     <i class="bx bxs-star text-secondary"></i>
