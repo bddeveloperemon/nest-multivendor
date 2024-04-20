@@ -245,6 +245,21 @@
             </ul>
         </li>
         <li>
+            <a href="javascript:void(0);" class="has-arrow">
+                <div class="parent-icon"><i class="lni lni-users"></i>
+                </div>
+                <div class="menu-title">Setting Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('admin.site.setting') }}"><i class="bx bx-right-arrow-alt"></i>Site
+                        Setting</a>
+                </li>
+                <li> <a href="{{ route('admin.publish.review') }}"><i class="bx bx-right-arrow-alt"></i>Publish
+                        Reviews</a>
+                </li>
+            </ul>
+        </li>
+        <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"> <i class="bx bx-donate-blood"></i>
                 </div>

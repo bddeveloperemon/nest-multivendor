@@ -28,6 +28,7 @@ use App\Http\Controllers\Frontend\FrontendBlogController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Admin\ActiveUserController;
 use App\Http\Controllers\Backend\Admin\SubCategoryController;
+use App\Http\Controllers\Backend\Admin\SiteSettingsController;
 use App\Http\Controllers\Backend\Vendor\VendorProductController;
 
 /*
@@ -218,6 +219,9 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('approve/review/{id}', [ReviewController::class, 'approveReview'])->name('approve.review');
     Route::get('publish/review', [ReviewController::class, 'publishReview'])->name('publish.review');
     Route::get('delete/review/{id}', [ReviewController::class, 'deleteReview'])->name('delete.review');
+    // Site Manage Routes
+    Route::get('/site/settings', [SiteSettingsController::class, 'siteSetting'])->name('site.setting');
+    Route::post('/setting/store/{id}', [SiteSettingsController::class, 'settingStore'])->name('setting.store');
 });
 
 //Vendor Dashboard
