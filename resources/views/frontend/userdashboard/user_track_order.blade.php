@@ -27,12 +27,12 @@
                                             <h5>Track Your Order</h5>
                                         </div>
                                         <div class="card-body">
-                                            <form method="post" action="{{ route('user.update.password') }}">
+                                            <form action="{{ route('order.tracking') }}">
                                                 @csrf
                                                 <div class="row">
                                                     <div class="form-group col-md-6">
                                                         <label>Invoice Code <span class="required">*</span></label>
-                                                        <input type="password" name="code" class="form-control"
+                                                        <input type="text" name="code" class="form-control"
                                                             placeholder="Your Order Invoice Number" required>
                                                     </div>
                                                     <div class="col-md-12">

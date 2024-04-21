@@ -83,4 +83,18 @@ class AllUserController extends Controller
     {
         return view('frontend.userdashboard.user_track_order');
     }
+
+    // User Order Tracking
+    public function orderTracking(Request $request)
+    {
+        $invoice = $request->code;
+        $track = Order::where('invoice_no',$invoice)->first();
+        if($track)
+        {
+            return view('frontend.tracking.track_order',compact('track'));
+        }else{
+            toastr()->error('Invoice No is invalid! Please check your invoice and try again.');
+            return redirect()->back();
+        }
+    }
 }
