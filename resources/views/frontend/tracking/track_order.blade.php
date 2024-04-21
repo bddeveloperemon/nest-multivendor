@@ -8,14 +8,14 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* body {
-                                                                                                                    background-color: #eeeeee;
-                                                                                                                    font-family: 'Open Sans', serif
-                                                                                                                }
+                                                                                                                        background-color: #eeeeee;
+                                                                                                                        font-family: 'Open Sans', serif
+                                                                                                                    }
 
-                                                                                                                .container {
-                                                                                                                    margin-top: 50px;
-                                                                                                                    margin-bottom: 50px
-                                                                                                                } */
+                                                                                                                    .container {
+                                                                                                                        margin-top: 50px;
+                                                                                                                        margin-bottom: 50px
+                                                                                                                    } */
 
         .card {
             position: relative;
@@ -225,7 +225,8 @@
 
                 </div>
                 <hr>
-                <a href="#" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to
+                <a href="{{ route('user.order') }}" class="btn btn-warning" data-abc="true"> <i
+                        class="fa fa-chevron-left"></i> Back to
                     orders</a>
             </div>
         </article>
