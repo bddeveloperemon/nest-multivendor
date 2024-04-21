@@ -294,4 +294,5 @@ Route::get('/blog/post/details/{id}/{slug}',[FrontendBlogController::class,'blog
 Route::get('/blog/post/category/{id}/{slug}',[FrontendBlogController::class,'blogPostCategory']); // Blog Category Details;
 Route::post('/store/review', [ReviewController::class, 'storeReview'])->name('store.review'); // Product Review Routes
 Route::post('/search', [IndexController::class, 'productSearch'])->name('product.search'); // Product Search
+Route::post('search-product', [IndexController::class, 'searchProduct']); // Product Search
 require __DIR__.'/auth.php';

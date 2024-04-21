@@ -69,24 +69,24 @@
                 <div class="logo logo-width-1">
                     <a href="{{ url('/') }}"><img src="{{ asset($setting->logo) }}" alt="logo" /></a>
                 </div>
+                @php
+                    $categories = App\Models\Category::orderBy('category_name', 'asc')
+                        ->select('id', 'category_name')
+                        ->get();
+                @endphp
                 <div class="header-right">
                     <div class="search-style-2">
                         <form action="{{ route('product.search') }}" method="post">
                             @csrf
                             <select class="select-active">
                                 <option>All Categories</option>
-                                <option>Milks and Dairies</option>
-                                <option>Wines & Alcohol</option>
-                                <option>Clothing & Beauty</option>
-                                <option>Pet Foods & Toy</option>
-                                <option>Fast food</option>
-                                <option>Baking material</option>
-                                <option>Vegetables</option>
-                                <option>Fresh Seafood</option>
-                                <option>Noodles & Rice</option>
-                                <option>Ice cream</option>
+                                @foreach ($categories as $category)
+                                    <option value="">{{ $category->category_name }}</option>
+                                @endforeach
                             </select>
-                            <input name="search" placeholder="Search for items..." />
+                            <input onfocus="search_result_show()" onblur="search_result_hide()" name="search"
+                                id="search" placeholder="Search for items..." />
+                            <div id="searchProduct"></div>
                         </form>
                     </div>
                     <div class="header-action-right">
@@ -383,3 +383,24 @@
         </div>
     </div>
 </header>
+<style>
+    #searchProduct {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        z-index: 999;
+        border-radius: 8px;
+        margin-top: 5px;
+    }
+</style>
+<script>
+    function search_result_show() {
+        $('#searchProduct').slideDown();
+    }
+
+    function search_result_hide() {
+        $('#searchProduct').slideUp();
+    }
+</script>
