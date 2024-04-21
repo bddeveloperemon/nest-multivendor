@@ -254,8 +254,8 @@
                 <li> <a href="{{ route('admin.site.setting') }}"><i class="bx bx-right-arrow-alt"></i>Site
                         Setting</a>
                 </li>
-                <li> <a href="{{ route('admin.publish.review') }}"><i class="bx bx-right-arrow-alt"></i>Publish
-                        Reviews</a>
+                <li> <a href="{{ route('admin.seo.setting') }}"><i class="bx bx-right-arrow-alt"></i>Seo
+                        Setting</a>
                 </li>
             </ul>
         </li>

@@ -5,7 +5,13 @@
     <meta charset="utf-8" />
     <title>Nest - @yield('title')</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="" />
+    @php
+        $seo = App\Models\Seo::find(1);
+    @endphp
+    <meta name="title" content="{{ $seo->meta_title }}" />
+    <meta name="author" content="{{ $seo->meta_author }}" />
+    <meta name="keyword" content="{{ $seo->meta_keyword }}" />
+    <meta name="description" content="{{ $seo->meta_keyword }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:title" content="" />
     <meta property="og:type" content="" />

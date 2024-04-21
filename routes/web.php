@@ -222,6 +222,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     // Site Manage Routes
     Route::get('/site/settings', [SiteSettingsController::class, 'siteSetting'])->name('site.setting');
     Route::post('/setting/store/{id}', [SiteSettingsController::class, 'settingStore'])->name('setting.store');
+    Route::get('/seo/settings', [SiteSettingsController::class, 'seoSetting'])->name('seo.setting');
+    Route::post('/seo/store/{id}', [SiteSettingsController::class, 'seoStore'])->name('seo.store');
 });
 
 //Vendor Dashboard

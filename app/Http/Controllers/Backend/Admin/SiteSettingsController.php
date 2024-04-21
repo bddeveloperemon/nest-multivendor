@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Admin;
 
+use Carbon\Carbon;
+use App\Models\Seo;
 use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -57,6 +59,26 @@ class SiteSettingsController extends Controller
             ]);
         }
         toastr()->success('Site Updated Successfully');
+        return redirect()->back();       
+    }
+
+    public function seoSetting()
+    {
+        $seo = Seo::find(1);
+        return view('backend.setting.seo_setting',compact('seo'));
+    }
+
+    public function seoStore(Request $request, $id)
+    {
+        $setting = Seo::find($id);
+        $setting->update([
+            'meta_title'       => $request->meta_title,
+            'meta_author'      => $request->meta_author,
+            'meta_keyword'     => $request->meta_keyword,
+            'meta_description' => $request->meta_description,
+            'updated_at'       => Carbon::now()
+        ]);
+        toastr()->success('Seo Updated Successfully');
         return redirect()->back();       
     }
 }
