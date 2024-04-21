@@ -83,6 +83,8 @@ Route::middleware(['auth','role:user'])->group(function () {
     // Order Return Route
     Route::post('/return/order/{order_id}', [AllUserController::class, 'returnOrder'])->name('return.order');
     Route::get('/return/orders', [AllUserController::class, 'getReturnOrder'])->name('return.order.page');
+    // Track Order
+    Route::get('/track/order', [AllUserController::class, 'userTrackOrder'])->name('track.your.order');
 });
 
 //Admin Dashboard
