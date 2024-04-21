@@ -8,14 +8,14 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* body {
-                                                                                                background-color: #eeeeee;
-                                                                                                font-family: 'Open Sans', serif
-                                                                                            }
+                                                                                                                    background-color: #eeeeee;
+                                                                                                                    font-family: 'Open Sans', serif
+                                                                                                                }
 
-                                                                                            .container {
-                                                                                                margin-top: 50px;
-                                                                                                margin-bottom: 50px
-                                                                                            } */
+                                                                                                                .container {
+                                                                                                                    margin-top: 50px;
+                                                                                                                    margin-bottom: 50px
+                                                                                                                } */
 
         .card {
             position: relative;
@@ -180,14 +180,49 @@
                     </div>
                 </article>
                 <div class="track">
-                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
-                            class="text">Order Pending</span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">
-                            Order Confirmed</span> </div>
-                    <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">
-                            Order Processing</span> </div>
-                    <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span
-                            class="text">Delivered</span> </div>
+                    @if ($track->status == 'pending')
+                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
+                                class="text">Order Pending</span> </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">
+                                Order Confirmed</span> </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">
+                                Order Processing</span> </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span
+                                class="text">Delivered</span> </div>
+                    @elseif ($track->status == 'confirm')
+                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
+                                class="text">Order Pending</span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span
+                                class="text">
+                                Order Confirmed</span> </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">
+                                Order Processing</span> </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span
+                                class="text">Delivered</span> </div>
+                    @elseif ($track->status == 'processing')
+                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
+                                class="text">Order Pending</span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span
+                                class="text">
+                                Order Confirmed</span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span
+                                class="text">
+                                Order Processing</span> </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span
+                                class="text">Delivered</span> </div>
+                    @elseif ($track->status == 'deliverd')
+                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
+                                class="text">Order Pending</span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span
+                                class="text">
+                                Order Confirmed</span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span
+                                class="text">
+                                Order Processing</span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-box"></i> </span> <span
+                                class="text">Delivered</span> </div>
+                    @endif
+
                 </div>
                 <hr>
                 <a href="#" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to
