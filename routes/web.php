@@ -224,6 +224,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::post('/setting/store/{id}', [SiteSettingsController::class, 'settingStore'])->name('setting.store');
     Route::get('/seo/settings', [SiteSettingsController::class, 'seoSetting'])->name('seo.setting');
     Route::post('/seo/store/{id}', [SiteSettingsController::class, 'seoStore'])->name('seo.store');
+    // Product Stock
+    Route::get('/product/stock', [ProductController::class, 'productStock'])->name('product.stock');
 });
 
 //Vendor Dashboard

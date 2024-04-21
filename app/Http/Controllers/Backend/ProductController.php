@@ -225,4 +225,11 @@ class ProductController extends Controller
         toastr()->success('Product deleted successfully');
         return redirect()->back();
     }
+
+    // Product Stock
+    public function productStock()
+    {
+        $products = Product::latest()->get();
+        return view('backend.product.product_stock',compact('products'));
+    }
 }

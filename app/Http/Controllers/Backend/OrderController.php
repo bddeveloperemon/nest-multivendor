@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use toastr;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,6 +69,12 @@ class OrderController extends Controller
     // Pending Order Confrim
     public function processingDeliverd($id)
     {
+        $product = OrderItem::where('order_id', $id)->get();
+            foreach ($product as $item) {
+                Product::where('id',$item->product_id)->update([
+                    'product_qty' => DB::raw('product_qty-'.$item->qty) 
+                ]);
+            }
         Order::findOrFail($id)->update(['status' => 'deliverd']);
         toastr()->success('Order Deliverd Successfully');
         return redirect()->route('admin.deliverded.order');
