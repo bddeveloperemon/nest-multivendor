@@ -22,34 +22,42 @@
         <div class="card-body">
             <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap5">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <table id="example" class="table table-striped table-bordered dataTable" style="width: 100%;"
-                            role="grid" aria-describedby="example_info">
-                            <thead>
-                                <tr role="row">
-                                    <th>SL</th>
-                                    <th>Role Name</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $i = 1;
-                                @endphp
-                                @foreach ($roles as $role)
-                                    <tr role="row" class="odd">
-                                        <td class="sorting_1">{{ $i++ }}</td>
-                                        <td>{{ $role->name }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.edit.role.permission', $role->id) }}"
-                                                class="btn btn-info btn-sm">Edit</a>
-                                            <a href="{{ route('admin.delete.role', $role->id) }}"
-                                                class="btn btn-danger btn-sm" id="delete">Delete</a>
-                                        </td>
+                    <div class="table-responsive">
+                        <div class="col-sm-12">
+                            <table id="example" class="table table-striped table-bordered dataTable" style="width: 100%;"
+                                role="grid" aria-describedby="example_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th>SL</th>
+                                        <th>Role Name</th>
+                                        <th>Permissions</th>
+                                        <th>Action</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $i = 1;
+                                    @endphp
+                                    @foreach ($roles as $role)
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">{{ $i++ }}</td>
+                                            <td>{{ $role->name }}</td>
+                                            <td>
+                                                @foreach ($role->permissions as $per)
+                                                    <span class="badge rounded-pill bg-success">{{ $per->name }}</span>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.edit.role.permission', $role->id) }}"
+                                                    class="btn btn-info btn-sm">Edit</a>
+                                                <a href="{{ route('admin.delete.role.permission', $role->id) }}"
+                                                    class="btn btn-danger btn-sm" id="delete">Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

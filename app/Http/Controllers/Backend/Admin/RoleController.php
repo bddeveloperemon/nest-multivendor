@@ -190,5 +190,16 @@ class RoleController extends Controller
         toastr()->success('Role Permission Updated Successfully');
         return redirect()->route('admin.all.roles.permission');
     }
+
+    // Delete Role Permission
+    public function deleteRolesPermission($id)
+    {
+        $role = Role::findOrFail($id);
+        if (!is_null($role))  {
+            $role->delete();
+            toastr()->success('Role Permission Deleted Successfully');
+            return redirect()->back();
+        }
+    }
     
 }
