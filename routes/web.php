@@ -246,6 +246,7 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/delete/role/{id}', [RoleController::class, 'deleteRole'])->name('delete.role');
     // Add Role Permission
     Route::get('/add/roles/permission', [RoleController::class, 'addRolesPermission'])->name('add.roles.permission');
+    Route::post('/store/roles/permission', [RoleController::class, 'storeRolesPermission'])->name('store.role.permission');
 });
 
 //Vendor Dashboard

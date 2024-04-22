@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Admin;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Permission;
@@ -142,5 +143,19 @@ class RoleController extends Controller
         $permissions = Permission::all();
         $permission_groups = User::getPermissionsGroup();
         return view('backend.role.add_role_permission',compact('roles','permissions','permission_groups'));
+    }
+
+    // Store Role Permission
+    public function storeRolesPermission(Request $request)
+    {
+        $data = array();
+        foreach($request->permission as $key => $item){
+            $data['role_id'] = $request->role_id;
+            $data['permission_id'] = $item;
+
+            DB::table('role_has_permissions')->insert($data);
+        }
+        toastr()->success('Role Permission Added Successfully');
+        return redirect()->route('admin.all.role');
     }
 }
