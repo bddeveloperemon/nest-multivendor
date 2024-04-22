@@ -305,7 +305,7 @@
                 <li> <a href="{{ route('admin.all.permission') }}"><i class="bx bx-right-arrow-alt"></i>All
                         Permission</a>
                 </li>
-                <li> <a href="charts-chartjs.html"><i class="bx bx-right-arrow-alt"></i>Add Permission</a>
+                <li> <a href="{{ route('admin.all.role') }}"><i class="bx bx-right-arrow-alt"></i>All Roles</a>
                 </li>
             </ul>
         </li>
