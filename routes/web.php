@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\Admin\BlogController;
+use App\Http\Controllers\Backend\Admin\RoleController;
 use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\User\CashonDeliveryController;
@@ -229,6 +230,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::post('/seo/store/{id}', [SiteSettingsController::class, 'seoStore'])->name('seo.store');
     // Product Stock
     Route::get('/product/stock', [ProductController::class, 'productStock'])->name('product.stock');
+    // Permission CRUD Routes
+    Route::get('/all/permissions', [RoleController::class, 'allPermission'])->name('all.permission');
 });
 
 //Vendor Dashboard
