@@ -156,6 +156,39 @@ class RoleController extends Controller
             DB::table('role_has_permissions')->insert($data);
         }
         toastr()->success('Role Permission Added Successfully');
-        return redirect()->route('admin.all.role');
+        return redirect()->route('admin.all.roles.permission');
     }
+
+    // All Role Permission
+    public function allRolesPermission()
+    {
+        $roles = Role::all();
+        return view('backend.role.all_role_permission',compact('roles'));
+    }
+
+    // Edit Role Permission
+    public function editRolesPermission($id)
+    {
+        $role = Role::find($id);
+        $permission = Permission::all();
+        $permission_groups = User::getPermissionsGroup();
+        return view('backend.role.edit_role_permission',compact('role','permission_groups','permission'));
+    }
+
+    // Update Role Permission
+    public function updateRolesPermission(Request $request, $id)
+    {
+        $role = Role::findOrFail($id);
+        $permissions = $request->permission;
+    
+        // Filter out invalid permission IDs
+        $validPermissions = Permission::whereIn('id', $permissions)->pluck('id')->toArray();
+    
+        // Sync only valid permissions
+        $role->syncPermissions($validPermissions);
+    
+        toastr()->success('Role Permission Updated Successfully');
+        return redirect()->route('admin.all.roles.permission');
+    }
+    
 }
