@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
@@ -72,6 +73,7 @@ class RoleController extends Controller
         return redirect()->route('admin.all.permission');
     }
 
+    ///Role Methods///
 
     // All Role
     public function allRole()
@@ -129,5 +131,16 @@ class RoleController extends Controller
         $role->delete();
         toastr()->success('Role Deleted Successfully');
         return redirect()->route('admin.all.role');
+    }
+
+    ///Roles Permission Methods///
+
+    // Add Role Permission
+    public function addRolesPermission()
+    {
+        $roles = Role::all();
+        $permissions = Permission::all();
+        $permission_groups = User::getPermissionsGroup();
+        return view('backend.role.add_role_permission',compact('roles','permissions','permission_groups'));
     }
 }

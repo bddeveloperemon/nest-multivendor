@@ -244,6 +244,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/edit/role/{id}', [RoleController::class, 'editRole'])->name('edit.role');
     Route::post('/update/role/{id}', [RoleController::class, 'updateRole'])->name('update.role');
     Route::get('/delete/role/{id}', [RoleController::class, 'deleteRole'])->name('delete.role');
+    // Add Role Permission
+    Route::get('/add/roles/permission', [RoleController::class, 'addRolesPermission'])->name('add.roles.permission');
 });
 
 //Vendor Dashboard

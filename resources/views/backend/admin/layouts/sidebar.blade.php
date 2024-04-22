@@ -307,6 +307,10 @@
                 </li>
                 <li> <a href="{{ route('admin.all.role') }}"><i class="bx bx-right-arrow-alt"></i>All Roles</a>
                 </li>
+                <li> <a href="{{ route('admin.add.roles.permission') }}"><i class="bx bx-right-arrow-alt"></i>Roles
+                        in
+                        Permission</a>
+                </li>
             </ul>
         </li>
         <li>
