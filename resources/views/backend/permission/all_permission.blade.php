@@ -17,7 +17,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('admin.add.category') }}" class="btn btn-primary btn-sm">Add Permission</a>
+                <a href="{{ route('admin.add.permission') }}" class="btn btn-primary btn-sm">Add Permission</a>
             </div>
         </div>
     </div>
@@ -48,9 +48,9 @@
                                         <td>{{ $permission->name }}</td>
                                         <td>{{ $permission->group_name }}</td>
                                         <td>
-                                            <a href="{{ route('admin.edit.category', $Name->id) }}"
+                                            <a href="{{ route('admin.edit.permission', $permission->id) }}"
                                                 class="btn btn-info btn-sm">Edit</a>
-                                            <a href="{{ route('admin.delete.category', $Name->id) }}"
+                                            <a href="{{ route('admin.delete.permission', $permission->id) }}"
                                                 class="btn btn-danger btn-sm" id="delete">Delete</a>
                                         </td>
                                     </tr>

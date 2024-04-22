@@ -232,6 +232,11 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/product/stock', [ProductController::class, 'productStock'])->name('product.stock');
     // Permission CRUD Routes
     Route::get('/all/permissions', [RoleController::class, 'allPermission'])->name('all.permission');
+    Route::get('/add/permission', [RoleController::class, 'addPermission'])->name('add.permission');
+    Route::post('/store/permission', [RoleController::class, 'storePermission'])->name('store.permission');
+    Route::get('/edit/permission/{id}', [RoleController::class, 'editpermission'])->name('edit.permission');
+    Route::post('/update/permission/{id}', [RoleController::class, 'updatePermission'])->name('update.permission');
+    Route::get('/delete/permission/{id}', [RoleController::class, 'deletePermission'])->name('delete.permission');
 });
 
 //Vendor Dashboard
