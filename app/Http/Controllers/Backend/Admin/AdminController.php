@@ -148,4 +148,11 @@ class AdminController extends Controller
         toastr()->success('Vendor Inactive');
         return redirect()->route('admin.vendor.inactive');
     }
+
+    // All Admin
+    public function allAdmin()
+    {
+        $allAdminUsers = User::where('role','admin')->latest()->get();
+        return view('backend.admin.all_admin',compact('allAdminUsers'));
+    }
 }
