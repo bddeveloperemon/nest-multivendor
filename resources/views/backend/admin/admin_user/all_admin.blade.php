@@ -17,7 +17,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('admin.add.category') }}" class="btn btn-primary btn-sm">Add Admin User</a>
+                <a href="{{ route('admin.add.admin') }}" class="btn btn-primary btn-sm">Add Admin User</a>
             </div>
         </div>
     </div>

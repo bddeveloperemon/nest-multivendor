@@ -253,6 +253,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/delete/roles/permission/{id}', [RoleController::class, 'deleteRolesPermission'])->name('delete.role.permission');
     // Admin Manage Routes
     Route::get('/all/admin', [AdminController::class, 'allAdmin'])->name('all.addmin');
+    Route::get('/add/admin', [AdminController::class, 'addAdmin'])->name('add.admin');
+    Route::post('/store/admin/user', [AdminController::class, 'storeAdminUser'])->name('store.admin.user');
 });
 
 //Vendor Dashboard

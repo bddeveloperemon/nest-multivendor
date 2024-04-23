@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers\Backend\Admin;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Http\Requests\AdminRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManager;
 use Illuminate\Http\RedirectResponse;
+use Spatie\Permission\Models\Permission;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Http\Requests\AdminProfileRequest;
 use App\Http\Requests\AdminUpdatePasswordRequest;
-use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -153,6 +157,34 @@ class AdminController extends Controller
     public function allAdmin()
     {
         $allAdminUsers = User::where('role','admin')->latest()->get();
-        return view('backend.admin.all_admin',compact('allAdminUsers'));
+        return view('backend.admin.admin_user.all_admin',compact('allAdminUsers'));
+    }
+
+    // Add Admin
+    public function addAdmin()
+    {
+        $roles = Role::all();
+        return view('backend.admin.admin_user.add_admin',compact('roles'));
+    }
+
+    // Store Admin User
+    public function storeAdminUser(AdminRequest $request)
+    {
+        $userData = [
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'address' => $request->address,
+            'role' => 'admin',
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+            'status' => 'active',
+            'created_at' => Carbon::now(),
+        ];
+        $user = User::create($userData);
+        $role = Role::find($request->roles);
+        $user->assignRole($role);
+        toastr()->success('Admin User Inserted Successfully');
+        return redirect()->route('admin.all.addmin');
     }
 }
