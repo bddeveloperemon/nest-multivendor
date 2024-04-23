@@ -257,6 +257,7 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::post('/store/admin/user', [AdminController::class, 'storeAdminUser'])->name('store.admin.user');
     Route::get('/edit/admin/role/{id}', [AdminController::class, 'editAdminRole'])->name('edit.admin.role');
     Route::post('/update/admin/role/{id}', [AdminController::class, 'updateAdminRole'])->name('update.admin.role');
+    Route::get('/delete/admin/role/{id}', [AdminController::class, 'deleteAdminRole'])->name('delete.admin.role');
 });
 
 //Vendor Dashboard

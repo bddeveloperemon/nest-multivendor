@@ -217,8 +217,18 @@ class AdminController extends Controller
         $role = Role::find($request->roles);
         $user->assignRole($role);
         
-
-        toastr()->success('Admin User Upda Successfully');
+        toastr()->success('Admin User Update Successfully');
         return redirect()->route('admin.all.addmin');
+    }
+
+    // Delete Admin Role
+    public function deleteAdminRole($id)
+    {
+        $user = User::find($id);
+        if(!is_null($user)){
+            $user->delete();
+        }
+        toastr()->success('Admin User Delete Successfully');
+        return redirect()->back();
     }
 }

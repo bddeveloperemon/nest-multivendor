@@ -57,11 +57,15 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->phone }}</td>
-                                            <td>{{ $user->role }}</td>
+                                            <td>
+                                                @foreach ($user->roles as $role)
+                                                    <span class="badge rounded-pill bg-success">{{ $role->name }}</span>
+                                                @endforeach
+                                            </td>
                                             <td>
                                                 <a href="{{ route('admin.edit.admin.role', $user->id) }}"
                                                     class="btn btn-info btn-sm">Edit</a>
-                                                <a href="{{ route('admin.delete.category', $user->id) }}"
+                                                <a href="{{ route('admin.delete.admin.role', $user->id) }}"
                                                     class="btn btn-danger btn-sm" id="delete">Delete</a>
                                             </td>
                                         </tr>

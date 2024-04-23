@@ -3,6 +3,11 @@
     Admin - Add Roles Permission
 @endsection
 @section('admin_content')
+    <style>
+        .form-check-label {
+            text-transform: capitalize;
+        }
+    </style>
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
         <div class="breadcrumb-title pe-3">Add Roles Permission</div>
