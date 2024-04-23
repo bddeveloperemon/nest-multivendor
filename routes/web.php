@@ -255,6 +255,8 @@ Route::prefix('/admin')->as('admin.')->middleware(['auth','role:admin'])->group(
     Route::get('/all/admin', [AdminController::class, 'allAdmin'])->name('all.addmin');
     Route::get('/add/admin', [AdminController::class, 'addAdmin'])->name('add.admin');
     Route::post('/store/admin/user', [AdminController::class, 'storeAdminUser'])->name('store.admin.user');
+    Route::get('/edit/admin/role/{id}', [AdminController::class, 'editAdminRole'])->name('edit.admin.role');
+    Route::post('/update/admin/role/{id}', [AdminController::class, 'updateAdminRole'])->name('update.admin.role');
 });
 
 //Vendor Dashboard

@@ -59,7 +59,7 @@
                                             <td>{{ $user->phone }}</td>
                                             <td>{{ $user->role }}</td>
                                             <td>
-                                                <a href="{{ route('admin.edit.category', $user->id) }}"
+                                                <a href="{{ route('admin.edit.admin.role', $user->id) }}"
                                                     class="btn btn-info btn-sm">Edit</a>
                                                 <a href="{{ route('admin.delete.category', $user->id) }}"
                                                     class="btn btn-danger btn-sm" id="delete">Delete</a>

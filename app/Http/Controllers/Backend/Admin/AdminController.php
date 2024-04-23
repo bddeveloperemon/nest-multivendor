@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\AdminRequest;
 use App\Http\Controllers\Controller;
@@ -185,6 +186,39 @@ class AdminController extends Controller
         $role = Role::find($request->roles);
         $user->assignRole($role);
         toastr()->success('Admin User Inserted Successfully');
+        return redirect()->route('admin.all.addmin');
+    }
+
+    // Edit Admin Role
+    public function editAdminRole($id)
+    {
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('backend.admin.admin_user.edit_admin',compact('roles','user'));
+    }
+
+    // Update Admin Role
+    public function updateAdminRole(Request $request, $id)
+    {
+        $userData = [
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'address' => $request->address,
+            'role' => 'admin',
+            'phone' => $request->phone,
+            'status' => 'active',
+            'created_at' => Carbon::now(),
+        ];
+        
+        User::find($id)->update($userData);
+        $user = User::find($id);
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
+        $role = Role::find($request->roles);
+        $user->assignRole($role);
+        
+
+        toastr()->success('Admin User Upda Successfully');
         return redirect()->route('admin.all.addmin');
     }
 }
