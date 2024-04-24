@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
@@ -10,11 +11,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\OrderCompleteNotification;
 
 class CashonDeliveryController extends Controller
 {
     public function cashOrder(Request $request)
     {
+        $user = User::where('role','admin')->get();
         if (Session::has('coupon')) {
             $total_amount = Session::get('coupon')['total_amount'];
         }else{
@@ -64,6 +68,7 @@ class CashonDeliveryController extends Controller
         }
         Cart::destroy();
         toastr()->success('Your Order Place Successfully');
+        Notification::send($user, new OrderCompleteNotification($request->name));
         return redirect()->route('dashboard');
     }
 }
