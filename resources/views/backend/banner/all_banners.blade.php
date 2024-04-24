@@ -59,10 +59,14 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.edit.banner', $banner->id) }}"
-                                                    class="btn btn-info btn-sm">Edit</a>
-                                                <a href="{{ route('admin.delete.banner', $banner->id) }}"
-                                                    class="btn btn-danger btn-sm" id="delete">Delete</a>
+                                                @if (Auth::user()->can('banner.edit'))
+                                                    <a href="{{ route('admin.edit.banner', $banner->id) }}"
+                                                        class="btn btn-info btn-sm">Edit</a>
+                                                @endif
+                                                @if (Auth::user()->can('banner.delete'))
+                                                    <a href="{{ route('admin.delete.banner', $banner->id) }}"
+                                                        class="btn btn-danger btn-sm" id="delete">Delete</a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

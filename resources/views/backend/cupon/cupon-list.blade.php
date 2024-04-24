@@ -61,10 +61,14 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.edit.coupon', $Cupon->id) }}"
-                                                    class="btn btn-info btn-sm">Edit</a>
-                                                <a href="{{ route('admin.delete.coupon', $Cupon->id) }}"
-                                                    class="btn btn-danger btn-sm" id="delete">Delete</a>
+                                                @if (Auth::user()->can('coupon.edit'))
+                                                    <a href="{{ route('admin.edit.coupon', $Cupon->id) }}"
+                                                        class="btn btn-info btn-sm">Edit</a>
+                                                @endif
+                                                @if (Auth::user()->can('coupon.edit'))
+                                                    <a href="{{ route('admin.delete.coupon', $Cupon->id) }}"
+                                                        class="btn btn-danger btn-sm" id="delete">Delete</a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
