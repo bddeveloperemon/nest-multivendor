@@ -202,7 +202,7 @@
 
     @php
         $categories = App\Models\Category::orderBy('category_name', 'asc')
-            ->select('id', 'category_name', 'category_image')
+            ->select('id', 'category_name', 'category_slug', 'category_image')
             ->get();
     @endphp
     <div class="header-bottom header-bottom-bg-color sticky-bar">
@@ -222,20 +222,24 @@
                             <div class="d-flex categori-dropdown-inner">
                                 <ul>
                                     @foreach ($categories as $item)
-                                        <li>
-                                            <a href="{{ url('/product/category/' . $item->id) }}"> <img
-                                                    src="{{ asset('upload/category_images/' . $item->category_image) }}"
-                                                    alt="{{ $item->category_name }}" />{{ $item->category_name }}</a>
-                                        </li>
+                                        @if ($loop->index < 5)
+                                            <li>
+                                                <a href="{{ url('/product/category/' . $item->id) }}"> <img
+                                                        src="{{ asset('upload/category_images/' . $item->category_image) }}"
+                                                        alt="{{ $item->category_name }}" />{{ $item->category_name }}</a>
+                                            </li>
+                                        @endif
                                     @endforeach
                                 </ul>
                                 <ul class="end">
                                     @foreach ($categories as $item)
-                                        <li>
-                                            <a href="{{ url('/product/category/' . $item->id) }}"> <img
-                                                    src="{{ asset('upload/category_images/' . $item->category_image) }}"
-                                                    alt="{{ $item->category_name }}" />{{ $item->category_name }}</a>
-                                        </li>
+                                        @if ($loop->index > 4)
+                                            <li>
+                                                <a href="{{ url('/product/category/' . $item->id) }}"> <img
+                                                        src="{{ asset('upload/category_images/' . $item->category_image) }}"
+                                                        alt="{{ $item->category_name }}" />{{ $item->category_name }}</a>
+                                            </li>
+                                        @endif
                                     @endforeach
                                 </ul>
                             </div>
