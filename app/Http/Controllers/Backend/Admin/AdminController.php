@@ -18,6 +18,8 @@ use Illuminate\Http\RedirectResponse;
 use Spatie\Permission\Models\Permission;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Http\Requests\AdminProfileRequest;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\ApproveVendorNotification;
 use App\Http\Requests\AdminUpdatePasswordRequest;
 
 class AdminController extends Controller
@@ -138,8 +140,9 @@ class AdminController extends Controller
         User::findOrFail($id)->update([
             'status' => 'active'
         ]);
-
+        $user = User::where('role','vendor')->get();
         toastr()->success('Vendor Active');
+        Notification::send($user, new ApproveVendorNotification($request));
         return redirect()->route('admin.vendor.active');
     }
 
