@@ -211,13 +211,26 @@
                                             </span></label>
                                     </div>
                                 @endforeach
-                                <label class="fw-900 mt-15">Item Condition</label>
-                                <div class="custome-checkbox">
-                                    <input class="form-check-input" type="checkbox" name="checkbox"
-                                        id="exampleCheckbox11" value="" />
-                                    <label class="form-check-label" for="exampleCheckbox11"><span>New
-                                            (1506)</span></label>
-                                </div>
+                                <label class="fw-900 mt-15">Brand</label>
+                                @if (!empty($_GET['brand']))
+                                    @php
+                                        $filterBrand = explode(',', $_GET['brand']);
+                                    @endphp
+                                @endif
+                                @foreach ($brands as $brand)
+                                    @php
+                                        $products = App\Models\Product::where('category_id', $category->id)->get();
+                                    @endphp
+                                    <div class="custome-checkbox">
+                                        <input class="form-check-input" type="checkbox" name="brand[]"
+                                            id="examplebrand{{ $brand->id }}" value="{{ $brand->slug }}"
+                                            @if (!empty($filterBrand) && in_array($brand->slug, $filterBrand)) checked @endif
+                                            onchange="this.form.submit()" />
+                                        <label class="form-check-label"
+                                            for="examplebrand{{ $brand->id }}"><span>{{ $brand->brand_name }}
+                                            </span></label>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                         <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i>
