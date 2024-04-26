@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CuponController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\WishlistController;
@@ -323,5 +324,7 @@ Route::get('/blog/post/details/{id}/{slug}',[FrontendBlogController::class,'blog
 Route::get('/blog/post/category/{id}/{slug}',[FrontendBlogController::class,'blogPostCategory']); // Blog Category Details;
 Route::post('/store/review', [ReviewController::class, 'storeReview'])->name('store.review'); // Product Review Routes
 Route::post('/search', [IndexController::class, 'productSearch'])->name('product.search'); // Product Search
-Route::post('search-product', [IndexController::class, 'searchProduct']); // Product Search
+Route::post('/search-product', [IndexController::class, 'searchProduct']); // Product Search
+Route::get('/shop', [ShopController::class, 'shop'])->name('shop'); // Shop
+Route::post('/shop/filter', [ShopController::class, 'shopFilter'])->name('shop.filter'); // Shop Filter
 require __DIR__.'/auth.php';
