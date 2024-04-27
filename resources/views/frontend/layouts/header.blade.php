@@ -165,19 +165,16 @@
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                         <ul>
                                             <li>
-                                                <a href="{{ route('dashboard') }}"><i class="fi fi-rs-user mr-10"></i>My
+                                                <a href="{{ route('user.account.page') }}"><i
+                                                        class="fi fi-rs-user mr-10"></i>My
                                                     Account</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('dashboard') }}"><i
+                                                <a href="{{ route('track.your.order') }}"><i
                                                         class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('dashboard') }}"><i class="fi fi-rs-label mr-10"></i>My
-                                                    Voucher</a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('dashboard') }}"><i class="fi fi-rs-heart mr-10"></i>My
+                                                <a href="{{ route('wishlist') }}"><i class="fi fi-rs-heart mr-10"></i>My
                                                     Wishlist</a>
                                             </li>
                                             <li>

@@ -9,6 +9,7 @@ use App\Models\MultiImg;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
 
 class IndexController extends Controller
 {
@@ -54,8 +55,8 @@ class IndexController extends Controller
 
     public function CateWiseProduct($id)
     {
-        $products = Product::where('status',1)->where('category_id',$id)->orderBy('id','desc')->get();
-        $categories = Category::orderBy('category_name','asc')->get();
+        $products = Product::where('status',1)->where('category_id',$id)->orderBy('id','desc')->paginate(2)->onEachSide(1);
+        $categories = Category::orderBy('category_name','asc');
         $breadCat = Category::where('id',$id)->first();
         $newProduct = Product::orderBy('id','desc')->limit(3)->get();
         return view('frontend.product.view_category',compact('categories','products','breadCat','newProduct'));
@@ -63,7 +64,7 @@ class IndexController extends Controller
 
     public function SubCateWiseProduct($id,$slug)
     {
-        $products = Product::where('status',1)->where('subcategory_id',$id)->orderBy('id','desc')->get();
+        $products = Product::where('status',1)->where('subcategory_id',$id)->orderBy('id','desc')->paginate(2)->onEachSide(1);
         $categories = Category::orderBy('category_name','asc')->get();
         $breadSubCat = SubCategory::where('id',$id)->first();
         $newProduct = Product::orderBy('id','desc')->limit(3)->get();

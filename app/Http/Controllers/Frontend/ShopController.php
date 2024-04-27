@@ -17,7 +17,6 @@ class ShopController extends Controller
         $categories = Category::orderBy('category_name', 'asc')->get();
         $brands = Brand::orderBy('brand_name', 'asc')->get();
         $newProduct = Product::orderBy('id', 'desc')->limit(3)->get();
-        
         if (!empty($_GET['category'])) {
             $slugs = explode(',', $_GET['category']);
             $catIds = Category::select('id')->whereIn('category_slug', $slugs)->pluck('id')->toArray();
@@ -32,12 +31,10 @@ class ShopController extends Controller
         // Price Range
         if (!empty($_GET['price'])) {
             $price = explode('-', $_GET['price']);
-            // dd(is_array($price));
             $products = $products->whereBetween('selling_price', $price);
         }
     
-        $products = $products->orderBy('id', 'desc')->get();
-    
+        $products = $products->orderBy('id', 'desc')->paginate(10)->onEachSide(1);    
         return view('frontend.product.shop', compact('categories', 'products', 'newProduct','brands'));
     }
 
