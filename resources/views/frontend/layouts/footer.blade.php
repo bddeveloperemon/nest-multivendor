@@ -144,13 +144,11 @@
                 <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
                     <h4 class="widget-title">Account</h4>
                     <ul class="footer-list mb-sm-5 mb-md-0">
-                        <li><a href="#">Sign In</a></li>
-                        <li><a href="#">View Cart</a></li>
-                        <li><a href="#">My Wishlist</a></li>
-                        <li><a href="#">Track My Order</a></li>
-                        <li><a href="#">Help Ticket</a></li>
-                        <li><a href="#">Shipping Details</a></li>
-                        <li><a href="#">Compare products</a></li>
+                        <li><a href="{{ route('register') }}">Sign In</a></li>
+                        <li><a href="{{ route('myCart') }}">View Cart</a></li>
+                        <li><a href="{{ route('wishlist') }}">My Wishlist</a></li>
+                        <li><a href="{{ route('track.your.order') }}">Track My Order</a></li>
+                        <li><a href="{{ route('compare') }}">Compare products</a></li>
                     </ul>
                 </div>
                 <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
@@ -166,15 +164,16 @@
                     </ul>
                 </div>
                 <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".4s">
-                    <h4 class="widget-title">Popular</h4>
+                    <h4 class="widget-title">Categories</h4>
+                    @php
+                        $categories = App\Models\Category::all();
+                    @endphp
                     <ul class="footer-list mb-sm-5 mb-md-0">
-                        <li><a href="#">Milk & Flavoured Milk</a></li>
-                        <li><a href="#">Butter and Margarine</a></li>
-                        <li><a href="#">Eggs Substitutes</a></li>
-                        <li><a href="#">Marmalades</a></li>
-                        <li><a href="#">Sour Cream and Dips</a></li>
-                        <li><a href="#">Tea & Kombucha</a></li>
-                        <li><a href="#">Cheese</a></li>
+                        @foreach ($categories as $category)
+                            <li><a
+                                    href="{{ url('/product/category/' . $category->id) }}">{{ $category->category_name }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
 
