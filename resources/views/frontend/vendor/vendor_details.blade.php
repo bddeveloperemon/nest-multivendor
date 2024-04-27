@@ -6,7 +6,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                <a href="{{ url('/') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
                 <span></span> Vendor Details
             </div>
         </div>
@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop-grid-right.html">{{ $product->category->category_name }}</a>
+                                        <a href="javascript:void(0)">{{ $product->category->category_name }}</a>
                                     </div>
                                     <h2><a
                                             href="{{ url('/product/details/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
@@ -115,7 +115,7 @@
                                             <span class="font-small text-muted">By Owner</span>
                                         @else
                                             <span class="font-small text-muted">By <a
-                                                    href="vendor-details-1.html">{{ $product->vendor->name }}</a></span>
+                                                    href="javascript:void(0)">{{ $product->vendor->name }}</a></span>
                                         @endif
                                     </div>
                                     <div class="product-card-bottom">
@@ -177,7 +177,7 @@
                         <div class="product-category">
                             <span class="text-muted">Since {{ $vendor->vendor_join }}</span>
                         </div>
-                        <h4 class="mb-5"><a href="vendor-details-1.html" class="text-heading">{{ $vendor->name }}</a>
+                        <h4 class="mb-5"><a href="javascript:void(0)" class="text-heading">{{ $vendor->name }}</a>
                         </h4>
                         <div class="product-rate-cover mb-15">
                             <div class="product-rate d-inline-block">
@@ -228,7 +228,7 @@
                                         alt="" /><strong>Call Us:</strong><span>{{ $vendor->phone }}</span>
                                 </li>
                             </ul>
-                            <a href="vendor-details-1.html" class="btn btn-xs">Contact Seller <i
+                            <a href="javascript:void(0)" class="btn btn-xs">Contact Seller <i
                                     class="fi-rs-arrow-small-right"></i>
                             </a>
                         </div>

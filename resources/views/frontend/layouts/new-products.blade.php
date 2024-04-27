@@ -102,7 +102,7 @@
                                             <span class="font-small text-muted">By Owner</span>
                                         @else
                                             <span class="font-small text-muted">By <a
-                                                    href="vendor-details-1.html">{{ $product->vendor->name }}</a></span>
+                                                    href="javascript:void(0)">{{ $product->vendor->name }}</a></span>
                                         @endif
                                     </div>
                                     <div class="product-card-bottom">

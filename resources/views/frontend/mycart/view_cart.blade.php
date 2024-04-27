@@ -104,7 +104,7 @@
                                         alt="#"></td>
                                 <td class="product-des product-name">
                                     <h6 class="mb-5"><a class="product-name mb-10 text-heading"
-                                            href="shop-product-right.html">${value.name}</a></h6>
+                                            href="javascript:void(0)">${value.name}</a></h6>
                                 </td>
                                 <td class="price" data-title="Price">
                                     <h4 class="text-body">$${value.price} </h4>

@@ -23,7 +23,8 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css?v=5.3') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/slider-range.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type="text/css"
+        media="all" />
     @stack('style')
 </head>
 
@@ -74,7 +75,8 @@
     <script src="{{ asset('frontend/assets/js/plugins/jquery.theia.sticky.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/plugins/jquery.elevatezoom.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/plugins/slider-range.js') }}"></script>
+    {{-- <script src="{{ asset('frontend/assets/js/plugins/slider-range.js') }}"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
     <!-- sweetalert  JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Template  JS -->
@@ -351,7 +353,7 @@
                                     <td class="image product-thumbnail pt-40"><img alt="${value.product.product_name}"
                                         src="{{ asset('upload/product_images/thambnail') }}/${value.product.product_thambnail}" style="width:100px; height:100px;" /></td>
                                     <td class="product-des product-name">
-                                        <h6><a class="product-name mb-10" href="shop-product-right.html">${value.product.product_name}</a></h6>
+                                        <h6><a class="product-name mb-10" href="javascript:void(0)">${value.product.product_name}</a></h6>
                                         <div class="product-rate-cover">
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
@@ -461,7 +463,7 @@
                             <tr class="pr_title">
                                 <td class="text-muted font-sm fw-600 font-heading">Name</td>
                                 <td class="product_name">
-                                    <h6><a href="shop-product-full.html" class="text-heading">${value.product.product_name}</a></h6>
+                                    <h6><a href="javascript:void(0)" class="text-heading">${value.product.product_name}</a></h6>
                                 </td>
                             </tr>
                             <tr class="pr_price">

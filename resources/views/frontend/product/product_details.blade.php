@@ -7,7 +7,7 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="{{ url('/') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> <a href="shop-grid-right.html">{{ $product->category->category_name }}</a> <span></span>
+                <span></span> <a href="javascript:void(0)">{{ $product->category->category_name }}</a> <span></span>
                 {{ $product->sub_category->sub_category_name }} <span></span>{{ $product->product_name }}
             </div>
         </div>
@@ -143,9 +143,9 @@
                                             onclick="addToCartDetails()"><i class="fi-rs-shopping-cart"></i>Add to
                                             cart</button>
                                         <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                            href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i
-                                                class="fi-rs-shuffle"></i></a>
+                                            href="{{ route('wishlist') }}"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Compare" class="action-btn hover-up"
+                                            href="{{ route('compare') }}"><i class="fi-rs-shuffle"></i></a>
                                     </div>
                                 </div>
                                 @if ($product->vendor_id == null || $product->vendor == null)
@@ -306,11 +306,11 @@
                                         <div class="vendor-name ml-15">
                                             @if ($product->vendor_id == null || $product->vendor == null)
                                                 <h6>
-                                                    <a href="vendor-details-2.html">Owner</a>
+                                                    <a href="javascript:void(0)">Owner</a>
                                                 </h6>
                                             @else
                                                 <h6>
-                                                    <a href="vendor-details-2.html">{{ $product->vendor->name }}</a>
+                                                    <a href="javascript:void(0)">{{ $product->vendor->name }}</a>
                                                 </h6>
                                             @endif
 
@@ -573,10 +573,10 @@
                                                         data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
                                                             class="fi-rs-search"></i></a>
                                                     <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                                        href="shop-wishlist.html" tabindex="0"><i
+                                                        href="{{ route('wishlist') }}" tabindex="0"><i
                                                             class="fi-rs-heart"></i></a>
                                                     <a aria-label="Compare" class="action-btn small hover-up"
-                                                        href="shop-compare.html" tabindex="0"><i
+                                                        href="{{ route('compare') }}" tabindex="0"><i
                                                             class="fi-rs-shuffle"></i></a>
                                                 </div>
                                                 @php
@@ -592,7 +592,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content-wrap">
-                                                <h2><a href="shop-product-right.html"
+                                                <h2><a href="javascript:void(0)"
                                                         tabindex="0">{{ $product->product_name }}</a>
                                                 </h2>
                                                 <div class="rating-result" title="90%">

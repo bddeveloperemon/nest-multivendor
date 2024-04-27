@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop-grid-right.html">{{ $product->sub_category->sub_category_name }}</a>
+                                        <a href="javascript:void(0)">{{ $product->sub_category->sub_category_name }}</a>
                                     </div>
                                     <h2><a
                                             href="{{ url('/product/details/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
@@ -119,7 +119,7 @@
                                             <span class="font-small text-muted">By Owner</span>
                                         @else
                                             <span class="font-small text-muted">By <a
-                                                    href="vendor-details-1.html">{{ $product->vendor->name }}</a></span>
+                                                    href="javascript:void(0)">{{ $product->vendor->name }}</a></span>
                                         @endif
                                     </div>
                                     <div class="product-card-bottom">

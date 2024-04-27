@@ -6,8 +6,8 @@
             </div>
             <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                 <button class="close-style search-close">
-                <i class="icon-top"></i>
-                <i class="icon-bottom"></i>
+                    <i class="icon-top"></i>
+                    <i class="icon-bottom"></i>
                 </button>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <nav>
                     <ul class="mobile-menu font-heading">
                         <li class="menu-item-has-children">
-                            <a href="index.html">Home</a>
+                            <a href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="menu-item-has-children">
                             <a href="shop-grid-right.html">shop</a>
@@ -50,12 +50,12 @@
                                 <li class="menu-item-has-children">
                                     <a href="#">Shop Invoice</a>
                                     <ul class="dropdown">
-                                        <li><a href="shop-invoice-1.html">Shop Invoice 1</a></li>
-                                        <li><a href="shop-invoice-2.html">Shop Invoice 2</a></li>
-                                        <li><a href="shop-invoice-3.html">Shop Invoice 3</a></li>
-                                        <li><a href="shop-invoice-4.html">Shop Invoice 4</a></li>
-                                        <li><a href="shop-invoice-5.html">Shop Invoice 5</a></li>
-                                        <li><a href="shop-invoice-6.html">Shop Invoice 6</a></li>
+                                        <li><a href="javascript:void(0)">Shop Invoice 1</a></li>
+                                        <li><a href="javascript:void(0)">Shop Invoice 2</a></li>
+                                        <li><a href="javascript:void(0)">Shop Invoice 3</a></li>
+                                        <li><a href="javascript:void(0)">Shop Invoice 4</a></li>
+                                        <li><a href="javascript:void(0)">Shop Invoice 5</a></li>
+                                        <li><a href="javascript:void(0)">Shop Invoice 6</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -66,10 +66,10 @@
                                 <li class="menu-item-has-children">
                                     <a href="#">Women's Fashion</a>
                                     <ul class="dropdown">
-                                        <li><a href="shop-product-right.html">Dresses</a></li>
-                                        <li><a href="shop-product-right.html">Blouses & Shirts</a></li>
-                                        <li><a href="shop-product-right.html">Hoodies & Sweatshirts</a></li>
-                                        <li><a href="shop-product-right.html">Women's Sets</a></li>
+                                        <li><a href="javascript:void(0)">Dresses</a></li>
+                                        <li><a href="javascript:void(0)">Blouses & Shirts</a></li>
+                                        <li><a href="javascript:void(0)">Hoodies & Sweatshirts</a></li>
+                                        <li><a href="javascript:void(0)">Women's Sets</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
@@ -83,11 +83,11 @@
                                 <li class="menu-item-has-children">
                                     <a href="#">Technology</a>
                                     <ul class="dropdown">
-                                        <li><a href="shop-product-right.html">Gaming Laptops</a></li>
-                                        <li><a href="shop-product-right.html">Ultraslim Laptops</a></li>
-                                        <li><a href="shop-product-right.html">Tablets</a></li>
-                                        <li><a href="shop-product-right.html">Laptop Accessories</a></li>
-                                        <li><a href="shop-product-right.html">Tablet Accessories</a></li>
+                                        <li><a href="javascript:void(0)">Gaming Laptops</a></li>
+                                        <li><a href="javascript:void(0)">Ultraslim Laptops</a></li>
+                                        <li><a href="javascript:void(0)">Tablets</a></li>
+                                        <li><a href="javascript:void(0)">Laptop Accessories</a></li>
+                                        <li><a href="javascript:void(0)">Tablet Accessories</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -95,16 +95,16 @@
                         <li class="menu-item-has-children">
                             <a href="blog-category-fullwidth.html">Blog</a>
                             <ul class="dropdown">
-                                <li><a href="blog-category-grid.html">Blog Category Grid</a></li>
-                                <li><a href="blog-category-list.html">Blog Category List</a></li>
-                                <li><a href="blog-category-big.html">Blog Category Big</a></li>
-                                <li><a href="blog-category-fullwidth.html">Blog Category Wide</a></li>
+                                <li><a href="javascript:void(0)">Blog Category Grid</a></li>
+                                <li><a href="javascript:void(0)">Blog Category List</a></li>
+                                <li><a href="javascript:void(0)">Blog Category Big</a></li>
+                                <li><a href="javascript:void(0)">Blog Category Wide</a></li>
                                 <li class="menu-item-has-children">
                                     <a href="#">Single Product Layout</a>
                                     <ul class="dropdown">
-                                        <li><a href="blog-post-left.html">Left Sidebar</a></li>
-                                        <li><a href="blog-post-right.html">Right Sidebar</a></li>
-                                        <li><a href="blog-post-fullwidth.html">No Sidebar</a></li>
+                                        <li><a href="javascript:void(0)">Left Sidebar</a></li>
+                                        <li><a href="javascript:void(0)">Right Sidebar</a></li>
+                                        <li><a href="javascript:void(0)">No Sidebar</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -112,17 +112,17 @@
                         <li class="menu-item-has-children">
                             <a href="#">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="page-about.html">About Us</a></li>
-                                <li><a href="page-contact.html">Contact</a></li>
-                                <li><a href="page-account.html">My Account</a></li>
-                                <li><a href="page-login.html">Login</a></li>
-                                <li><a href="page-register.html">Register</a></li>
-                                <li><a href="page-forgot-password.html">Forgot password</a></li>
-                                <li><a href="page-reset-password.html">Reset password</a></li>
-                                <li><a href="page-purchase-guide.html">Purchase Guide</a></li>
-                                <li><a href="page-privacy-policy.html">Privacy Policy</a></li>
-                                <li><a href="page-terms.html">Terms of Service</a></li>
-                                <li><a href="page-404.html">404 Page</a></li>
+                                <li><a href="javascript:void(0)">About Us</a></li>
+                                <li><a href="javascript:void(0)">Contact</a></li>
+                                <li><a href="{{ route('dashboard') }}">My Account</a></li>
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                <li><a href="{{ route('register') }}">Register</a></li>
+                                <li><a href="javascript:void(0)">Forgot password</a></li>
+                                <li><a href="javascript:void(0)">Reset password</a></li>
+                                <li><a href="javascript:void(0)">Purchase Guide</a></li>
+                                <li><a href="javascript:void(0)">Privacy Policy</a></li>
+                                <li><a href="javascript:void(0)">Terms of Service</a></li>
+                                <li><a href="javascript:void(0)">404 Page</a></li>
                             </ul>
                         </li>
                         <li class="menu-item-has-children">
@@ -151,11 +151,16 @@
             </div>
             <div class="mobile-social-icon mb-50">
                 <h6 class="mb-15">Follow Us</h6>
-                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-facebook-white.svg') }}" alt="" /></a>
-                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-twitter-white.svg') }}" alt="" /></a>
-                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-instagram-white.svg') }}" alt="" /></a>
-                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-pinterest-white.svg') }}" alt="" /></a>
-                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-youtube-white.svg') }}" alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-facebook-white.svg') }}"
+                        alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-twitter-white.svg') }}"
+                        alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-instagram-white.svg') }}"
+                        alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-pinterest-white.svg') }}"
+                        alt="" /></a>
+                <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-youtube-white.svg') }}"
+                        alt="" /></a>
             </div>
             <div class="site-copyright">Copyright 2022 © Nest. All rights reserved. Powered by AliThemes.</div>
         </div>

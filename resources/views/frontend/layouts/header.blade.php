@@ -9,9 +9,9 @@
                     <div class="header-info">
                         <ul>
 
-                            <li><a href="page-account.html">My Cart</a></li>
-                            <li><a href="{{ route('wishlist') }}">Checkout</a></li>
-                            <li><a href="shop-order.html">Order Tracking</a></li>
+                            <li><a href="{{ route('myCart') }}">My Cart</a></li>
+                            <li><a href="{{ route('checkout') }}">Checkout</a></li>
+                            <li><a href="{{ route('track.your.order') }}">Order Tracking</a></li>
                         </ul>
                     </div>
                 </div>
@@ -209,7 +209,7 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}"
+                    <a href="{{ url('/') }}"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}"
                             alt="logo" /></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
@@ -242,34 +242,6 @@
                                         @endif
                                     @endforeach
                                 </ul>
-                            </div>
-                            <div class="more_slide_open" style="display: none">
-                                <div class="d-flex categori-dropdown-inner">
-                                    <ul>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('frontend/assets/imgs/theme/icons/icon-1.svg') }}"
-                                                    alt="" />Milks and Dairies</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('frontend/assets/imgs/theme/icons/icon-2.svg') }}"
-                                                    alt="" />Clothing & beauty</a>
-                                        </li>
-                                    </ul>
-                                    <ul class="end">
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('frontend/assets/imgs/theme/icons/icon-3.svg') }}"
-                                                    alt="" />Wines & Drinks</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img
-                                                    src="{{ asset('frontend/assets/imgs/theme/icons/icon-4.svg') }}"
-                                                    alt="" />Fresh Seafood</a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                             <div class="more_categories"><span class="icon"></span> <span class="heading-sm-1">Show
                                     more...</span></div>

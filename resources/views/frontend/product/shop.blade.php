@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop-grid-right.html">{{ $product->category->category_name }}</a>
+                                        <a href="javascript:void(0)">{{ $product->category->category_name }}</a>
                                     </div>
                                     <h2><a
                                             href="{{ url('/product/details/' . $product->id . '/' . $product->product_slug) }}">{{ $product->product_name }}</a>
@@ -119,7 +119,7 @@
                                             <span class="font-small text-muted">By Owner</span>
                                         @else
                                             <span class="font-small text-muted">By <a
-                                                    href="vendor-details-1.html">{{ $product->vendor->name }}</a></span>
+                                                    href="javascript:void(0)">{{ $product->vendor->name }}</a></span>
                                         @endif
                                     </div>
                                     <div class="product-card-bottom">
@@ -175,15 +175,13 @@
                         <h5 class="section-title style-1 mb-30">Fill by price</h5>
                         <div class="price-filter">
                             <div class="price-filter-inner">
-                                <div id="slider-range" class="mb-20"></div>
-                                <div class="d-flex justify-content-between">
-                                    <div class="caption">From: <strong id="slider-range-value1"
-                                            class="text-brand"></strong>
-                                    </div>
-                                    <div class="caption">To: <strong id="slider-range-value2"
-                                            class="text-brand"></strong>
-                                    </div>
+                                <div id="slider-range" class="price-filter-ranger" data-min="0" data-max="2000">
                                 </div>
+                                <input type="hidden" name="price_range" id="price_range" value="">
+                                <input type="text" id="amount" value="$0-$2000" readonly>
+                                <br><br>
+                                <button type="submit" class="btn btn-sm btn-default"><i
+                                        class="fi-rs-filter mr-5"></i>Filter</button>
                             </div>
                         </div>
                         <div class="list-group">
@@ -233,8 +231,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i>
-                            Fillter</a>
+
                 </div>
                 </form>
                 <!-- Product sidebar Widget -->
@@ -278,3 +275,25 @@
         </div>
     </div>
 @endsection
+@push('script')
+    <script>
+        $(document).ready(function() {
+            if ($('#slider-range').length > 0) {
+                const max_price = parseInt($('#slider-range').data('max'));
+                const min_price = parseInt($('#slider-range').data('min'));
+                let price_range = min_price + "-" + max_price;
+                let price = price_range.split('-');
+                $("#slider-range").slider({
+                    range: true,
+                    min: min_price,
+                    max: max_price,
+                    values: price,
+                    slide: function(event, ui) {
+                        $("#amount").val('$' + ui.values[0] + "-" + '$' + ui.values[1]);
+                        $("#price_range").val(ui.values[0] + "-" + ui.values[1]);
+                    }
+                });
+            }
+        });
+    </script>
+@endpush

@@ -26,12 +26,18 @@ class ShopController extends Controller
             $slugs = explode(',', $_GET['brand']);
             $brandIds = Brand::select('id')->whereIn('slug', $slugs)->pluck('id')->toArray();
             $products->whereIn('brand_id', $brandIds);
-        }else {
+        } else {
             $products->where('status', 1);
         }
-
+        // Price Range
+        if (!empty($_GET['price'])) {
+            $price = explode('-', $_GET['price']);
+            // dd(is_array($price));
+            $products = $products->whereBetween('selling_price', $price);
+        }
+    
         $products = $products->orderBy('id', 'desc')->get();
-
+    
         return view('frontend.product.shop', compact('categories', 'products', 'newProduct','brands'));
     }
 
@@ -46,7 +52,7 @@ class ShopController extends Controller
             foreach ($data['category'] as $category) {
                 if (empty($catUrl)) {
                     $catUrl .= "&category=" . $category;
-                }else {
+                } else {
                     $catUrl .= ",". $category;
                 }
             }
@@ -57,11 +63,16 @@ class ShopController extends Controller
             foreach ($data['brand'] as $brand) {
                 if (empty($brandUrl)) {
                     $brandUrl .= "&brand=" . $brand;
-                }else {
+                } else {
                     $brandUrl .= ",". $brand;
                 }
             }
         } 
-        return redirect()->route('shop',$catUrl.$brandUrl);
+        // Filter For Price Range  
+        $priceRangeUrl = "";
+        if (!empty($data['price_range'])) {
+            $priceRangeUrl .= "&price=" . $data['price_range'];
+        }
+        return redirect()->route('shop', $catUrl.$brandUrl.$priceRangeUrl);
     }
 }
