@@ -595,9 +595,6 @@
                                                 <h2><a href="javascript:void(0)"
                                                         tabindex="0">{{ $product->product_name }}</a>
                                                 </h2>
-                                                <div class="rating-result" title="90%">
-                                                    <span> </span>
-                                                </div>
                                                 <div class="product-price">
                                                     @if ($product->discount_price == null)
                                                         <span><small>$</small>{{ $product->selling_price }}</span>

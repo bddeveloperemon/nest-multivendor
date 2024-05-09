@@ -96,7 +96,7 @@
                             </article>
                         @endforeach
                     </div>
-                    <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+                    {{-- <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-start">
                                 <li class="page-item">
@@ -112,7 +112,41 @@
                                 </li>
                             </ul>
                         </nav>
+                    </div> --}}
+                    <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-start">
+                                @if ($blogPosts->onFirstPage())
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#"><i class="fi-rs-arrow-small-left"></i></a>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $blogPosts->previousPageUrl() }}"><i
+                                                class="fi-rs-arrow-small-left"></i></a>
+                                    </li>
+                                @endif
+
+                                @foreach ($blogPosts->links() as $link)
+                                    <li class="page-item {{ $link->isCurrent() ? 'active' : '' }}">
+                                        <a class="page-link" href="{{ $link->url() }}">{{ $link->label }}</a>
+                                    </li>
+                                @endforeach
+
+                                @if ($blogPosts->onLastPage())
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#"><i class="fi-rs-arrow-small-right"></i></a>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $blogPosts->nextPageUrl() }}"><i
+                                                class="fi-rs-arrow-small-right"></i></a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </nav>
                     </div>
+
                 </div>
                 <div class="col-lg-3 primary-sidebar sticky-sidebar">
                     <div class="widget-area">
